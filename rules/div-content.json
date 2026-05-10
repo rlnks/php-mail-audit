@@ -1,0 +1,41 @@
+{
+  "id": "div-content",
+  "version": "1.0",
+  "updated_at": "2026-05-10",
+  "source": "https://www.caniemail.com/features/html-div/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "layout"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["div"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": "partial", "notes": "Div is rendered but box model may be ignored" },
+    "outlook_web": { "supported": true },
+    "gmail_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "Div elements found — acceptable for wrapping content, but prefer <td> for layout in email.",
+    "fr": "Des éléments div ont été trouvés — acceptables pour encapsuler du contenu, mais préférez <td> pour la mise en page dans les emails.",
+    "es": "Se encontraron elementos div — aceptables para envolver contenido, pero prefiera <td> para la maquetación en email.",
+    "de": "Div-Elemente gefunden — akzeptabel zum Wrapping von Inhalt, aber bevorzugen Sie <td> für das Layout in E-Mails.",
+    "pt": "Elementos div encontrados — aceitáveis para envolver conteúdo, mas prefira <td> para layout em email."
+  },
+  "fix": {
+    "en": "Consider replacing content-wrapping divs with <td> elements for maximum email client compatibility.",
+    "fr": "Envisagez de remplacer les divs d'encapsulation de contenu par des éléments <td> pour une compatibilité maximale avec les clients email.",
+    "es": "Considere reemplazar los divs de contenido por elementos <td> para máxima compatibilidad con clientes de email.",
+    "de": "Erwägen Sie, inhaltswrappende Divs durch <td>-Elemente zu ersetzen, um maximale E-Mail-Client-Kompatibilität zu erreichen.",
+    "pt": "Considere substituir divs de conteúdo por elementos <td> para máxima compatibilidade com clientes de email."
+  },
+  "success_message": {
+    "en": "No div elements found — clean table-based structure.",
+    "fr": "Aucun élément div trouvé — structure propre basée sur des tables.",
+    "es": "No se encontraron elementos div — estructura limpia basada en tablas.",
+    "de": "Keine Div-Elemente gefunden — saubere tabellenbasierte Struktur.",
+    "pt": "Nenhum elemento div encontrado — estrutura limpa baseada em tabelas."
+  }
+}

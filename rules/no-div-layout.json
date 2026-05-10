@@ -1,15 +1,23 @@
 {
   "id": "no-div-layout",
-  "version": "1.1",
-  "updated_at": "2026-05-09",
+  "version": "1.2",
+  "updated_at": "2026-05-10",
   "source": "https://www.caniemail.com/features/html-div/",
   "tier": "free",
   "severity": "warning",
   "weight": 6,
   "tags": ["html", "layout"],
   "detection": {
-    "type": "html_tag",
-    "patterns": ["div"]
+    "type": "html_tag_with_style",
+    "tag": "div",
+    "css_patterns": [
+      "width:", "max-width:", "min-width:",
+      "display: block", "display:block",
+      "display: inline-block", "display:inline-block",
+      "float:", "margin:", "padding:",
+      "position: relative", "position:relative",
+      "position: absolute", "position:absolute"
+    ]
   },
   "affected_clients": {
     "outlook_desktop": { "supported": false, "versions": "all" },

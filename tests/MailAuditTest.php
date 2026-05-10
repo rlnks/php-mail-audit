@@ -196,12 +196,29 @@ class MailAuditTest extends TestCase
 
     // --- HTML tag rules (DOM-based) ---
 
-    public function test_div_triggers_warning(): void
+    public function test_layout_div_triggers_warning(): void
     {
         $this->assertRuleTriggered(
-            '<div>layout content</div>',
+            '<div style="width: 600px; max-width: 100%;">layout content</div>',
             'no-div-layout',
             'warning'
+        );
+    }
+
+    public function test_plain_div_does_not_trigger_layout_warning(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<div>content only</div>',
+            'no-div-layout'
+        );
+    }
+
+    public function test_content_div_triggers_info(): void
+    {
+        $this->assertRuleTriggered(
+            '<div>content only</div>',
+            'div-content',
+            'info'
         );
     }
 

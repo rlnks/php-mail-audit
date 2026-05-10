@@ -5,11 +5,12 @@ namespace MailAudit\Detection;
 class DetectorFactory
 {
     private static array $registry = [
-        'css_property'          => CssPropertyDetector::class,
-        'html_tag'              => HtmlTagDetector::class,
-        'html_attribute_missing'=> HtmlAttributeMissingDetector::class,
-        'html_content'          => HtmlContentDetector::class,
-        'style_block'           => StyleBlockDetector::class,
+        'css_property'           => CssPropertyDetector::class,
+        'html_tag'               => HtmlTagDetector::class,
+        'html_tag_with_style'    => HtmlTagWithStyleDetector::class,
+        'html_attribute_missing' => HtmlAttributeMissingDetector::class,
+        'html_content'           => HtmlContentDetector::class,
+        'style_block'            => StyleBlockDetector::class,
     ];
 
     public static function make(string $type): DetectorInterface
