@@ -1,0 +1,82 @@
+#!/usr/bin/env php
+<?php
+
+use MailAudit\Loader\RuleLoader;
+
+$autoloads = [
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php',
+];
+
+foreach ($autoloads as $autoload) {
+    if (file_exists($autoload)) {
+        require $autoload;
+        break;
+    }
+}
+
+$command = $argv[1] ?? null;
+$isDryRun = in_array('--dry-run', $argv, true);
+
+if ($command === 'sync') {
+    $configFile = null;
+    foreach ($argv as $arg) {
+        if (str_starts_with($arg, '--config=')) {
+            $configFile = substr($arg, 9);
+        }
+    }
+
+    $config = [];
+    if ($configFile && file_exists($configFile)) {
+        $config = require $configFile;
+    }
+
+    $endpoint  = $config['endpoint']  ?? getenv('MAILAUDIT_ENDPOINT') ?: null;
+    $apiKey    = $config['api_key']   ?? getenv('MAILAUDIT_API_KEY')  ?: null;
+    $cachePath = $config['cache_path'] ?? getenv('MAILAUDIT_CACHE_PATH') ?: null;
+
+    if (!$endpoint) {
+        fwrite(STDERR, "Error: no endpoint configured. Set MAILAUDIT_ENDPOINT or pass --config=path/to/config.php\n");
+        exit(1);
+    }
+
+    echo "Syncing rules from {$endpoint}...\n";
+
+    $loader = new RuleLoader([
+        'auto_update' => true,
+        'ttl_days'    => 0,
+        'endpoint'    => $endpoint,
+        'api_key'     => $apiKey,
+        'cache_path'  => $isDryRun ? null : $cachePath,
+    ]);
+
+    $rules = $loader->load();
+    echo "Fetched " . count($rules) . " rules.\n";
+
+    if ($isDryRun) {
+        echo "(dry-run) Cache not written.\n";
+    } elseif ($cachePath) {
+        echo "Cache written to: {$cachePath}\n";
+    }
+
+    exit(0);
+}
+
+echo <<<HELP
+MailAudit CLI
+
+Usage:
+  mailaudit sync [options]    Fetch and cache the remote rule KB
+
+Options:
+  --config=<path>   Path to a PHP config file returning an array
+  --dry-run         Fetch but do not write the cache
+
+Environment variables:
+  MAILAUDIT_ENDPOINT    Remote KB endpoint URL
+  MAILAUDIT_API_KEY     API key for pro tier (optional)
+  MAILAUDIT_CACHE_PATH  Local path for the cached rules file
+
+HELP;
+
+exit(0);

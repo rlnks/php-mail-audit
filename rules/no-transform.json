@@ -1,0 +1,43 @@
+{
+  "id": "no-transform",
+  "version": "1.1",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-transform/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 5,
+  "tags": ["css", "visual"],
+  "detection": {
+    "type": "css_property",
+    "regex": true,
+    "patterns": ["(?<![a-z-])transform\\s*:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "CSS transform is not supported in Outlook or Gmail — elements will not rotate, scale, or translate.",
+    "fr": "CSS transform n'est pas supporté dans Outlook ni Gmail — les éléments ne seront pas pivotés, mis à l'échelle ou déplacés.",
+    "es": "CSS transform no está soportado en Outlook ni Gmail — los elementos no se rotarán, escalarán ni trasladarán.",
+    "de": "CSS transform wird in Outlook oder Gmail nicht unterstützt — Elemente werden nicht rotiert, skaliert oder verschoben.",
+    "pt": "CSS transform não é suportado no Outlook ou Gmail — elementos não serão rotacionados, escalados ou transladados."
+  },
+  "fix": {
+    "en": "Remove transform effects or use static HTML/CSS alternatives that don't rely on transformation.",
+    "fr": "Supprimer les effets transform ou utiliser des alternatives statiques HTML/CSS qui ne nécessitent pas de transformation.",
+    "es": "Eliminar los efectos transform o usar alternativas estáticas HTML/CSS que no dependan de transformaciones.",
+    "de": "Transform-Effekte entfernen oder statische HTML/CSS-Alternativen verwenden, die keine Transformationen benötigen.",
+    "pt": "Remover efeitos transform ou usar alternativas estáticas HTML/CSS que não dependam de transformações."
+  },
+  "success_message": {
+    "en": "No CSS transforms detected — good compatibility with Outlook and Gmail.",
+    "fr": "Aucun transform CSS détecté — bonne compatibilité avec Outlook et Gmail.",
+    "es": "No se detectaron transforms CSS — buena compatibilidad con Outlook y Gmail.",
+    "de": "Keine CSS-Transforms erkannt — gute Kompatibilität mit Outlook und Gmail.",
+    "pt": "Nenhum transform CSS detectado — boa compatibilidade com Outlook e Gmail."
+  }
+}

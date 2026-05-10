@@ -1,0 +1,38 @@
+{
+    "name": "rlnks/php-mail-audit",
+    "description": "Email HTML quality analysis engine — detect bad practices, score compatibility, get actionable insights before sending.",
+    "type": "library",
+    "keywords": ["email", "html", "audit", "quality", "compatibility", "outlook", "gmail"],
+    "license": "MIT",
+    "homepage": "https://github.com/rlnks/php-mail-audit",
+    "authors": [
+        {
+            "name": "rlnks",
+            "email": "philmasterz@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/rlnks/php-mail-audit/issues",
+        "source": "https://github.com/rlnks/php-mail-audit"
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "phpstan/phpstan": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "MailAudit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MailAudit\\Tests\\": "tests/"
+        }
+    },
+    "bin": ["bin/mailaudit"],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

@@ -1,0 +1,42 @@
+{
+  "id": "missing-alt-img",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-img/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 7,
+  "tags": ["html", "images", "accessibility"],
+  "detection": {
+    "type": "html_attribute_missing",
+    "tag": "img",
+    "attributes": ["alt"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "gmail_web": { "supported": false },
+    "outlook_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "Images without alt attribute show broken icons when images are blocked — affects most email clients by default.",
+    "fr": "Les images sans attribut alt affichent des icônes cassées quand les images sont bloquées — affecte la plupart des clients email par défaut.",
+    "es": "Las imágenes sin atributo alt muestran iconos rotos cuando las imágenes están bloqueadas — afecta a la mayoría de clientes de correo por defecto.",
+    "de": "Bilder ohne alt-Attribut zeigen defekte Symbole, wenn Bilder blockiert sind — betrifft standardmäßig die meisten E-Mail-Clients.",
+    "pt": "Imagens sem atributo alt exibem ícones quebrados quando as imagens estão bloqueadas — afeta a maioria dos clientes de e-mail por padrão."
+  },
+  "fix": {
+    "en": "Add a descriptive alt attribute to every <img> tag. Use alt=\"\" for decorative images.",
+    "fr": "Ajouter un attribut alt descriptif à chaque balise <img>. Utiliser alt=\"\" pour les images décoratives.",
+    "es": "Agregar un atributo alt descriptivo a cada etiqueta <img>. Usar alt=\"\" para imágenes decorativas.",
+    "de": "Jedem <img>-Tag ein beschreibendes alt-Attribut hinzufügen. alt=\"\" für dekorative Bilder verwenden.",
+    "pt": "Adicionar um atributo alt descritivo a cada tag <img>. Usar alt=\"\" para imagens decorativas."
+  },
+  "success_message": {
+    "en": "All images have alt attributes — good for accessibility and image-blocked clients.",
+    "fr": "Toutes les images ont des attributs alt — bon pour l'accessibilité et les clients bloquant les images.",
+    "es": "Todas las imágenes tienen atributos alt — bueno para la accesibilidad y los clientes que bloquean imágenes.",
+    "de": "Alle Bilder haben alt-Attribute — gut für Barrierefreiheit und Clients, die Bilder blockieren.",
+    "pt": "Todas as imagens têm atributos alt — bom para acessibilidade e clientes que bloqueiam imagens."
+  }
+}

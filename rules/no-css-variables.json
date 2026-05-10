@@ -1,0 +1,42 @@
+{
+  "id": "no-css-variables",
+  "version": "1.1",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-variables/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 7,
+  "tags": ["css"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["var(--"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "CSS custom properties (variables) are not supported in Outlook or Gmail.",
+    "fr": "Les propriétés CSS personnalisées (variables) ne sont pas supportées dans Outlook ni Gmail.",
+    "es": "Las propiedades CSS personalizadas (variables) no están soportadas en Outlook ni Gmail.",
+    "de": "CSS-Custom-Properties (Variablen) werden in Outlook oder Gmail nicht unterstützt.",
+    "pt": "Propriedades CSS personalizadas (variáveis) não são suportadas no Outlook ou Gmail."
+  },
+  "fix": {
+    "en": "Replace CSS variables with their actual values directly on each element.",
+    "fr": "Remplacer les variables CSS par leurs valeurs réelles directement sur chaque élément.",
+    "es": "Reemplazar las variables CSS por sus valores reales directamente en cada elemento.",
+    "de": "CSS-Variablen durch ihre tatsächlichen Werte direkt an jedem Element ersetzen.",
+    "pt": "Substituir as variáveis CSS pelos seus valores reais diretamente em cada elemento."
+  },
+  "success_message": {
+    "en": "No CSS custom properties detected — values are compatible with Outlook and Gmail.",
+    "fr": "Aucune propriété CSS personnalisée détectée — les valeurs sont compatibles avec Outlook et Gmail.",
+    "es": "No se detectaron propiedades CSS personalizadas — los valores son compatibles con Outlook y Gmail.",
+    "de": "Keine CSS-Custom-Properties erkannt — Werte sind kompatibel mit Outlook und Gmail.",
+    "pt": "Nenhuma propriedade CSS personalizada detectada — os valores são compatíveis com Outlook e Gmail."
+  }
+}

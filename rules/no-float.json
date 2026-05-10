@@ -1,0 +1,34 @@
+{
+  "id": "no-float",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-float/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 8,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["float: left", "float:left", "float: right", "float:right"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "2007-2019" },
+    "outlook_web": { "supported": true },
+    "gmail_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "CSS float is poorly supported in older Outlook versions and can break column layouts.",
+    "fr": "Le float CSS est mal supporté dans les anciennes versions d'Outlook et peut casser les mises en colonnes.",
+    "es": "El float CSS tiene soporte deficiente en versiones antiguas de Outlook y puede romper layouts en columnas.",
+    "de": "CSS float wird in älteren Outlook-Versionen schlecht unterstützt und kann Spalten-Layouts zerstören.",
+    "pt": "CSS float tem suporte precário em versões antigas do Outlook e pode quebrar layouts em colunas."
+  },
+  "fix": {
+    "en": "Use side-by-side <td> cells inside a <table> instead of floated elements.",
+    "fr": "Utiliser des cellules <td> côte à côte dans une <table> au lieu d'éléments flottants.",
+    "es": "Usar celdas <td> lado a lado dentro de una <table> en lugar de elementos flotantes.",
+    "de": "Nebeneinanderliegende <td>-Zellen innerhalb einer <table> statt schwebender Elemente verwenden.",
+    "pt": "Usar células <td> lado a lado dentro de uma <table> em vez de elementos flutuantes."
+  }
+}

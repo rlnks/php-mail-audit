@@ -1,0 +1,41 @@
+{
+  "id": "no-flexbox",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-flexbox/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 15,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["display: flex", "display:flex", "display: inline-flex", "display:inline-flex"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": true },
+    "gmail_web": { "supported": false, "versions": "< 2022" },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "Flexbox is not supported in Outlook desktop and older Gmail clients.",
+    "fr": "Flexbox n'est pas supporté dans Outlook desktop et les anciennes versions de Gmail.",
+    "es": "Flexbox no está soportado en Outlook desktop ni en versiones antiguas de Gmail.",
+    "de": "Flexbox wird in Outlook Desktop und älteren Gmail-Clients nicht unterstützt.",
+    "pt": "Flexbox não é suportado no Outlook desktop nem em versões antigas do Gmail."
+  },
+  "fix": {
+    "en": "Replace flexbox with HTML table-based layout for maximum compatibility.",
+    "fr": "Remplacer flexbox par une structure en tables HTML pour une compatibilité maximale.",
+    "es": "Reemplazar flexbox con un layout basado en tablas HTML para máxima compatibilidad.",
+    "de": "Flexbox durch ein HTML-Tabellen-Layout für maximale Kompatibilität ersetzen.",
+    "pt": "Substituir flexbox por um layout baseado em tabelas HTML para máxima compatibilidade."
+  },
+  "success_message": {
+    "en": "No flexbox layout detected — good compatibility with Outlook desktop.",
+    "fr": "Aucun layout flexbox détecté — bonne compatibilité avec Outlook desktop.",
+    "es": "No se detectó layout flexbox — buena compatibilidad con Outlook desktop.",
+    "de": "Kein Flexbox-Layout erkannt — gute Kompatibilität mit Outlook Desktop.",
+    "pt": "Nenhum layout flexbox detectado — boa compatibilidade com Outlook desktop."
+  }
+}

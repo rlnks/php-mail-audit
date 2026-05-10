@@ -1,0 +1,41 @@
+{
+  "id": "inline-css",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-style/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 10,
+  "tags": ["css", "best-practice"],
+  "detection": {
+    "type": "html_content",
+    "patterns": ["<style", "<link rel=\"stylesheet\"", "<link rel='stylesheet'"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "gmail_web": { "supported": false },
+    "outlook_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "External or embedded CSS stylesheets are stripped by Gmail and Outlook.",
+    "fr": "Les feuilles de style externes ou embarquées sont supprimées par Gmail et Outlook.",
+    "es": "Las hojas de estilo externas o integradas son eliminadas por Gmail y Outlook.",
+    "de": "Externe oder eingebettete CSS-Stylesheets werden von Gmail und Outlook entfernt.",
+    "pt": "Folhas de estilo externas ou incorporadas são removidas pelo Gmail e Outlook."
+  },
+  "fix": {
+    "en": "Inline all CSS styles directly on HTML elements using the style attribute.",
+    "fr": "Inliner tous les styles CSS directement sur les éléments HTML via l'attribut style.",
+    "es": "Incorporar todos los estilos CSS directamente en los elementos HTML usando el atributo style.",
+    "de": "Alle CSS-Stile direkt in HTML-Elemente über das style-Attribut einbinden.",
+    "pt": "Incorporar todos os estilos CSS diretamente nos elementos HTML usando o atributo style."
+  },
+  "success_message": {
+    "en": "No embedded or external CSS stylesheets — styles appear to be inlined.",
+    "fr": "Aucune feuille de style embarquée ou externe — les styles semblent être en inline.",
+    "es": "No se encontraron hojas de estilo embebidas o externas — los estilos parecen estar en línea.",
+    "de": "Keine eingebetteten oder externen CSS-Stylesheets — Stile scheinen inliniert zu sein.",
+    "pt": "Nenhuma folha de estilo incorporada ou externa — os estilos parecem estar inline."
+  }
+}

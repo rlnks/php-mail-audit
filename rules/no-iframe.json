@@ -1,0 +1,35 @@
+{
+  "id": "no-iframe",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-iframe/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 15,
+  "tags": ["html", "security"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["iframe"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "<iframe> elements are blocked by all email clients — embedded content will not display.",
+    "fr": "Les éléments <iframe> sont bloqués par tous les clients email — le contenu intégré ne s'affichera pas.",
+    "es": "Los elementos <iframe> son bloqueados por todos los clientes de correo — el contenido incrustado no se mostrará.",
+    "de": "<iframe>-Elemente werden von allen E-Mail-Clients blockiert — eingebettete Inhalte werden nicht angezeigt.",
+    "pt": "Elementos <iframe> são bloqueados por todos os clientes de e-mail — conteúdo incorporado não será exibido."
+  },
+  "fix": {
+    "en": "Replace iframe embeds with a linked image or a CTA button pointing to the external content.",
+    "fr": "Remplacer les intégrations iframe par une image liée ou un bouton CTA pointant vers le contenu externe.",
+    "es": "Reemplazar las integraciones iframe con una imagen enlazada o un botón CTA que apunte al contenido externo.",
+    "de": "Iframe-Einbettungen durch ein verlinktes Bild oder einen CTA-Button ersetzen, der auf den externen Inhalt verweist.",
+    "pt": "Substituir incorporações iframe por uma imagem vinculada ou botão CTA apontando para o conteúdo externo."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "no-css-gap",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-gap/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 9,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["gap:", "row-gap:", "column-gap:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "CSS gap (row-gap, column-gap) is not supported in any major email client — spacing between flex or grid items will be ignored.",
+    "fr": "CSS gap (row-gap, column-gap) n'est supporté dans aucun client email majeur — l'espacement entre les éléments flex ou grid sera ignoré.",
+    "es": "CSS gap (row-gap, column-gap) no está soportado en ningún cliente de correo principal — el espaciado entre elementos flex o grid será ignorado.",
+    "de": "CSS gap (row-gap, column-gap) wird von keinem wichtigen E-Mail-Client unterstützt — Abstände zwischen Flex- oder Grid-Elementen werden ignoriert.",
+    "pt": "CSS gap (row-gap, column-gap) não é suportado em nenhum cliente de e-mail importante — espaçamento entre itens flex ou grid será ignorado."
+  },
+  "fix": {
+    "en": "Use padding or margin on table cells, or add spacer columns/rows in your HTML table layout.",
+    "fr": "Utiliser du padding ou de la marge sur les cellules de tableau, ou ajouter des colonnes/lignes d'espacement dans votre layout en table HTML.",
+    "es": "Usar padding o margin en las celdas de tabla, o añadir columnas/filas espaciadoras en tu layout de tabla HTML.",
+    "de": "Padding oder Margin auf Tabellenzellen verwenden oder Abstands-Spalten/-Zeilen im HTML-Tabellen-Layout hinzufügen.",
+    "pt": "Usar padding ou margin em células de tabela, ou adicionar colunas/linhas espaçadoras no layout de tabela HTML."
+  }
+}

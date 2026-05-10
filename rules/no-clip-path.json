@@ -1,0 +1,34 @@
+{
+  "id": "no-clip-path",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-clip-path/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 8,
+  "tags": ["css", "visual"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["clip-path:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "clip-path is not supported in any major email client — clipped shapes will be ignored and elements will render in full.",
+    "fr": "clip-path n'est supporté dans aucun client email majeur — les formes découpées seront ignorées et les éléments s'afficheront en entier.",
+    "es": "clip-path no está soportado en ningún cliente de correo principal — las formas recortadas serán ignoradas y los elementos se mostrarán completos.",
+    "de": "clip-path wird von keinem wichtigen E-Mail-Client unterstützt — abgeschnittene Formen werden ignoriert und Elemente vollständig gerendert.",
+    "pt": "clip-path não é suportado em nenhum cliente de e-mail importante — formas recortadas serão ignoradas e elementos serão exibidos na íntegra."
+  },
+  "fix": {
+    "en": "Use pre-cropped images instead of clip-path. Export the desired shape directly from your design tool.",
+    "fr": "Utiliser des images pré-découpées au lieu de clip-path. Exporter la forme souhaitée directement depuis votre outil de design.",
+    "es": "Usar imágenes pre-recortadas en lugar de clip-path. Exportar la forma deseada directamente desde tu herramienta de diseño.",
+    "de": "Vorher zugeschnittene Bilder statt clip-path verwenden. Die gewünschte Form direkt aus dem Design-Tool exportieren.",
+    "pt": "Usar imagens pré-recortadas em vez de clip-path. Exportar a forma desejada diretamente da sua ferramenta de design."
+  }
+}

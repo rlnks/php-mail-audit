@@ -1,0 +1,42 @@
+{
+  "id": "no-script",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-script/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 15,
+  "tags": ["html", "security"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["script"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "<script> tags are stripped by all email clients for security reasons — no JavaScript will execute.",
+    "fr": "Les balises <script> sont supprimées par tous les clients email pour des raisons de sécurité — aucun JavaScript ne sera exécuté.",
+    "es": "Las etiquetas <script> son eliminadas por todos los clientes de correo por razones de seguridad — ningún JavaScript se ejecutará.",
+    "de": "<script>-Tags werden aus Sicherheitsgründen von allen E-Mail-Clients entfernt — kein JavaScript wird ausgeführt.",
+    "pt": "Tags <script> são removidas por todos os clientes de e-mail por razões de segurança — nenhum JavaScript será executado."
+  },
+  "fix": {
+    "en": "Remove all JavaScript from email templates. Interactivity must come from links to web pages, not inline scripts.",
+    "fr": "Supprimer tout JavaScript des templates email. L'interactivité doit provenir de liens vers des pages web, pas de scripts inline.",
+    "es": "Eliminar todo el JavaScript de las plantillas de correo. La interactividad debe provenir de enlaces a páginas web, no de scripts en línea.",
+    "de": "Alles JavaScript aus E-Mail-Vorlagen entfernen. Interaktivität muss über Links zu Webseiten erfolgen, nicht durch Inline-Skripte.",
+    "pt": "Remover todo JavaScript dos templates de e-mail. A interatividade deve vir de links para páginas web, não de scripts inline."
+  },
+  "success_message": {
+    "en": "No JavaScript detected — email is safe for all clients and spam filters.",
+    "fr": "Aucun JavaScript détecté — l'email est sûr pour tous les clients et filtres anti-spam.",
+    "es": "No se detectó JavaScript — el correo es seguro para todos los clientes y filtros de spam.",
+    "de": "Kein JavaScript erkannt — E-Mail ist sicher für alle Clients und Spam-Filter.",
+    "pt": "Nenhum JavaScript detectado — o e-mail é seguro para todos os clientes e filtros de spam."
+  }
+}

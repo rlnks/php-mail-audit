@@ -1,0 +1,34 @@
+{
+  "id": "no-position-absolute",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-position/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 5,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["position: absolute", "position:absolute", "position: fixed", "position:fixed"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "gmail_web": { "supported": false },
+    "outlook_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "CSS position absolute/fixed is not supported in most email clients.",
+    "fr": "Le positionnement CSS absolute/fixed n'est pas supporté dans la plupart des clients email.",
+    "es": "CSS position absolute/fixed no está soportado en la mayoría de los clientes de correo.",
+    "de": "CSS-Position absolute/fixed wird von den meisten E-Mail-Clients nicht unterstützt.",
+    "pt": "CSS position absolute/fixed não é suportado na maioria dos clientes de e-mail."
+  },
+  "fix": {
+    "en": "Use table-based layout to control element positioning.",
+    "fr": "Utiliser une mise en page basée sur des tables pour contrôler le positionnement.",
+    "es": "Usar un layout basado en tablas para controlar el posicionamiento de los elementos.",
+    "de": "Ein tabellenbasiertes Layout zur Steuerung der Elementpositionierung verwenden.",
+    "pt": "Usar layout baseado em tabelas para controlar o posicionamento dos elementos."
+  }
+}

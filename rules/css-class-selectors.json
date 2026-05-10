@@ -1,0 +1,35 @@
+{
+  "id": "css-class-selectors",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-attributes-class/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 8,
+  "tags": ["css", "class", "gmail"],
+  "detection": {
+    "type": "style_block",
+    "regex": true,
+    "patterns": ["\\.([a-zA-Z_-][\\w-]*)\\s*[{,:\\[]"]
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": false, "versions": "all" },
+    "gmail_mobile": { "supported": false, "versions": "all" },
+    "outlook_desktop": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "Gmail strips all class attributes from HTML elements, making class-based CSS rules in <style> blocks completely ineffective.",
+    "fr": "Gmail supprime tous les attributs class des éléments HTML, rendant les règles CSS basées sur les classes dans les blocs <style> totalement inefficaces.",
+    "es": "Gmail elimina todos los atributos class de los elementos HTML, haciendo que las reglas CSS basadas en clases en bloques <style> sean completamente ineficaces.",
+    "de": "Gmail entfernt alle class-Attribute von HTML-Elementen, wodurch klassenbasierte CSS-Regeln in <style>-Blöcken vollständig wirkungslos werden.",
+    "pt": "O Gmail remove todos os atributos class dos elementos HTML, tornando as regras CSS baseadas em classes em blocos <style> completamente ineficazes."
+  },
+  "fix": {
+    "en": "Move all styles inline using the style attribute directly on each element. Use a CSS inliner tool before sending.",
+    "fr": "Déplacer tous les styles en inline via l'attribut style directement sur chaque élément. Utiliser un outil d'inlining CSS avant l'envoi.",
+    "es": "Mover todos los estilos en línea usando el atributo style directamente en cada elemento. Usar una herramienta de CSS inlining antes del envío.",
+    "de": "Alle Stile inline über das style-Attribut direkt an jedem Element einbinden. Vor dem Versenden ein CSS-Inliner-Tool verwenden.",
+    "pt": "Mover todos os estilos para inline usando o atributo style diretamente em cada elemento. Usar uma ferramenta de CSS inlining antes do envio."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "no-object-fit",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-object-fit/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 8,
+  "tags": ["css", "images"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["object-fit:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "object-fit is not supported in any major email client — images will not be cropped or contained as intended.",
+    "fr": "object-fit n'est supporté dans aucun client email majeur — les images ne seront pas rognées ou contenues comme prévu.",
+    "es": "object-fit no está soportado en ningún cliente de correo principal — las imágenes no se recortarán ni contendrán como se pretende.",
+    "de": "object-fit wird von keinem wichtigen E-Mail-Client unterstützt — Bilder werden nicht wie vorgesehen beschnitten oder eingepasst.",
+    "pt": "object-fit não é suportado em nenhum cliente de e-mail importante — imagens não serão recortadas ou contidas conforme pretendido."
+  },
+  "fix": {
+    "en": "Pre-crop and resize images to the exact dimensions needed before embedding them in the email.",
+    "fr": "Pré-découper et redimensionner les images aux dimensions exactes nécessaires avant de les intégrer dans l'email.",
+    "es": "Pre-recortar y redimensionar las imágenes a las dimensiones exactas necesarias antes de incrustarlas en el correo.",
+    "de": "Bilder vor dem Einbetten in die E-Mail auf die genauen benötigten Abmessungen zuschneiden und skalieren.",
+    "pt": "Pré-recortar e redimensionar imagens para as dimensões exatas necessárias antes de incorporá-las no e-mail."
+  }
+}

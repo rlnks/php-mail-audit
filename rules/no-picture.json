@@ -1,0 +1,35 @@
+{
+  "id": "no-picture",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-picture/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 8,
+  "tags": ["html", "images"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["picture"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "<picture> element and <source> srcset are not supported in Outlook or Gmail — only the fallback <img> will render, if present.",
+    "fr": "L'élément <picture> et <source> srcset ne sont pas supportés dans Outlook ni Gmail — seul le <img> de fallback sera affiché, s'il est présent.",
+    "es": "El elemento <picture> y <source> srcset no están soportados en Outlook ni Gmail — solo se mostrará el <img> de fallback, si está presente.",
+    "de": "Das <picture>-Element und <source> srcset werden in Outlook oder Gmail nicht unterstützt — nur das Fallback-<img> wird angezeigt, falls vorhanden.",
+    "pt": "O elemento <picture> e <source> srcset não são suportados no Outlook ou Gmail — apenas o <img> de fallback será exibido, se presente."
+  },
+  "fix": {
+    "en": "Always include a standard <img> fallback inside <picture>. Consider using a single optimized image instead.",
+    "fr": "Toujours inclure un <img> de fallback standard à l'intérieur de <picture>. Envisager d'utiliser une seule image optimisée.",
+    "es": "Siempre incluir un <img> de fallback estándar dentro de <picture>. Considerar usar una sola imagen optimizada.",
+    "de": "Immer ein Standard-<img>-Fallback innerhalb von <picture> einfügen. Erwägen, stattdessen ein einziges optimiertes Bild zu verwenden.",
+    "pt": "Sempre incluir um <img> de fallback padrão dentro de <picture>. Considerar usar uma única imagem otimizada."
+  }
+}

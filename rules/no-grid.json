@@ -1,0 +1,41 @@
+{
+  "id": "no-grid",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-grid/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 15,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["display: grid", "display:grid", "display: inline-grid", "display:inline-grid"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "CSS Grid layout is not supported in any major email client.",
+    "fr": "CSS Grid n'est supporté dans aucun client email majeur.",
+    "es": "CSS Grid no está soportado en ningún cliente de correo electrónico principal.",
+    "de": "CSS Grid-Layout wird von keinem wichtigen E-Mail-Client unterstützt.",
+    "pt": "CSS Grid não é suportado em nenhum cliente de e-mail importante."
+  },
+  "fix": {
+    "en": "Use HTML tables for layout structure instead of CSS Grid.",
+    "fr": "Utiliser des tables HTML pour la structure au lieu de CSS Grid.",
+    "es": "Usar tablas HTML para la estructura de maquetación en lugar de CSS Grid.",
+    "de": "HTML-Tabellen statt CSS Grid für die Layout-Struktur verwenden.",
+    "pt": "Usar tabelas HTML para a estrutura de layout em vez de CSS Grid."
+  },
+  "success_message": {
+    "en": "No CSS Grid layout detected — good compatibility across all email clients.",
+    "fr": "Aucun layout CSS Grid détecté — bonne compatibilité avec tous les clients email.",
+    "es": "No se detectó layout CSS Grid — buena compatibilidad con todos los clientes de correo.",
+    "de": "Kein CSS Grid-Layout erkannt — gute Kompatibilität mit allen E-Mail-Clients.",
+    "pt": "Nenhum layout CSS Grid detectado — boa compatibilidade com todos os clientes de e-mail."
+  }
+}

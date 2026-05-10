@@ -1,0 +1,42 @@
+{
+  "id": "img-dimensions",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-img/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 8,
+  "tags": ["html", "images", "best-practice"],
+  "detection": {
+    "type": "html_attribute_missing",
+    "tag": "img",
+    "attributes": ["width", "height"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "gmail_web": { "supported": false },
+    "outlook_web": { "supported": false },
+    "apple_mail": { "supported": false }
+  },
+  "message": {
+    "en": "Images without explicit width and height attributes may break layout when images are blocked.",
+    "fr": "Les images sans attributs width et height explicites peuvent casser le layout quand les images sont bloquées.",
+    "es": "Las imágenes sin atributos width y height explícitos pueden romper el layout cuando las imágenes están bloqueadas.",
+    "de": "Bilder ohne explizite width- und height-Attribute können das Layout zerstören, wenn Bilder blockiert werden.",
+    "pt": "Imagens sem atributos width e height explícitos podem quebrar o layout quando as imagens são bloqueadas."
+  },
+  "fix": {
+    "en": "Always set width and height attributes on <img> tags.",
+    "fr": "Toujours définir les attributs width et height sur les balises <img>.",
+    "es": "Siempre definir los atributos width y height en las etiquetas <img>.",
+    "de": "Immer width- und height-Attribute für <img>-Tags setzen.",
+    "pt": "Sempre definir os atributos width e height nas tags <img>."
+  },
+  "success_message": {
+    "en": "All images have explicit width and height attributes — layout will hold when images are blocked.",
+    "fr": "Toutes les images ont des attributs width et height explicites — le layout sera préservé si les images sont bloquées.",
+    "es": "Todas las imágenes tienen atributos width y height explícitos — el layout se mantendrá cuando las imágenes estén bloqueadas.",
+    "de": "Alle Bilder haben explizite width- und height-Attribute — das Layout bleibt erhalten, wenn Bilder blockiert werden.",
+    "pt": "Todas as imagens têm atributos width e height explícitos — o layout será mantido quando as imagens forem bloqueadas."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "no-video",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-video/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 12,
+  "tags": ["html", "media"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["video"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "<video> elements are not supported in Outlook or Gmail — the video will not appear.",
+    "fr": "Les éléments <video> ne sont pas supportés dans Outlook ni Gmail — la vidéo n'apparaîtra pas.",
+    "es": "Los elementos <video> no están soportados en Outlook ni Gmail — el video no aparecerá.",
+    "de": "<video>-Elemente werden in Outlook oder Gmail nicht unterstützt — das Video wird nicht angezeigt.",
+    "pt": "Elementos <video> não são suportados no Outlook ou Gmail — o vídeo não aparecerá."
+  },
+  "fix": {
+    "en": "Use an animated GIF or a static image linked to the video. Add a prominent play button overlay on the image.",
+    "fr": "Utiliser un GIF animé ou une image statique liée à la vidéo. Ajouter un bouton de lecture visible en superposition sur l'image.",
+    "es": "Usar un GIF animado o una imagen estática enlazada al video. Agregar un botón de reproducción visible sobre la imagen.",
+    "de": "Animiertes GIF oder statisches Bild mit Link zum Video verwenden. Einen sichtbaren Play-Button als Overlay auf dem Bild hinzufügen.",
+    "pt": "Usar um GIF animado ou imagem estática vinculada ao vídeo. Adicionar um botão de reprodução visível como sobreposição na imagem."
+  }
+}

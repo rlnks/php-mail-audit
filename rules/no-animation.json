@@ -1,0 +1,35 @@
+{
+  "id": "no-animation",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-animation/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 6,
+  "tags": ["css", "animation"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["animation:", "@keyframes"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": true }
+  },
+  "message": {
+    "en": "CSS animations and @keyframes are not supported in Outlook or Gmail — animated elements will appear static.",
+    "fr": "Les animations CSS et @keyframes ne sont pas supportées dans Outlook ni Gmail — les éléments animés apparaîtront statiques.",
+    "es": "Las animaciones CSS y @keyframes no están soportadas en Outlook ni Gmail — los elementos animados aparecerán estáticos.",
+    "de": "CSS-Animationen und @keyframes werden in Outlook oder Gmail nicht unterstützt — animierte Elemente erscheinen statisch.",
+    "pt": "Animações CSS e @keyframes não são suportados no Outlook ou Gmail — elementos animados aparecerão estáticos."
+  },
+  "fix": {
+    "en": "Ensure the static (non-animated) state of all elements is visually correct. Use GIF images as a fallback for critical animations.",
+    "fr": "S'assurer que l'état statique (non animé) de tous les éléments est visuellement correct. Utiliser des images GIF comme fallback pour les animations importantes.",
+    "es": "Asegurarse de que el estado estático (no animado) de todos los elementos sea visualmente correcto. Usar imágenes GIF como fallback para animaciones críticas.",
+    "de": "Sicherstellen, dass der statische (nicht animierte) Zustand aller Elemente visuell korrekt ist. GIF-Bilder als Fallback für wichtige Animationen verwenden.",
+    "pt": "Garantir que o estado estático (não animado) de todos os elementos seja visualmente correto. Usar imagens GIF como fallback para animações críticas."
+  }
+}

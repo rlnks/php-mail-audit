@@ -1,0 +1,34 @@
+{
+  "id": "no-transition",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-transition/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 3,
+  "tags": ["css", "animation"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["transition:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "CSS transitions are not supported in Outlook or Gmail — hover and state animations will not play.",
+    "fr": "Les transitions CSS ne sont pas supportées dans Outlook ni Gmail — les animations de survol et d'état ne seront pas jouées.",
+    "es": "Las transiciones CSS no están soportadas en Outlook ni Gmail — las animaciones de hover y estado no se reproducirán.",
+    "de": "CSS-Übergänge werden in Outlook oder Gmail nicht unterstützt — Hover- und Statusanimationen werden nicht abgespielt.",
+    "pt": "Transições CSS não são suportadas no Outlook ou Gmail — animações de hover e estado não serão reproduzidas."
+  },
+  "fix": {
+    "en": "Use transitions as progressive enhancement only. The design must be fully functional without them.",
+    "fr": "Utiliser les transitions uniquement comme amélioration progressive. Le design doit être pleinement fonctionnel sans elles.",
+    "es": "Usar las transiciones solo como mejora progresiva. El diseño debe ser completamente funcional sin ellas.",
+    "de": "Übergänge nur als progressive Verbesserung verwenden. Das Design muss ohne sie vollständig funktional sein.",
+    "pt": "Usar transições apenas como aprimoramento progressivo. O design deve ser totalmente funcional sem elas."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "no-svg",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/image-svg/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 12,
+  "tags": ["html", "images"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["svg"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "SVG images are not supported in Outlook or Gmail — they will not render.",
+    "fr": "Les images SVG ne sont pas supportées dans Outlook ni Gmail — elles ne s'afficheront pas.",
+    "es": "Las imágenes SVG no están soportadas en Outlook ni Gmail — no se renderizarán.",
+    "de": "SVG-Bilder werden in Outlook oder Gmail nicht unterstützt — sie werden nicht gerendert.",
+    "pt": "Imagens SVG não são suportadas no Outlook ou Gmail — elas não serão renderizadas."
+  },
+  "fix": {
+    "en": "Convert SVG to PNG or WebP and reference them with a standard <img> tag.",
+    "fr": "Convertir les SVG en PNG ou WebP et les référencer avec une balise <img> standard.",
+    "es": "Convertir SVG a PNG o WebP y referenciarlos con una etiqueta <img> estándar.",
+    "de": "SVG in PNG oder WebP konvertieren und mit einem Standard-<img>-Tag referenzieren.",
+    "pt": "Converter SVG para PNG ou WebP e referenciá-los com uma tag <img> padrão."
+  }
+}

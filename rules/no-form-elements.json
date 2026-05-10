@@ -1,0 +1,42 @@
+{
+  "id": "no-form-elements",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-form/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 15,
+  "tags": ["html", "interactive"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["form", "input", "select", "textarea", "button"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "Form elements (<form>, <input>, <button>) are stripped or non-functional in virtually all email clients.",
+    "fr": "Les éléments de formulaire (<form>, <input>, <button>) sont supprimés ou non fonctionnels dans pratiquement tous les clients email.",
+    "es": "Los elementos de formulario (<form>, <input>, <button>) son eliminados o no funcionan en prácticamente todos los clientes de correo.",
+    "de": "Formularelemente (<form>, <input>, <button>) werden in nahezu allen E-Mail-Clients entfernt oder funktionieren nicht.",
+    "pt": "Elementos de formulário (<form>, <input>, <button>) são removidos ou não funcionam em praticamente todos os clientes de e-mail."
+  },
+  "fix": {
+    "en": "Replace interactive forms with a CTA button linking to a landing page that hosts the form.",
+    "fr": "Remplacer les formulaires interactifs par un bouton CTA pointant vers une page d'atterrissage qui héberge le formulaire.",
+    "es": "Reemplazar los formularios interactivos por un botón CTA que enlace a una página de destino con el formulario.",
+    "de": "Interaktive Formulare durch einen CTA-Button ersetzen, der auf eine Landing Page mit dem Formular verweist.",
+    "pt": "Substituir formulários interativos por um botão CTA que redireciona para uma página de destino com o formulário."
+  },
+  "success_message": {
+    "en": "No form elements detected — email clients will not strip interactive controls.",
+    "fr": "Aucun élément de formulaire détecté — les clients email ne supprimeront pas de contrôles interactifs.",
+    "es": "No se detectaron elementos de formulario — los clientes de correo no eliminarán controles interactivos.",
+    "de": "Keine Formularelemente erkannt — E-Mail-Clients werden keine interaktiven Elemente entfernen.",
+    "pt": "Nenhum elemento de formulário detectado — os clientes de e-mail não removerão controles interativos."
+  }
+}

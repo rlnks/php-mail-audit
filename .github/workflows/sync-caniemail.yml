@@ -1,0 +1,46 @@
+name: Sync caniemail.com KB
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # every Monday at 06:00 UTC
+  workflow_dispatch:      # manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: none
+          coverage: none
+
+      - name: Run sync script
+        run: php scripts/sync-caniemail.php
+
+      - name: Check for rule changes
+        id: changes
+        run: |
+          git diff --quiet rules/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Open PR if rules changed
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: kb/sync-caniemail-${{ github.run_id }}
+          commit-message: "chore: sync caniemail.com KB"
+          title: "chore: sync caniemail.com KB"
+          body: |
+            Automated sync from [caniemail.com](https://www.caniemail.com) dataset.
+
+            Review the `affected_clients` changes in the `rules/` directory before merging.
+          labels: kb-sync

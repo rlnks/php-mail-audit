@@ -1,0 +1,42 @@
+{
+  "id": "table-role-presentation",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-role/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 3,
+  "tags": ["html", "accessibility"],
+  "detection": {
+    "type": "html_attribute_missing",
+    "tag": "table",
+    "attributes": ["role"],
+    "attribute_value": "presentation"
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": true },
+    "gmail_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "Layout tables missing role=\"presentation\" are read aloud as data tables by screen readers.",
+    "fr": "Les tables de mise en page sans role=\"presentation\" sont lues comme des tableaux de données par les lecteurs d'écran.",
+    "es": "Las tablas de maquetación sin role=\"presentation\" son leídas como tablas de datos por los lectores de pantalla.",
+    "de": "Layout-Tabellen ohne role=\"presentation\" werden von Bildschirmlesern als Datentabellen vorgelesen.",
+    "pt": "Tabelas de layout sem role=\"presentation\" são lidas como tabelas de dados por leitores de tela."
+  },
+  "fix": {
+    "en": "Add role=\"presentation\" to all layout tables: <table role=\"presentation\">.",
+    "fr": "Ajouter role=\"presentation\" à toutes les tables de mise en page : <table role=\"presentation\">.",
+    "es": "Agregar role=\"presentation\" a todas las tablas de maquetación: <table role=\"presentation\">.",
+    "de": "role=\"presentation\" zu allen Layout-Tabellen hinzufügen: <table role=\"presentation\">.",
+    "pt": "Adicionar role=\"presentation\" a todas as tabelas de layout: <table role=\"presentation\">."
+  },
+  "success_message": {
+    "en": "All layout tables include role=\"presentation\" — screen readers will not announce them as data tables.",
+    "fr": "Toutes les tables de mise en page incluent role=\"presentation\" — les lecteurs d'écran ne les annonceront pas comme des tableaux de données.",
+    "es": "Todas las tablas de maquetación incluyen role=\"presentation\" — los lectores de pantalla no las anunciarán como tablas de datos.",
+    "de": "Alle Layout-Tabellen enthalten role=\"presentation\" — Screenreader werden sie nicht als Datentabellen ankündigen.",
+    "pt": "Todas as tabelas de layout incluem role=\"presentation\" — os leitores de tela não as anunciarão como tabelas de dados."
+  }
+}

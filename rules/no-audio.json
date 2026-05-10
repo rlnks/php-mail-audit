@@ -1,0 +1,35 @@
+{
+  "id": "no-audio",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/html-audio/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 10,
+  "tags": ["html", "media"],
+  "detection": {
+    "type": "html_tag",
+    "patterns": ["audio"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": false },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "<audio> elements are not supported in any major email client.",
+    "fr": "Les éléments <audio> ne sont pas supportés dans aucun client email majeur.",
+    "es": "Los elementos <audio> no están soportados en ningún cliente de correo principal.",
+    "de": "<audio>-Elemente werden von keinem wichtigen E-Mail-Client unterstützt.",
+    "pt": "Elementos <audio> não são suportados em nenhum cliente de e-mail importante."
+  },
+  "fix": {
+    "en": "Link to the audio content on an external page instead of embedding it in the email.",
+    "fr": "Lier vers le contenu audio sur une page externe au lieu de l'intégrer dans l'email.",
+    "es": "Enlazar al contenido de audio en una página externa en lugar de incrustarlo en el correo.",
+    "de": "Auf den Audioinhalt auf einer externen Seite verlinken, anstatt ihn in die E-Mail einzubetten.",
+    "pt": "Vincular ao conteúdo de áudio em uma página externa em vez de incorporá-lo no e-mail."
+  }
+}

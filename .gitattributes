@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.php text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.xml text eol=lf
+
+# Exclude from Composer archive (composer install / packagist)
+/.github export-ignore
+/tests export-ignore
+/scripts export-ignore
+/output export-ignore
+phpstan.neon export-ignore
+phpunit.xml export-ignore

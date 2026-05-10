@@ -1,0 +1,34 @@
+{
+  "id": "no-box-shadow",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-box-shadow/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 3,
+  "tags": ["css", "visual"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["box-shadow"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "box-shadow is not supported in Outlook desktop or Outlook web.",
+    "fr": "box-shadow n'est pas supporté dans Outlook desktop ni Outlook web.",
+    "es": "box-shadow no está soportado en Outlook desktop ni Outlook web.",
+    "de": "box-shadow wird in Outlook Desktop oder Outlook Web nicht unterstützt.",
+    "pt": "box-shadow não é suportado no Outlook desktop ou Outlook web."
+  },
+  "fix": {
+    "en": "Use a solid border as a fallback or remove the shadow effect entirely.",
+    "fr": "Utiliser une bordure pleine comme fallback ou supprimer l'effet d'ombre.",
+    "es": "Usar un borde sólido como fallback o eliminar completamente el efecto de sombra.",
+    "de": "Einen durchgehenden Rahmen als Fallback verwenden oder den Schatteneffekt ganz entfernen.",
+    "pt": "Usar uma borda sólida como fallback ou remover completamente o efeito de sombra."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "no-css-calc",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-calc/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 7,
+  "tags": ["css", "layout"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["calc("]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "2007-2019" },
+    "outlook_web": { "supported": true },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": true }
+  },
+  "message": {
+    "en": "CSS calc() is not supported in Outlook desktop 2007–2019 or Gmail — computed values will not apply.",
+    "fr": "CSS calc() n'est pas supporté dans Outlook desktop 2007–2019 ni Gmail — les valeurs calculées ne s'appliqueront pas.",
+    "es": "CSS calc() no está soportado en Outlook desktop 2007–2019 ni Gmail — los valores calculados no se aplicarán.",
+    "de": "CSS calc() wird in Outlook Desktop 2007–2019 oder Gmail nicht unterstützt — berechnete Werte werden nicht angewendet.",
+    "pt": "CSS calc() não é suportado no Outlook desktop 2007–2019 ou Gmail — valores calculados não serão aplicados."
+  },
+  "fix": {
+    "en": "Replace calc() expressions with fixed pixel or percentage values that work across all clients.",
+    "fr": "Remplacer les expressions calc() par des valeurs fixes en pixels ou en pourcentage qui fonctionnent sur tous les clients.",
+    "es": "Reemplazar las expresiones calc() con valores fijos en píxeles o porcentaje que funcionen en todos los clientes.",
+    "de": "calc()-Ausdrücke durch feste Pixel- oder Prozentwerte ersetzen, die bei allen Clients funktionieren.",
+    "pt": "Substituir expressões calc() por valores fixos em pixels ou porcentagem que funcionem em todos os clientes."
+  }
+}

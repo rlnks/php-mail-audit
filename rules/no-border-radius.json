@@ -1,0 +1,34 @@
+{
+  "id": "no-border-radius",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-border-radius/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 4,
+  "tags": ["css", "visual"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["border-radius"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": true },
+    "gmail_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "border-radius is ignored by Outlook desktop — rounded corners will appear square.",
+    "fr": "border-radius est ignoré par Outlook desktop — les coins arrondis apparaîtront carrés.",
+    "es": "border-radius es ignorado por Outlook desktop — las esquinas redondeadas aparecerán cuadradas.",
+    "de": "border-radius wird von Outlook Desktop ignoriert — abgerundete Ecken erscheinen eckig.",
+    "pt": "border-radius é ignorado pelo Outlook desktop — cantos arredondados aparecerão como quadrados."
+  },
+  "fix": {
+    "en": "Ensure the design is acceptable with square corners as a fallback for Outlook users.",
+    "fr": "S'assurer que le design reste acceptable avec des coins carrés comme fallback pour les utilisateurs Outlook.",
+    "es": "Asegurarse de que el diseño sea aceptable con esquinas cuadradas como fallback para usuarios de Outlook.",
+    "de": "Sicherstellen, dass das Design mit eckigen Ecken als Fallback für Outlook-Nutzer akzeptabel ist.",
+    "pt": "Garantir que o design seja aceitável com cantos quadrados como fallback para usuários do Outlook."
+  }
+}

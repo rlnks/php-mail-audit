@@ -1,0 +1,7 @@
+/vendor/
+/storage/
+/output/
+.env
+.phpunit.result.cache
+composer.lock
+.claude/

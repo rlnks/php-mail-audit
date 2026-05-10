@@ -1,0 +1,35 @@
+{
+  "id": "no-css-filter",
+  "version": "1.0",
+  "updated_at": "2026-05-09",
+  "source": "https://www.caniemail.com/features/css-filter/",
+  "tier": "free",
+  "severity": "error",
+  "weight": 8,
+  "tags": ["css", "visual"],
+  "detection": {
+    "type": "css_property",
+    "patterns": ["filter:"]
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "CSS filter (blur, brightness, grayscale, etc.) is not supported in Outlook or Gmail — visual effects will be ignored.",
+    "fr": "Le filtre CSS (blur, brightness, grayscale, etc.) n'est pas supporté dans Outlook ni Gmail — les effets visuels seront ignorés.",
+    "es": "El filtro CSS (blur, brightness, grayscale, etc.) no está soportado en Outlook ni Gmail — los efectos visuales serán ignorados.",
+    "de": "CSS filter (blur, brightness, grayscale, etc.) wird in Outlook oder Gmail nicht unterstützt — visuelle Effekte werden ignoriert.",
+    "pt": "CSS filter (blur, brightness, grayscale, etc.) não é suportado no Outlook ou Gmail — efeitos visuais serão ignorados."
+  },
+  "fix": {
+    "en": "Apply visual effects directly to images before exporting them. Do not rely on CSS filters for email rendering.",
+    "fr": "Appliquer les effets visuels directement sur les images avant de les exporter. Ne pas s'appuyer sur les filtres CSS pour le rendu email.",
+    "es": "Aplicar los efectos visuales directamente en las imágenes antes de exportarlas. No depender de los filtros CSS para el renderizado del email.",
+    "de": "Visuelle Effekte direkt auf Bilder vor dem Export anwenden. Nicht auf CSS-Filter für das E-Mail-Rendering vertrauen.",
+    "pt": "Aplicar efeitos visuais diretamente nas imagens antes de exportá-las. Não depender de filtros CSS para renderização de e-mail."
+  }
+}
