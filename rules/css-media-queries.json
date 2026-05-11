@@ -1,37 +1,54 @@
 {
-  "id": "css-media-queries",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
-  "source": "https://www.caniemail.com/features/css-at-media/",
-  "tier": "free",
-  "severity": "warning",
-  "weight": 6,
-  "tags": ["css", "responsive"],
-  "detection": {
-    "type": "style_block",
-    "regex": false,
-    "patterns": ["@media"]
-  },
-  "affected_clients": {
-    "gmail_web": { "supported": false, "versions": "all" },
-    "gmail_mobile": { "supported": false },
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": true },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": true }
-  },
-  "message": {
-    "en": "Media queries inside <style> blocks are ignored by Gmail (all platforms) and Outlook desktop.",
-    "fr": "Les media queries dans les blocs <style> sont ignorées par Gmail (toutes plateformes) et Outlook desktop.",
-    "es": "Las media queries dentro de bloques <style> son ignoradas por Gmail (todas las plataformas) y Outlook desktop.",
-    "de": "Media Queries innerhalb von <style>-Blöcken werden von Gmail (alle Plattformen) und Outlook Desktop ignoriert.",
-    "pt": "Media queries dentro de blocos <style> são ignoradas pelo Gmail (todas as plataformas) e Outlook desktop."
-  },
-  "fix": {
-    "en": "Design a fluid layout using percentage widths and max-width on tables as a fallback. Media queries can be used as progressive enhancement for supported clients.",
-    "fr": "Concevoir un layout fluide avec des largeurs en pourcentage et max-width sur les tables en fallback. Les media queries peuvent être utilisées comme amélioration progressive pour les clients qui les supportent.",
-    "es": "Diseñar un layout fluido usando anchos en porcentaje y max-width en tablas como fallback. Las media queries pueden usarse como mejora progresiva para clientes que las soporten.",
-    "de": "Ein flüssiges Layout mit prozentualen Breiten und max-width bei Tabellen als Fallback entwerfen. Media Queries können als progressive Verbesserung für unterstützende Clients verwendet werden.",
-    "pt": "Projetar um layout fluido usando larguras em porcentagem e max-width em tabelas como fallback. Media queries podem ser usadas como aprimoramento progressivo para clientes que as suportam."
-  }
+    "id": "css-media-queries",
+    "version": "1.1",
+    "updated_at": "2026-05-11",
+    "source": "https:\/\/www.caniemail.com\/features\/css-at-media\/",
+    "tier": "free",
+    "severity": "warning",
+    "weight": 6,
+    "tags": [
+        "css",
+        "responsive"
+    ],
+    "detection": {
+        "type": "style_block",
+        "regex": false,
+        "patterns": [
+            "@media"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "Media queries inside <style> blocks are ignored by Gmail (all platforms) and Outlook desktop.",
+        "fr": "Les media queries dans les blocs <style> sont ignorées par Gmail (toutes plateformes) et Outlook desktop.",
+        "es": "Las media queries dentro de bloques <style> son ignoradas por Gmail (todas las plataformas) y Outlook desktop.",
+        "de": "Media Queries innerhalb von <style>-Blöcken werden von Gmail (alle Plattformen) und Outlook Desktop ignoriert.",
+        "pt": "Media queries dentro de blocos <style> são ignoradas pelo Gmail (todas as plataformas) e Outlook desktop."
+    },
+    "fix": {
+        "en": "Design a fluid layout using percentage widths and max-width on tables as a fallback. Media queries can be used as progressive enhancement for supported clients.",
+        "fr": "Concevoir un layout fluide avec des largeurs en pourcentage et max-width sur les tables en fallback. Les media queries peuvent être utilisées comme amélioration progressive pour les clients qui les supportent.",
+        "es": "Diseñar un layout fluido usando anchos en porcentaje y max-width en tablas como fallback. Las media queries pueden usarse como mejora progresiva para clientes que las soporten.",
+        "de": "Ein flüssiges Layout mit prozentualen Breiten und max-width bei Tabellen als Fallback entwerfen. Media Queries können als progressive Verbesserung für unterstützende Clients verwendet werden.",
+        "pt": "Projetar um layout fluido usando larguras em porcentagem e max-width em tabelas como fallback. Media queries podem ser usadas como aprimoramento progressivo para clientes que as suportam."
+    }
 }

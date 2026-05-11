@@ -1,42 +1,63 @@
 {
-  "id": "no-external-fonts",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
-  "source": "https://www.caniemail.com/features/css-at-font-face/",
-  "tier": "free",
-  "severity": "warning",
-  "weight": 8,
-  "tags": ["css", "fonts"],
-  "detection": {
-    "type": "html_content",
-    "patterns": ["fonts.googleapis.com", "fonts.gstatic.com", "@import url", "@font-face"]
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
-  },
-  "message": {
-    "en": "External fonts (Google Fonts, @font-face) are not supported in Outlook or Gmail.",
-    "fr": "Les polices externes (Google Fonts, @font-face) ne sont pas supportées dans Outlook ni Gmail.",
-    "es": "Las fuentes externas (Google Fonts, @font-face) no están soportadas en Outlook ni Gmail.",
-    "de": "Externe Schriften (Google Fonts, @font-face) werden in Outlook oder Gmail nicht unterstützt.",
-    "pt": "Fontes externas (Google Fonts, @font-face) não são suportadas no Outlook ou Gmail."
-  },
-  "fix": {
-    "en": "Define a font stack with web-safe fallback fonts: Arial, Georgia, Times New Roman.",
-    "fr": "Définir une pile de polices avec des fallbacks web-safe : Arial, Georgia, Times New Roman.",
-    "es": "Definir una pila de fuentes con fuentes web-safe de respaldo: Arial, Georgia, Times New Roman.",
-    "de": "Einen Schrift-Stack mit web-sicheren Fallback-Schriften definieren: Arial, Georgia, Times New Roman.",
-    "pt": "Definir uma pilha de fontes com fontes web-safe de fallback: Arial, Georgia, Times New Roman."
-  },
-  "success_message": {
-    "en": "No external fonts detected — font rendering will be consistent across all clients.",
-    "fr": "Aucune police externe détectée — le rendu des polices sera cohérent dans tous les clients.",
-    "es": "No se detectaron fuentes externas — el renderizado de fuentes será consistente en todos los clientes.",
-    "de": "Keine externen Schriften erkannt — die Schriftdarstellung wird in allen Clients konsistent sein.",
-    "pt": "Nenhuma fonte externa detectada — a renderização de fontes será consistente em todos os clientes."
-  }
+    "id": "no-external-fonts",
+    "version": "1.1",
+    "updated_at": "2026-05-11",
+    "source": "https:\/\/www.caniemail.com\/features\/css-at-font-face\/",
+    "tier": "free",
+    "severity": "warning",
+    "weight": 8,
+    "tags": [
+        "css",
+        "fonts"
+    ],
+    "detection": {
+        "type": "html_content",
+        "patterns": [
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+            "@import url",
+            "@font-face"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "External fonts (Google Fonts, @font-face) are not supported in Outlook or Gmail.",
+        "fr": "Les polices externes (Google Fonts, @font-face) ne sont pas supportées dans Outlook ni Gmail.",
+        "es": "Las fuentes externas (Google Fonts, @font-face) no están soportadas en Outlook ni Gmail.",
+        "de": "Externe Schriften (Google Fonts, @font-face) werden in Outlook oder Gmail nicht unterstützt.",
+        "pt": "Fontes externas (Google Fonts, @font-face) não são suportadas no Outlook ou Gmail."
+    },
+    "fix": {
+        "en": "Define a font stack with web-safe fallback fonts: Arial, Georgia, Times New Roman.",
+        "fr": "Définir une pile de polices avec des fallbacks web-safe : Arial, Georgia, Times New Roman.",
+        "es": "Definir una pila de fuentes con fuentes web-safe de respaldo: Arial, Georgia, Times New Roman.",
+        "de": "Einen Schrift-Stack mit web-sicheren Fallback-Schriften definieren: Arial, Georgia, Times New Roman.",
+        "pt": "Definir uma pilha de fontes com fontes web-safe de fallback: Arial, Georgia, Times New Roman."
+    },
+    "success_message": {
+        "en": "No external fonts detected — font rendering will be consistent across all clients.",
+        "fr": "Aucune police externe détectée — le rendu des polices sera cohérent dans tous les clients.",
+        "es": "No se detectaron fuentes externas — el renderizado de fuentes será consistente en todos los clientes.",
+        "de": "Keine externen Schriften erkannt — die Schriftdarstellung wird in allen Clients konsistent sein.",
+        "pt": "Nenhuma fonte externa detectada — a renderização de fontes será consistente em todos os clientes."
+    }
 }

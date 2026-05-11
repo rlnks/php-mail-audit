@@ -1,35 +1,58 @@
 {
-  "id": "css-pseudo-selectors",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
-  "source": "https://www.caniemail.com/features/css-pseudo-class-hover/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 4,
-  "tags": ["css", "interactive"],
-  "detection": {
-    "type": "style_block",
-    "regex": false,
-    "patterns": [":hover", ":focus", ":active", ":visited", ":checked"]
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "gmail_web": { "supported": false },
-    "outlook_web": { "supported": false },
-    "apple_mail": { "supported": true }
-  },
-  "message": {
-    "en": "CSS pseudo-selectors (:hover, :focus, etc.) are not supported in Outlook or Gmail.",
-    "fr": "Les pseudo-sélecteurs CSS (:hover, :focus, etc.) ne sont pas supportés dans Outlook ni Gmail.",
-    "es": "Los pseudo-selectores CSS (:hover, :focus, etc.) no están soportados en Outlook ni Gmail.",
-    "de": "CSS-Pseudoselektoren (:hover, :focus, etc.) werden in Outlook oder Gmail nicht unterstützt.",
-    "pt": "Pseudo-seletores CSS (:hover, :focus, etc.) não são suportados no Outlook ou Gmail."
-  },
-  "fix": {
-    "en": "Use these as progressive enhancements only — ensure the design works without them.",
-    "fr": "Utiliser ces pseudo-sélecteurs uniquement comme amélioration progressive — s'assurer que le design fonctionne sans eux.",
-    "es": "Usar estos pseudo-selectores solo como mejora progresiva — asegurarse de que el diseño funcione sin ellos.",
-    "de": "Diese Pseudoselektoren nur als progressive Verbesserung verwenden — sicherstellen, dass das Design ohne sie funktioniert.",
-    "pt": "Usar esses pseudo-seletores apenas como aprimoramento progressivo — garantir que o design funcione sem eles."
-  }
+    "id": "css-pseudo-selectors",
+    "version": "1.1",
+    "updated_at": "2026-05-11",
+    "source": "https:\/\/www.caniemail.com\/features\/css-pseudo-class-hover\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 4,
+    "tags": [
+        "css",
+        "interactive"
+    ],
+    "detection": {
+        "type": "style_block",
+        "regex": false,
+        "patterns": [
+            ":hover",
+            ":focus",
+            ":active",
+            ":visited",
+            ":checked"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "CSS pseudo-selectors (:hover, :focus, etc.) are not supported in Outlook or Gmail.",
+        "fr": "Les pseudo-sélecteurs CSS (:hover, :focus, etc.) ne sont pas supportés dans Outlook ni Gmail.",
+        "es": "Los pseudo-selectores CSS (:hover, :focus, etc.) no están soportados en Outlook ni Gmail.",
+        "de": "CSS-Pseudoselektoren (:hover, :focus, etc.) werden in Outlook oder Gmail nicht unterstützt.",
+        "pt": "Pseudo-seletores CSS (:hover, :focus, etc.) não são suportados no Outlook ou Gmail."
+    },
+    "fix": {
+        "en": "Use these as progressive enhancements only — ensure the design works without them.",
+        "fr": "Utiliser ces pseudo-sélecteurs uniquement comme amélioration progressive — s'assurer que le design fonctionne sans eux.",
+        "es": "Usar estos pseudo-selectores solo como mejora progresiva — asegurarse de que el diseño funcione sin ellos.",
+        "de": "Diese Pseudoselektoren nur als progressive Verbesserung verwenden — sicherstellen, dass das Design ohne sie funktioniert.",
+        "pt": "Usar esses pseudo-seletores apenas como aprimoramento progressivo — garantir que o design funcione sem eles."
+    }
 }
