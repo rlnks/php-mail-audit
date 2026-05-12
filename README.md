@@ -75,21 +75,24 @@ foreach ($result['passed'] as $check) {
 **Example output:**
 
 ```
-Score: 79/100
-Issues: 3  |  Passed: 8
+Score: 84/100
+Issues: 4  |  Passed: 12
 
-[error] Flexbox is not supported in Outlook desktop and older Gmail clients.
-  Fix: Replace flexbox with HTML table-based layout for maximum compatibility.
+[error] Form elements (<form>, <input>, <button>) are stripped or non-functional in virtually all email clients.
+  Fix: Replace interactive forms with a CTA button linking to a landing page that hosts the form.
 
-[warning] External fonts (Google Fonts, @font-face) are not supported in Outlook or Gmail.
-  Fix: Define a font stack with web-safe fallback fonts: Arial, Georgia, Times New Roman.
+[warning] @import inside a <style> block is not supported in Gmail or Outlook.
+  Fix: Replace @import with a <link> tag, and always define inline font-family stacks with web-safe fallbacks.
 
-[info] border-radius is ignored by Outlook desktop — rounded corners will appear square.
-  Fix: Ensure the design is acceptable with square corners as a fallback for Outlook users.
+[info] External font detected — supported in Apple Mail and some modern clients, but not in Gmail or Outlook.
+  Fix: Always define a font-family stack with web-safe fallbacks inline on every element.
 
+[info] Div elements found — acceptable for wrapping content, but prefer <td> for layout in email.
+
+[pass] No flexbox layout detected — good compatibility with Outlook desktop.
 [pass] All images have explicit width and height attributes — layout will hold when images are blocked.
+[pass] No external fonts detected — consistent rendering across all clients.
 [pass] No JavaScript detected — email is safe for all clients and spam filters.
-[pass] No CSS Grid layout detected — good compatibility across all email clients.
 ```
 
 ---
@@ -261,7 +264,7 @@ Not every rule generates a passed item — only rules that define a `success_mes
 
 ## Bundled Rules
 
-32 rules ship with the package, covering the most common email compatibility issues.
+36 rules ship with the package. The philosophy: **flag bad usage, not feature presence**. Media queries, hover states, and class selectors used correctly (with inline fallbacks) score well. The engine penalizes the *absence* of fallbacks, not the features themselves.
 
 ### Errors — break rendering in major clients
 
@@ -274,41 +277,47 @@ Not every rule generates a passed item — only rules that define a `success_mes
 | `no-iframe` | `<iframe>` blocked by all clients | 15 |
 | `no-svg` | SVG not rendered in Outlook or Gmail | 12 |
 | `no-video` | `<video>` not supported in Outlook or Gmail | 12 |
-| `css-at-import` | `@import` in `<style>` silently ignored by Gmail/Outlook | 10 |
 | `no-audio` | `<audio>` not supported in any major client | 10 |
 | `no-css-gap` | CSS `gap` / `row-gap` / `column-gap` not supported anywhere | 9 |
 | `no-object-fit` | `object-fit` not supported in any major client | 8 |
 | `no-css-filter` | CSS `filter` not supported in Outlook or Gmail | 8 |
 | `no-clip-path` | `clip-path` not supported in any major client | 8 |
 
-### Warnings — risky, client-dependent
+### Warnings — real problems when fallbacks are missing
 
 | Rule ID | Description | Weight |
 |---|---|---|
-| `inline-css` | `<style>` blocks stripped by Gmail and Outlook | 10 |
-| `no-external-fonts` | Google Fonts / `@font-face` ignored by Gmail/Outlook | 8 |
+| `style-no-inline-fallback` | `<style>` block present but **zero** inline styles — layout breaks entirely when Gmail/Outlook strip the style block | 12 |
+| `media-no-inline-base` | `@media` queries present but no inline style baseline — responsive layout has no fallback for Gmail/Outlook | 10 |
+| `img-dimensions` | `<img>` without `width`/`height` — layout breaks when images are blocked | 8 |
 | `no-float` | `float` breaks column layouts in Outlook 2007–2019 | 8 |
-| `css-class-selectors` | Gmail strips `class` attributes — class-based CSS is ineffective | 8 |
+| `font-no-fallback` | External font loaded but no inline `font-family` fallback stack — text falls back to client default when font is stripped | 8 |
 | `no-picture` | `<picture>` / `srcset` not supported in Outlook or Gmail | 8 |
-| `img-dimensions` | `<img>` without `width`/`height` breaks layout when images blocked | 8 |
-| `no-css-variables` | CSS `var(--x)` not supported in Outlook or Gmail | 7 |
 | `missing-alt-img` | `<img>` without `alt` shows broken icons when images blocked | 7 |
 | `no-css-calc` | `calc()` not supported in Outlook 2007–2019 or Gmail | 7 |
-| `no-div-layout` | `<div>` layout unreliable in Outlook (box model ignored) | 6 |
-| `css-media-queries` | `@media` queries ignored by Gmail (all platforms) and Outlook | 6 |
+| `no-css-variables` | CSS `var(--x)` not supported in Outlook or Gmail | 7 |
+| `no-div-layout` | `<div>` with layout CSS (`width`, `float`, `margin`, etc.) — box model ignored by Outlook | 6 |
 | `no-animation` | CSS `animation` / `@keyframes` ignored by Outlook and Gmail | 6 |
+| `css-at-import` | `@import` in `<style>` silently ignored by Gmail/Outlook | 5 |
 | `no-transform` | CSS `transform` not supported in Outlook or Gmail | 5 |
 
-### Info — best practice recommendations
+### Info — usage noted, minimal score impact
+
+Rules in this category flag the **presence** of a feature that is often used correctly as progressive enhancement. They fire when the feature is detected, regardless of fallback quality — the corresponding warning-level rules handle the bad cases.
 
 | Rule ID | Description | Weight |
 |---|---|---|
 | `no-position-absolute` | `position: absolute/fixed` ignored in most clients | 5 |
-| `no-border-radius` | `border-radius` ignored by Outlook | 4 |
-| `css-pseudo-selectors` | `:hover`, `:focus` etc. not supported in Outlook/Gmail | 4 |
+| `no-border-radius` | `border-radius` ignored by Outlook desktop | 4 |
 | `no-box-shadow` | `box-shadow` not supported in Outlook | 3 |
 | `no-transition` | CSS `transition` not supported in Outlook or Gmail | 3 |
 | `table-role-presentation` | Layout tables without `role="presentation"` confuse screen readers | 3 |
+| `inline-css` | `<style>` block present — acceptable when inline fallback styles are defined | 2 |
+| `css-class-selectors` | Class-based CSS in `<style>` — Gmail strips `class` attributes | 2 |
+| `css-media-queries` | `@media` queries detected — great when paired with inline styles | 2 |
+| `no-external-fonts` | External font loaded — supported in Apple Mail, not Gmail/Outlook | 2 |
+| `css-pseudo-selectors` | `:hover`, `:focus` etc. detected — ignored in Outlook/Gmail, use as enhancement only | 1 |
+| `div-content` | `<div>` used as content wrapper — acceptable, but `<td>` preferred for compatibility | 1 |
 
 ---
 
@@ -383,6 +392,50 @@ Matches arbitrary string patterns anywhere in the raw HTML string.
   "patterns": ["fonts.googleapis.com", "@import url"]
 }
 ```
+
+### `html_tag_with_style`
+
+Fires when a tag is present **and** its inline `style` attribute contains one of the given CSS patterns. Useful for distinguishing structural divs from decorative ones.
+
+```json
+{
+  "type": "html_tag_with_style",
+  "tag": "div",
+  "css_patterns": ["width:", "float:", "margin:"]
+}
+```
+
+Supports `"regex": true` for precise matching (e.g. to avoid matching `max-width:` when looking for `width:`):
+
+```json
+{
+  "type": "html_tag_with_style",
+  "tag": "div",
+  "regex": true,
+  "css_patterns": ["(?<![a-z-])width\\s*:\\s*(?!0)", "float\\s*:"]
+}
+```
+
+### `correlation`
+
+Fires when a **trigger** pattern is present but an expected **fallback** pattern is absent. Use this to flag bad *usage* of a feature rather than its mere presence.
+
+```json
+{
+  "type": "correlation",
+  "trigger": {
+    "type": "html_content",
+    "patterns": ["fonts.googleapis.com", "@font-face"]
+  },
+  "fallback": {
+    "type": "css_property",
+    "regex": true,
+    "patterns": ["font-family\\s*:[^;\"']*,"]
+  }
+}
+```
+
+The rule above fires only when an external font is loaded **and** no inline `font-family` fallback stack is found — correctly scoring emails that use custom fonts with proper fallbacks.
 
 ### `style_block`
 
@@ -694,11 +747,12 @@ score = max(0, round(100 - sum(deductions)))
 
 | Rule triggered | Severity | Weight | Multiplier | Deduction |
 |---|---|---|---|---|
-| `no-flexbox` | error | 15 | × 1.0 | 15.0 |
-| `no-external-fonts` | warning | 8 | × 0.6 | 4.8 |
-| `no-border-radius` | info | 4 | × 0.3 | 1.2 |
-| **Total deduction** | | | | **21.0** |
-| **Final score** | | | | **79 / 100** |
+| `no-svg` | error | 12 | × 1.0 | 12.0 |
+| `style-no-inline-fallback` | warning | 12 | × 0.6 | 7.2 |
+| `no-css-calc` | warning | 7 | × 0.6 | 4.2 |
+| `css-media-queries` | info | 2 | × 0.3 | 0.6 |
+| **Total deduction** | | | | **24.0** |
+| **Final score** | | | | **76 / 100** |
 
 The score cannot go below 0.
 
