@@ -13,6 +13,7 @@ class HtmlTagWithStyleDetector extends AbstractDetector
     {
         $tag         = $detection['tag'] ?? 'div';
         $cssPatterns = $detection['css_patterns'] ?? [];
+        $useRegex    = $detection['regex'] ?? false;
         $locations   = [];
 
         $regex = '/<' . preg_quote($tag, '/') . '(?:\s[^>]*)?\s+style\s*=\s*(?:"([^"]*?)"|\'([^\']*?)\'|([^\s>]+))[^>]*>/si';
@@ -27,7 +28,11 @@ class HtmlTagWithStyleDetector extends AbstractDetector
                 : ($matches[2][$i][0] !== '' ? $matches[2][$i][0] : $matches[3][$i][0]);
 
             foreach ($cssPatterns as $pattern) {
-                if (stripos($styleValue, $pattern) !== false) {
+                $hit = $useRegex
+                    ? (bool) preg_match('/' . $pattern . '/i', $styleValue)
+                    : stripos($styleValue, $pattern) !== false;
+
+                if ($hit) {
                     $locations[] = $this->buildLocation($html, $offset, strlen($tagHtml));
                     break;
                 }

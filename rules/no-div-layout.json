@@ -10,13 +10,14 @@
   "detection": {
     "type": "html_tag_with_style",
     "tag": "div",
+    "regex": true,
     "css_patterns": [
-      "width:", "max-width:", "min-width:",
-      "display: block", "display:block",
-      "display: inline-block", "display:inline-block",
-      "float:", "margin:", "padding:",
-      "position: relative", "position:relative",
-      "position: absolute", "position:absolute"
+      "(?<![a-z-])width\\s*:\\s*(?!0)",
+      "display\\s*:\\s*(block|inline-block)",
+      "float\\s*:",
+      "margin\\s*:",
+      "padding\\s*:",
+      "position\\s*:\\s*(relative|absolute)"
     ]
   },
   "affected_clients": {
