@@ -1,11 +1,11 @@
 {
   "id": "css-at-import",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
+  "version": "1.1",
+  "updated_at": "2026-05-12",
   "source": "https://www.caniemail.com/features/css-at-import/",
   "tier": "free",
-  "severity": "error",
-  "weight": 10,
+  "severity": "warning",
+  "weight": 5,
   "tags": ["css", "fonts", "external"],
   "detection": {
     "type": "style_block",
@@ -21,17 +21,17 @@
     "samsung_email": { "supported": false }
   },
   "message": {
-    "en": "@import inside <style> blocks is not supported in Gmail or Outlook — the imported resource is silently ignored.",
-    "fr": "@import dans les blocs <style> n'est pas supporté dans Gmail ni Outlook — la ressource importée est silencieusement ignorée.",
-    "es": "@import dentro de bloques <style> no está soportado en Gmail ni Outlook — el recurso importado es silenciosamente ignorado.",
-    "de": "@import innerhalb von <style>-Blöcken wird in Gmail oder Outlook nicht unterstützt — die importierte Ressource wird stillschweigend ignoriert.",
-    "pt": "@import dentro de blocos <style> não é suportado no Gmail ou Outlook — o recurso importado é silenciosamente ignorado."
+    "en": "@import inside a <style> block is not supported in Gmail or Outlook — the imported resource is silently ignored.",
+    "fr": "@import dans un bloc <style> n'est pas supporté dans Gmail ni Outlook — la ressource importée est silencieusement ignorée.",
+    "es": "@import dentro de un bloque <style> no está soportado en Gmail ni Outlook — el recurso importado es silenciosamente ignorado.",
+    "de": "@import innerhalb eines <style>-Blocks wird in Gmail oder Outlook nicht unterstützt — die importierte Ressource wird stillschweigend ignoriert.",
+    "pt": "@import dentro de um bloco <style> não é suportado no Gmail ou Outlook — o recurso importado é silenciosamente ignorado."
   },
   "fix": {
-    "en": "Replace @import with a <link> tag in the <head>, or better yet inline all styles and use web-safe font fallbacks.",
-    "fr": "Remplacer @import par une balise <link> dans le <head>, ou mieux encore inliner tous les styles et utiliser des polices web-safe en fallback.",
-    "es": "Reemplazar @import con una etiqueta <link> en el <head>, o mejor aún, incorporar todos los estilos en línea y usar fuentes web-safe como fallback.",
-    "de": "@import durch ein <link>-Tag im <head> ersetzen, oder besser alle Stile einbinden und web-sichere Schrift-Fallbacks verwenden.",
-    "pt": "Substituir @import por uma tag <link> no <head>, ou melhor ainda, incorporar todos os estilos e usar fallbacks de fontes web-safe."
+    "en": "Replace @import with a <link> tag, and always define inline font-family stacks with web-safe fallback fonts.",
+    "fr": "Remplacer @import par une balise <link>, et toujours définir des piles font-family inline avec des polices web-safe en fallback.",
+    "es": "Reemplazar @import con una etiqueta <link>, y siempre definir pilas font-family inline con fuentes web-safe de fallback.",
+    "de": "@import durch ein <link>-Tag ersetzen und immer Inline-Font-Family-Stacks mit web-sicheren Fallback-Schriften definieren.",
+    "pt": "Substituir @import por uma tag <link> e sempre definir pilhas font-family inline com fontes web-safe de fallback."
   }
 }

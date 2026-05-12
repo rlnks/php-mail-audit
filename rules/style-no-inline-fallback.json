@@ -1,0 +1,41 @@
+{
+  "id": "style-no-inline-fallback",
+  "version": "1.0",
+  "updated_at": "2026-05-12",
+  "source": "https://www.caniemail.com/features/html-style/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 12,
+  "tags": ["css", "best-practice", "fallback"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<style"]
+    },
+    "fallback": {
+      "type": "css_property",
+      "patterns": ["style="]
+    }
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "gmail_web": { "supported": false },
+    "outlook_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "A <style> block is present but no inline styles were found — layout will break entirely in Gmail and Outlook which strip style blocks.",
+    "fr": "Un bloc <style> est présent mais aucun style inline n'a été trouvé — la mise en page sera totalement cassée dans Gmail et Outlook qui suppriment les blocs style.",
+    "es": "Hay un bloque <style> pero no se encontraron estilos inline — el layout se romperá completamente en Gmail y Outlook que eliminan los bloques style.",
+    "de": "Ein <style>-Block ist vorhanden, aber es wurden keine Inline-Styles gefunden — das Layout bricht in Gmail und Outlook vollständig zusammen, die Style-Blöcke entfernen.",
+    "pt": "Um bloco <style> está presente mas nenhum estilo inline foi encontrado — o layout quebrará completamente no Gmail e Outlook que removem blocos style."
+  },
+  "fix": {
+    "en": "Always duplicate critical styles as inline style attributes. Use a CSS inliner tool before sending.",
+    "fr": "Toujours dupliquer les styles critiques en tant qu'attributs style inline. Utiliser un outil d'inlining CSS avant l'envoi.",
+    "es": "Siempre duplicar los estilos críticos como atributos style inline. Usar una herramienta de CSS inlining antes del envío.",
+    "de": "Immer kritische Styles als Inline-Style-Attribute duplizieren. Vor dem Versenden ein CSS-Inliner-Tool verwenden.",
+    "pt": "Sempre duplicar estilos críticos como atributos style inline. Usar uma ferramenta de CSS inlining antes do envio."
+  }
+}

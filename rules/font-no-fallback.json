@@ -1,0 +1,50 @@
+{
+  "id": "font-no-fallback",
+  "version": "1.0",
+  "updated_at": "2026-05-12",
+  "source": "https://www.caniemail.com/features/css-at-font-face/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 8,
+  "tags": ["css", "fonts", "fallback"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["fonts.googleapis.com", "fonts.gstatic.com", "@font-face", "@import url"]
+    },
+    "fallback": {
+      "type": "css_property",
+      "regex": true,
+      "patterns": ["font-family\\s*:[^;\"']*,"]
+    }
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "gmail_web": { "supported": false },
+    "apple_mail": { "supported": true },
+    "samsung_email": { "supported": false }
+  },
+  "message": {
+    "en": "External font loaded but no inline font-family fallback stack found — text will render in the client's default font when the external font is stripped.",
+    "fr": "Une police externe est chargée mais aucune pile de fallback font-family inline n'a été trouvée — le texte s'affichera dans la police par défaut du client quand la police externe sera supprimée.",
+    "es": "Se carga una fuente externa pero no se encontró una pila de fallback font-family inline — el texto se renderizará en la fuente predeterminada del cliente cuando se elimine la fuente externa.",
+    "de": "Externe Schrift geladen, aber kein Inline-Fallback-Font-Stack gefunden — Text wird in der Standard-Schrift des Clients gerendert, wenn die externe Schrift entfernt wird.",
+    "pt": "Fonte externa carregada mas nenhuma pilha de fallback font-family inline encontrada — o texto será renderizado na fonte padrão do cliente quando a fonte externa for removida."
+  },
+  "fix": {
+    "en": "Add a font-family stack with web-safe fallbacks on every element using the custom font: font-family: 'CustomFont', Arial, sans-serif.",
+    "fr": "Ajouter une pile font-family avec des fallbacks web-safe sur chaque élément utilisant la police personnalisée : font-family: 'CustomFont', Arial, sans-serif.",
+    "es": "Agregar una pila font-family con fallbacks web-safe en cada elemento que use la fuente personalizada: font-family: 'CustomFont', Arial, sans-serif.",
+    "de": "Eine font-family-Stack mit web-sicheren Fallbacks zu jedem Element hinzufügen, das die benutzerdefinierte Schrift verwendet: font-family: 'CustomFont', Arial, sans-serif.",
+    "pt": "Adicionar uma pilha font-family com fallbacks web-safe em cada elemento usando a fonte personalizada: font-family: 'CustomFont', Arial, sans-serif."
+  },
+  "success_message": {
+    "en": "No external fonts detected — consistent rendering across all clients.",
+    "fr": "Aucune police externe détectée — rendu cohérent dans tous les clients.",
+    "es": "No se detectaron fuentes externas — renderizado consistente en todos los clientes.",
+    "de": "Keine externen Schriften erkannt — konsistente Darstellung in allen Clients.",
+    "pt": "Nenhuma fonte externa detectada — renderização consistente em todos os clientes."
+  }
+}

@@ -11,6 +11,7 @@ class DetectorFactory
         'html_attribute_missing' => HtmlAttributeMissingDetector::class,
         'html_content'           => HtmlContentDetector::class,
         'style_block'            => StyleBlockDetector::class,
+        'correlation'            => CorrelationDetector::class,
     ];
 
     public static function make(string $type): DetectorInterface

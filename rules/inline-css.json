@@ -1,11 +1,11 @@
 {
   "id": "inline-css",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
+  "version": "1.1",
+  "updated_at": "2026-05-12",
   "source": "https://www.caniemail.com/features/html-style/",
   "tier": "free",
-  "severity": "warning",
-  "weight": 10,
+  "severity": "info",
+  "weight": 2,
   "tags": ["css", "best-practice"],
   "detection": {
     "type": "html_content",
@@ -18,24 +18,24 @@
     "apple_mail": { "supported": true }
   },
   "message": {
-    "en": "External or embedded CSS stylesheets are stripped by Gmail and Outlook.",
-    "fr": "Les feuilles de style externes ou embarquées sont supprimées par Gmail et Outlook.",
-    "es": "Las hojas de estilo externas o integradas son eliminadas por Gmail y Outlook.",
-    "de": "Externe oder eingebettete CSS-Stylesheets werden von Gmail und Outlook entfernt.",
-    "pt": "Folhas de estilo externas ou incorporadas são removidas pelo Gmail e Outlook."
+    "en": "A <style> block or external stylesheet is present — this is acceptable when inline fallback styles are also defined on each element.",
+    "fr": "Un bloc <style> ou une feuille de style externe est présent — c'est acceptable lorsque des styles inline de fallback sont également définis sur chaque élément.",
+    "es": "Hay un bloque <style> o hoja de estilo externa — es aceptable cuando también se definen estilos inline de fallback en cada elemento.",
+    "de": "Ein <style>-Block oder externes Stylesheet ist vorhanden — akzeptabel, wenn auch Inline-Fallback-Styles auf jedem Element definiert sind.",
+    "pt": "Um bloco <style> ou folha de estilo externa está presente — aceitável quando estilos inline de fallback também são definidos em cada elemento."
   },
   "fix": {
-    "en": "Inline all CSS styles directly on HTML elements using the style attribute.",
-    "fr": "Inliner tous les styles CSS directement sur les éléments HTML via l'attribut style.",
-    "es": "Incorporar todos los estilos CSS directamente en los elementos HTML usando el atributo style.",
-    "de": "Alle CSS-Stile direkt in HTML-Elemente über das style-Attribut einbinden.",
-    "pt": "Incorporar todos os estilos CSS diretamente nos elementos HTML usando o atributo style."
+    "en": "Use the hybrid approach: inline styles for critical layout, <style> block for enhancements (hover, media queries, animations).",
+    "fr": "Utiliser l'approche hybride : styles inline pour le layout critique, bloc <style> pour les améliorations (hover, media queries, animations).",
+    "es": "Usar el enfoque híbrido: estilos inline para layout crítico, bloque <style> para mejoras (hover, media queries, animaciones).",
+    "de": "Den hybriden Ansatz verwenden: Inline-Styles für kritisches Layout, <style>-Block für Verbesserungen (Hover, Media Queries, Animationen).",
+    "pt": "Usar a abordagem híbrida: estilos inline para layout crítico, bloco <style> para melhorias (hover, media queries, animações)."
   },
   "success_message": {
-    "en": "No embedded or external CSS stylesheets — styles appear to be inlined.",
-    "fr": "Aucune feuille de style embarquée ou externe — les styles semblent être en inline.",
-    "es": "No se encontraron hojas de estilo embebidas o externas — los estilos parecen estar en línea.",
-    "de": "Keine eingebetteten oder externen CSS-Stylesheets — Stile scheinen inliniert zu sein.",
-    "pt": "Nenhuma folha de estilo incorporada ou externa — os estilos parecem estar inline."
+    "en": "No embedded or external stylesheets — all styles are inlined.",
+    "fr": "Aucune feuille de style embarquée ou externe — tous les styles sont en inline.",
+    "es": "No hay hojas de estilo embebidas o externas — todos los estilos están en línea.",
+    "de": "Keine eingebetteten oder externen Stylesheets — alle Styles sind inline.",
+    "pt": "Nenhuma folha de estilo incorporada ou externa — todos os estilos estão inline."
   }
 }

@@ -1,11 +1,11 @@
 {
   "id": "css-media-queries",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
+  "version": "1.1",
+  "updated_at": "2026-05-12",
   "source": "https://www.caniemail.com/features/css-at-media/",
   "tier": "free",
-  "severity": "warning",
-  "weight": 6,
+  "severity": "info",
+  "weight": 2,
   "tags": ["css", "responsive"],
   "detection": {
     "type": "style_block",
@@ -21,17 +21,24 @@
     "samsung_email": { "supported": true }
   },
   "message": {
-    "en": "Media queries inside <style> blocks are ignored by Gmail (all platforms) and Outlook desktop.",
-    "fr": "Les media queries dans les blocs <style> sont ignorées par Gmail (toutes plateformes) et Outlook desktop.",
-    "es": "Las media queries dentro de bloques <style> son ignoradas por Gmail (todas las plataformas) y Outlook desktop.",
-    "de": "Media Queries innerhalb von <style>-Blöcken werden von Gmail (alle Plattformen) und Outlook Desktop ignoriert.",
-    "pt": "Media queries dentro de blocos <style> são ignoradas pelo Gmail (todas as plataformas) e Outlook desktop."
+    "en": "Media queries detected — good for responsive email when paired with inline fallback styles.",
+    "fr": "Des media queries ont été détectées — une bonne pratique pour les emails responsives lorsqu'elles sont associées à des styles inline de fallback.",
+    "es": "Se detectaron media queries — buena práctica para emails responsivos cuando se combinan con estilos inline de fallback.",
+    "de": "Media Queries erkannt — gut für responsives E-Mail wenn mit Inline-Fallback-Styles kombiniert.",
+    "pt": "Media queries detectadas — boa prática para email responsivo quando combinado com estilos inline de fallback."
   },
   "fix": {
-    "en": "Design a fluid layout using percentage widths and max-width on tables as a fallback. Media queries can be used as progressive enhancement for supported clients.",
-    "fr": "Concevoir un layout fluide avec des largeurs en pourcentage et max-width sur les tables en fallback. Les media queries peuvent être utilisées comme amélioration progressive pour les clients qui les supportent.",
-    "es": "Diseñar un layout fluido usando anchos en porcentaje y max-width en tablas como fallback. Las media queries pueden usarse como mejora progresiva para clientes que las soporten.",
-    "de": "Ein flüssiges Layout mit prozentualen Breiten und max-width bei Tabellen als Fallback entwerfen. Media Queries können als progressive Verbesserung für unterstützende Clients verwendet werden.",
-    "pt": "Projetar um layout fluido usando larguras em porcentagem e max-width em tabelas como fallback. Media queries podem ser usadas como aprimoramento progressivo para clientes que as suportam."
+    "en": "Ensure all elements have inline styles as a base — media queries should only enhance, not define, the layout.",
+    "fr": "S'assurer que tous les éléments ont des styles inline comme base — les media queries doivent seulement améliorer, non définir, le layout.",
+    "es": "Asegurarse de que todos los elementos tengan estilos inline como base — las media queries deben solo mejorar, no definir, el layout.",
+    "de": "Sicherstellen, dass alle Elemente Inline-Styles als Basis haben — Media Queries sollten das Layout nur verbessern, nicht definieren.",
+    "pt": "Garantir que todos os elementos tenham estilos inline como base — media queries devem apenas melhorar, não definir, o layout."
+  },
+  "success_message": {
+    "en": "No media queries detected — consider adding them for better mobile rendering.",
+    "fr": "Aucune media query détectée — envisagez d'en ajouter pour un meilleur rendu mobile.",
+    "es": "No se detectaron media queries — considere agregarlas para mejor renderizado en móvil.",
+    "de": "Keine Media Queries erkannt — erwägen Sie, sie für besseres Mobile-Rendering hinzuzufügen.",
+    "pt": "Nenhuma media query detectada — considere adicionar para melhor renderização mobile."
   }
 }

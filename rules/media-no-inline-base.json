@@ -1,0 +1,43 @@
+{
+  "id": "media-no-inline-base",
+  "version": "1.0",
+  "updated_at": "2026-05-12",
+  "source": "https://www.caniemail.com/features/css-at-media/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 10,
+  "tags": ["css", "responsive", "fallback"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "style_block",
+      "regex": false,
+      "patterns": ["@media"]
+    },
+    "fallback": {
+      "type": "css_property",
+      "patterns": ["style="]
+    }
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": false, "versions": "all" },
+    "gmail_mobile": { "supported": false },
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": true },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "Media queries present but no inline styles found — the layout has no base to fall back on when @media is stripped by Gmail or Outlook.",
+    "fr": "Des media queries sont présentes mais aucun style inline n'a été trouvé — le layout n'a aucune base de repli quand les @media sont supprimées par Gmail ou Outlook.",
+    "es": "Hay media queries pero no se encontraron estilos inline — el layout no tiene base de respaldo cuando @media es eliminado por Gmail u Outlook.",
+    "de": "Media Queries vorhanden, aber keine Inline-Styles gefunden — das Layout hat keine Basis als Fallback, wenn @media von Gmail oder Outlook entfernt wird.",
+    "pt": "Media queries presentes mas nenhum estilo inline encontrado — o layout não tem base de fallback quando @media é removido pelo Gmail ou Outlook."
+  },
+  "fix": {
+    "en": "Build the full desktop layout with inline styles first, then use @media to adjust for mobile as progressive enhancement.",
+    "fr": "Construire d'abord le layout desktop complet avec des styles inline, puis utiliser @media pour ajuster le mobile comme amélioration progressive.",
+    "es": "Construir primero el layout de escritorio completo con estilos inline, luego usar @media para ajustar mobile como mejora progresiva.",
+    "de": "Zuerst das vollständige Desktop-Layout mit Inline-Styles aufbauen, dann @media für Mobile-Anpassungen als progressive Verbesserung verwenden.",
+    "pt": "Construir primeiro o layout desktop completo com estilos inline, depois usar @media para ajustar para mobile como aprimoramento progressivo."
+  }
+}

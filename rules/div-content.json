@@ -5,7 +5,7 @@
   "source": "https://www.caniemail.com/features/html-div/",
   "tier": "free",
   "severity": "info",
-  "weight": 2,
+  "weight": 1,
   "tags": ["html", "layout"],
   "detection": {
     "type": "html_tag",

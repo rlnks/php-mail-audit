@@ -176,21 +176,21 @@ class MailAuditTest extends TestCase
 
     // --- HTML content rules ---
 
-    public function test_embedded_style_triggers_warning(): void
+    public function test_embedded_style_triggers_info(): void
     {
         $this->assertRuleTriggered(
             '<html><head><style>.foo { color: red; }</style></head><body></body></html>',
             'inline-css',
-            'warning'
+            'info'
         );
     }
 
-    public function test_external_font_triggers_warning(): void
+    public function test_external_font_triggers_info(): void
     {
         $this->assertRuleTriggered(
             '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">',
             'no-external-fonts',
-            'warning'
+            'info'
         );
     }
 
@@ -295,12 +295,12 @@ class MailAuditTest extends TestCase
 
     // --- Style block rules ---
 
-    public function test_class_selector_in_style_triggers_warning(): void
+    public function test_class_selector_in_style_triggers_info(): void
     {
         $this->assertRuleTriggered(
             '<style>.wrapper { display: block; }</style><div class="wrapper">x</div>',
             'css-class-selectors',
-            'warning'
+            'info'
         );
     }
 
@@ -321,21 +321,21 @@ class MailAuditTest extends TestCase
         );
     }
 
-    public function test_media_query_in_style_triggers_warning(): void
+    public function test_media_query_in_style_triggers_info(): void
     {
         $this->assertRuleTriggered(
             '<style>@media (max-width: 600px) { td { display: block; } }</style>',
             'css-media-queries',
-            'warning'
+            'info'
         );
     }
 
-    public function test_at_import_in_style_triggers_error(): void
+    public function test_at_import_in_style_triggers_warning(): void
     {
         $this->assertRuleTriggered(
             '<style>@import url("https://fonts.googleapis.com/css?family=Roboto");</style>',
             'css-at-import',
-            'error'
+            'warning'
         );
     }
 
@@ -347,6 +347,59 @@ class MailAuditTest extends TestCase
         $this->assertRuleNotTriggered($html, 'css-pseudo-selectors');
         $this->assertRuleNotTriggered($html, 'css-media-queries');
         $this->assertRuleNotTriggered($html, 'css-at-import');
+    }
+
+    // --- Correlation rules (fallback quality) ---
+
+    public function test_style_block_without_inline_triggers_fallback_warning(): void
+    {
+        $this->assertRuleTriggered(
+            '<html><head><style>.title { font-size: 24px; }</style></head><body><p class="title">Hello</p></body></html>',
+            'style-no-inline-fallback',
+            'warning'
+        );
+    }
+
+    public function test_style_block_with_inline_does_not_trigger_fallback_rule(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<html><head><style>.title { font-size: 24px; }</style></head><body><p class="title" style="font-size: 24px;">Hello</p></body></html>',
+            'style-no-inline-fallback'
+        );
+    }
+
+    public function test_external_font_without_fallback_triggers_warning(): void
+    {
+        $this->assertRuleTriggered(
+            '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"><td>Hello</td>',
+            'font-no-fallback',
+            'warning'
+        );
+    }
+
+    public function test_external_font_with_inline_fallback_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"><td style="font-family: Roboto, Arial, sans-serif;">Hello</td>',
+            'font-no-fallback'
+        );
+    }
+
+    public function test_media_query_without_inline_triggers_warning(): void
+    {
+        $this->assertRuleTriggered(
+            '<html><head><style>@media (max-width: 600px) { td { display: block; } }</style></head><body><table><tr><td>Hello</td></tr></table></body></html>',
+            'media-no-inline-base',
+            'warning'
+        );
+    }
+
+    public function test_media_query_with_inline_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<html><head><style>@media (max-width: 600px) { td { display: block; } }</style></head><body><table><tr><td style="display: table-cell;">Hello</td></tr></table></body></html>',
+            'media-no-inline-base'
+        );
     }
 
     // --- Multiple issues compound the score ---

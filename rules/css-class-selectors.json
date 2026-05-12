@@ -1,11 +1,11 @@
 {
   "id": "css-class-selectors",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
+  "version": "1.1",
+  "updated_at": "2026-05-12",
   "source": "https://www.caniemail.com/features/html-attributes-class/",
   "tier": "free",
-  "severity": "warning",
-  "weight": 8,
+  "severity": "info",
+  "weight": 2,
   "tags": ["css", "class", "gmail"],
   "detection": {
     "type": "style_block",
@@ -19,17 +19,24 @@
     "apple_mail": { "supported": true }
   },
   "message": {
-    "en": "Gmail strips all class attributes from HTML elements, making class-based CSS rules in <style> blocks completely ineffective.",
-    "fr": "Gmail supprime tous les attributs class des éléments HTML, rendant les règles CSS basées sur les classes dans les blocs <style> totalement inefficaces.",
-    "es": "Gmail elimina todos los atributos class de los elementos HTML, haciendo que las reglas CSS basadas en clases en bloques <style> sean completamente ineficaces.",
-    "de": "Gmail entfernt alle class-Attribute von HTML-Elementen, wodurch klassenbasierte CSS-Regeln in <style>-Blöcken vollständig wirkungslos werden.",
-    "pt": "O Gmail remove todos os atributos class dos elementos HTML, tornando as regras CSS baseadas em classes em blocos <style> completamente ineficazes."
+    "en": "CSS class selectors detected in a <style> block — Gmail strips class attributes, so these rules won't apply there.",
+    "fr": "Des sélecteurs CSS de classe détectés dans un bloc <style> — Gmail supprime les attributs class, ces règles ne s'appliqueront pas.",
+    "es": "Se detectaron selectores CSS de clase en un bloque <style> — Gmail elimina los atributos class, por lo que estas reglas no se aplicarán.",
+    "de": "CSS-Klassenselektoren in einem <style>-Block erkannt — Gmail entfernt class-Attribute, diese Regeln werden dort nicht angewendet.",
+    "pt": "Seletores CSS de classe detectados em um bloco <style> — Gmail remove atributos class, então essas regras não serão aplicadas lá."
   },
   "fix": {
-    "en": "Move all styles inline using the style attribute directly on each element. Use a CSS inliner tool before sending.",
-    "fr": "Déplacer tous les styles en inline via l'attribut style directement sur chaque élément. Utiliser un outil d'inlining CSS avant l'envoi.",
-    "es": "Mover todos los estilos en línea usando el atributo style directamente en cada elemento. Usar una herramienta de CSS inlining antes del envío.",
-    "de": "Alle Stile inline über das style-Attribut direkt an jedem Element einbinden. Vor dem Versenden ein CSS-Inliner-Tool verwenden.",
-    "pt": "Mover todos os estilos para inline usando o atributo style diretamente em cada elemento. Usar uma ferramenta de CSS inlining antes do envio."
+    "en": "Use class-based styles as progressive enhancement on top of inline styles — critical properties should always have an inline equivalent.",
+    "fr": "Utiliser les styles de classe comme amélioration progressive en plus des styles inline — les propriétés critiques doivent toujours avoir un équivalent inline.",
+    "es": "Usar estilos de clase como mejora progresiva sobre los estilos inline — las propiedades críticas siempre deben tener un equivalente inline.",
+    "de": "Klassenbasierte Styles als progressive Verbesserung über Inline-Styles verwenden — kritische Eigenschaften sollten immer ein Inline-Äquivalent haben.",
+    "pt": "Usar estilos de classe como melhoria progressiva sobre os estilos inline — propriedades críticas devem sempre ter um equivalente inline."
+  },
+  "success_message": {
+    "en": "No class-based CSS rules in style blocks detected.",
+    "fr": "Aucune règle CSS basée sur des classes dans des blocs style détectée.",
+    "es": "No se detectaron reglas CSS basadas en clases en bloques style.",
+    "de": "Keine klassenbasierten CSS-Regeln in Style-Blöcken erkannt.",
+    "pt": "Nenhuma regra CSS baseada em classes em blocos style detectada."
   }
 }
