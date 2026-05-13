@@ -37,5 +37,12 @@
     "es": "Siempre duplicar los estilos críticos como atributos style inline. Usar una herramienta de CSS inlining antes del envío.",
     "de": "Immer kritische Styles als Inline-Style-Attribute duplizieren. Vor dem Versenden ein CSS-Inliner-Tool verwenden.",
     "pt": "Sempre duplicar estilos críticos como atributos style inline. Usar uma ferramenta de CSS inlining antes do envio."
+  },
+  "success_message": {
+    "en": "Inline styles are present alongside the <style> block — layout will survive clients that strip style blocks.",
+    "fr": "Des styles inline sont présents aux côtés du bloc <style> — la mise en page survivra aux clients qui suppriment les blocs style.",
+    "es": "Hay estilos inline junto al bloque <style> — el layout sobrevivirá a clientes que eliminan bloques style.",
+    "de": "Inline-Styles sind neben dem <style>-Block vorhanden — das Layout übersteht Clients, die Style-Blöcke entfernen.",
+    "pt": "Estilos inline estão presentes junto ao bloco <style> — o layout sobreviverá a clientes que removem blocos style."
   }
 }

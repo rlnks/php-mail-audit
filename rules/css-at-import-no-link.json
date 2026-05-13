@@ -1,0 +1,50 @@
+{
+  "id": "css-at-import-no-link",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.caniemail.com/features/css-at-import/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 5,
+  "tags": ["css", "fonts", "external", "fallback"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "style_block",
+      "patterns": ["@import"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "regex": true,
+      "patterns": ["<link[^>]+rel\\s*=\\s*[\"']stylesheet[\"']"]
+    }
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": false, "versions": "all" },
+    "gmail_mobile": { "supported": false },
+    "outlook_desktop": { "supported": false, "versions": "all" },
+    "outlook_web": { "supported": false },
+    "apple_mail": { "supported": true }
+  },
+  "message": {
+    "en": "@import used in a <style> block without a corresponding <link rel=\"stylesheet\"> fallback — Gmail and Outlook will silently ignore the import and the resource won't load at all.",
+    "fr": "@import utilisé dans un bloc <style> sans balise <link rel=\"stylesheet\"> correspondante en fallback — Gmail et Outlook ignoreront silencieusement l'import et la ressource ne chargera pas du tout.",
+    "es": "@import usado en un bloque <style> sin una etiqueta <link rel=\"stylesheet\"> de fallback correspondiente — Gmail y Outlook ignorarán silenciosamente el import y el recurso no cargará en absoluto.",
+    "de": "@import in einem <style>-Block ohne entsprechendes <link rel=\"stylesheet\">-Fallback verwendet — Gmail und Outlook ignorieren den Import stillschweigend und die Ressource wird überhaupt nicht geladen.",
+    "pt": "@import usado em um bloco <style> sem uma tag <link rel=\"stylesheet\"> de fallback correspondente — Gmail e Outlook ignorarão silenciosamente o import e o recurso não carregará de forma alguma."
+  },
+  "fix": {
+    "en": "Add a <link rel=\"stylesheet\" href=\"...\"> in the <head> pointing to the same URL. The @import then acts as a secondary fallback for clients that support it but not <link>.",
+    "fr": "Ajoutez un <link rel=\"stylesheet\" href=\"...\"> dans le <head> pointant vers la même URL. Le @import devient alors un fallback secondaire pour les clients qui le supportent mais pas <link>.",
+    "es": "Agregue un <link rel=\"stylesheet\" href=\"...\"> en el <head> apuntando a la misma URL. El @import entonces actúa como fallback secundario para clientes que lo soportan pero no <link>.",
+    "de": "Fügen Sie einen <link rel=\"stylesheet\" href=\"...\"> im <head> hinzu, der auf dieselbe URL zeigt. Das @import fungiert dann als sekundärer Fallback für Clients, die es unterstützen, aber nicht <link>.",
+    "pt": "Adicione um <link rel=\"stylesheet\" href=\"...\"> no <head> apontando para a mesma URL. O @import então age como fallback secundário para clientes que o suportam, mas não <link>."
+  },
+  "success_message": {
+    "en": "@import is paired with a <link rel=\"stylesheet\"> — Gmail/Outlook will use the link tag, other clients the @import.",
+    "fr": "@import est associé à un <link rel=\"stylesheet\"> — Gmail/Outlook utiliseront la balise link, les autres clients le @import.",
+    "es": "@import está combinado con un <link rel=\"stylesheet\"> — Gmail/Outlook usarán la etiqueta link, otros clientes el @import.",
+    "de": "@import ist mit einem <link rel=\"stylesheet\"> kombiniert — Gmail/Outlook verwenden den Link-Tag, andere Clients das @import.",
+    "pt": "@import está combinado com um <link rel=\"stylesheet\"> — Gmail/Outlook usarão a tag link, outros clientes o @import."
+  }
+}

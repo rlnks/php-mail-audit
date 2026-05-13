@@ -28,5 +28,12 @@
     "es": "Reemplazar los espacios en las URLs por %20: https://example.com/mi%20pagina.html",
     "de": "Leerzeichen in URLs durch %20 ersetzen: https://example.com/meine%20seite.html",
     "pt": "Substituir espaços nas URLs por %20: https://example.com/minha%20pagina.html"
+  },
+  "success_message": {
+    "en": "All URLs are properly encoded — no broken links from unencoded spaces.",
+    "fr": "Toutes les URLs sont correctement encodées — aucun lien cassé dû à des espaces non encodés.",
+    "es": "Todas las URLs están correctamente codificadas — no hay enlaces rotos por espacios sin codificar.",
+    "de": "Alle URLs sind korrekt kodiert — keine gebrochenen Links durch nicht kodierte Leerzeichen.",
+    "pt": "Todas as URLs estão corretamente codificadas — sem links quebrados por espaços não codificados."
   }
 }

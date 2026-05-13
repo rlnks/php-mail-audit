@@ -30,5 +30,12 @@
     "es": "Mantenga el texto de preencabezado por debajo de 100 caracteres para que se muestre completamente en todos los clientes principales. Rellene el espacio restante con &nbsp;&zwnj; para evitar que el contenido del cuerpo aparezca en la vista previa.",
     "de": "Halten Sie Ihren Preheader-Text unter 100 Zeichen, damit er in allen wichtigen Clients vollständig angezeigt wird. Füllen Sie den restlichen Platz mit &nbsp;&zwnj;, um zu verhindern, dass Body-Inhalt in der Vorschau erscheint.",
     "pt": "Mantenha o texto do preheader abaixo de 100 caracteres para garantir que seja exibido completamente em todos os principais clientes. Preencha o espaço restante com &nbsp;&zwnj; para evitar que o conteúdo do corpo apareça na prévia."
+  },
+  "success_message": {
+    "en": "Preheader text length is within the 150-character limit — it will display fully in all major clients.",
+    "fr": "La longueur du texte de préen-tête est dans la limite de 150 caractères — il s'affichera complètement dans tous les principaux clients.",
+    "es": "La longitud del texto de preencabezado está dentro del límite de 150 caracteres — se mostrará completamente en todos los clientes principales.",
+    "de": "Preheader-Textlänge liegt innerhalb des 150-Zeichen-Limits — er wird in allen wichtigen Clients vollständig angezeigt.",
+    "pt": "O comprimento do texto do preheader está dentro do limite de 150 caracteres — será exibido completamente em todos os principais clientes."
   }
 }

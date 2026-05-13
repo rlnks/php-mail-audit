@@ -39,5 +39,12 @@
     "es": "Construir primero el layout de escritorio completo con estilos inline, luego usar @media para ajustar mobile como mejora progresiva.",
     "de": "Zuerst das vollständige Desktop-Layout mit Inline-Styles aufbauen, dann @media für Mobile-Anpassungen als progressive Verbesserung verwenden.",
     "pt": "Construir primeiro o layout desktop completo com estilos inline, depois usar @media para ajustar para mobile como aprimoramento progressivo."
+  },
+  "success_message": {
+    "en": "@media queries are backed by inline styles — the layout degrades gracefully when media queries are stripped.",
+    "fr": "Les media queries sont accompagnées de styles inline — le layout se dégrade gracieusement quand les media queries sont supprimées.",
+    "es": "Las media queries están respaldadas por estilos inline — el layout se degrada graciosamente cuando se eliminan las media queries.",
+    "de": "@media-Queries sind durch Inline-Styles abgesichert — das Layout verschlechtert sich gracefully, wenn Media Queries entfernt werden.",
+    "pt": "@media queries são respaldadas por estilos inline — o layout degrada graciosamente quando media queries são removidas."
   }
 }

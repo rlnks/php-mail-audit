@@ -1,0 +1,37 @@
+{
+  "id": "link-no-text",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 5,
+  "tags": ["html", "accessibility", "links"],
+  "detection": {
+    "type": "link_no_text"
+  },
+  "affected_clients": {
+    "all": { "supported": false, "notes": "Screen readers announce empty links as 'link' with no context — users cannot tell where the link goes" }
+  },
+  "message": {
+    "en": "Link with no accessible text detected — the <a> contains no text and no image with a descriptive alt attribute. Screen readers will announce it as an unnamed link.",
+    "fr": "Lien sans texte accessible détecté — le <a> ne contient ni texte ni image avec un attribut alt descriptif. Les lecteurs d'écran l'annonceront comme un lien sans nom.",
+    "es": "Enlace sin texto accesible detectado — el <a> no contiene texto ni imagen con un atributo alt descriptivo. Los lectores de pantalla lo anunciarán como un enlace sin nombre.",
+    "de": "Link ohne zugänglichen Text erkannt — das <a> enthält weder Text noch ein Bild mit einem beschreibenden Alt-Attribut. Bildschirmleser werden es als unbenannten Link ankündigen.",
+    "pt": "Link sem texto acessível detectado — o <a> não contém texto nem imagem com atributo alt descritivo. Leitores de tela o anunciarão como um link sem nome."
+  },
+  "fix": {
+    "en": "Add visible text inside the <a>, or add a descriptive alt attribute to any image inside the link: <a href=\"...\"><img src=\"...\" alt=\"Go to product page\"></a>.",
+    "fr": "Ajoutez du texte visible dans le <a>, ou ajoutez un attribut alt descriptif à toute image dans le lien : <a href=\"...\"><img src=\"...\" alt=\"Aller à la page produit\"></a>.",
+    "es": "Agregue texto visible dentro del <a>, o agregue un atributo alt descriptivo a cualquier imagen dentro del enlace: <a href=\"...\"><img src=\"...\" alt=\"Ir a la página del producto\"></a>.",
+    "de": "Fügen Sie sichtbaren Text in das <a> ein oder fügen Sie ein beschreibendes Alt-Attribut zu einem Bild im Link hinzu: <a href=\"...\"><img src=\"...\" alt=\"Zur Produktseite gehen\"></a>.",
+    "pt": "Adicione texto visível dentro do <a>, ou adicione um atributo alt descritivo a qualquer imagem dentro do link: <a href=\"...\"><img src=\"...\" alt=\"Ir para a página do produto\"></a>."
+  },
+  "success_message": {
+    "en": "All links have accessible text — screen readers can describe every link destination.",
+    "fr": "Tous les liens ont un texte accessible — les lecteurs d'écran peuvent décrire chaque destination de lien.",
+    "es": "Todos los enlaces tienen texto accesible — los lectores de pantalla pueden describir cada destino de enlace.",
+    "de": "Alle Links haben zugänglichen Text — Screenreader können jedes Linkziel beschreiben.",
+    "pt": "Todos os links têm texto acessível — leitores de tela podem descrever cada destino de link."
+  }
+}

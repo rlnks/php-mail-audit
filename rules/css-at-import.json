@@ -1,11 +1,11 @@
 {
   "id": "css-at-import",
-  "version": "1.1",
-  "updated_at": "2026-05-12",
+  "version": "1.2",
+  "updated_at": "2026-05-13",
   "source": "https://www.caniemail.com/features/css-at-import/",
   "tier": "free",
-  "severity": "warning",
-  "weight": 5,
+  "severity": "info",
+  "weight": 2,
   "tags": ["css", "fonts", "external"],
   "detection": {
     "type": "style_block",
@@ -21,17 +21,17 @@
     "samsung_email": { "supported": false }
   },
   "message": {
-    "en": "@import inside a <style> block is not supported in Gmail or Outlook — the imported resource is silently ignored.",
-    "fr": "@import dans un bloc <style> n'est pas supporté dans Gmail ni Outlook — la ressource importée est silencieusement ignorée.",
-    "es": "@import dentro de un bloque <style> no está soportado en Gmail ni Outlook — el recurso importado es silenciosamente ignorado.",
-    "de": "@import innerhalb eines <style>-Blocks wird in Gmail oder Outlook nicht unterstützt — die importierte Ressource wird stillschweigend ignoriert.",
-    "pt": "@import dentro de um bloco <style> não é suportado no Gmail ou Outlook — o recurso importado é silenciosamente ignorado."
+    "en": "@import detected inside a <style> block — Gmail and Outlook silently ignore it. Pair it with a <link> tag so clients that strip @import still load the resource.",
+    "fr": "@import détecté dans un bloc <style> — Gmail et Outlook l'ignorent silencieusement. Associez-le à une balise <link> pour que les clients qui suppriment @import chargent quand même la ressource.",
+    "es": "@import detectado dentro de un bloque <style> — Gmail y Outlook lo ignoran silenciosamente. Combínelo con una etiqueta <link> para que los clientes que eliminan @import aún carguen el recurso.",
+    "de": "@import in einem <style>-Block erkannt — Gmail und Outlook ignorieren es stillschweigend. Kombinieren Sie es mit einem <link>-Tag, damit Clients, die @import entfernen, die Ressource trotzdem laden.",
+    "pt": "@import detectado dentro de um bloco <style> — Gmail e Outlook o ignoram silenciosamente. Combine-o com uma tag <link> para que clientes que removem @import ainda carreguem o recurso."
   },
   "fix": {
-    "en": "Replace @import with a <link> tag, and always define inline font-family stacks with web-safe fallback fonts.",
-    "fr": "Remplacer @import par une balise <link>, et toujours définir des piles font-family inline avec des polices web-safe en fallback.",
-    "es": "Reemplazar @import con una etiqueta <link>, y siempre definir pilas font-family inline con fuentes web-safe de fallback.",
-    "de": "@import durch ein <link>-Tag ersetzen und immer Inline-Font-Family-Stacks mit web-sicheren Fallback-Schriften definieren.",
-    "pt": "Substituir @import por uma tag <link> e sempre definir pilhas font-family inline com fontes web-safe de fallback."
+    "en": "Add a <link rel=\"stylesheet\"> tag in the <head> for the same resource — the @import then serves as a fallback for clients that don't support <link> in email.",
+    "fr": "Ajoutez une balise <link rel=\"stylesheet\"> dans le <head> pour la même ressource — le @import sert alors de fallback pour les clients qui ne supportent pas <link> dans les emails.",
+    "es": "Agregue una etiqueta <link rel=\"stylesheet\"> en el <head> para el mismo recurso — el @import entonces sirve como fallback para clientes que no soportan <link> en email.",
+    "de": "Fügen Sie ein <link rel=\"stylesheet\">-Tag im <head> für die gleiche Ressource hinzu — das @import dient dann als Fallback für Clients, die <link> in E-Mails nicht unterstützen.",
+    "pt": "Adicione uma tag <link rel=\"stylesheet\"> no <head> para o mesmo recurso — o @import então serve como fallback para clientes que não suportam <link> em email."
   }
 }

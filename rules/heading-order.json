@@ -1,0 +1,37 @@
+{
+  "id": "heading-order",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/WAI/tutorials/page-structure/headings/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "accessibility", "structure"],
+  "detection": {
+    "type": "heading_order"
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Skipped heading levels confuse screen readers and break document hierarchy" }
+  },
+  "message": {
+    "en": "Heading levels are skipped (e.g. <h1> followed directly by <h3>) — this breaks document hierarchy and may confuse screen readers.",
+    "fr": "Des niveaux de titre sont sautés (ex. <h1> suivi directement de <h3>) — cela brise la hiérarchie du document et peut perturber les lecteurs d'écran.",
+    "es": "Se omiten niveles de encabezado (p.ej. <h1> seguido directamente por <h3>) — esto rompe la jerarquía del documento y puede confundir a los lectores de pantalla.",
+    "de": "Überschriftenebenen werden übersprungen (z.B. <h1> direkt gefolgt von <h3>) — dies bricht die Dokumenthierarchie und kann Screenreader verwirren.",
+    "pt": "Níveis de título são pulados (ex. <h1> seguido diretamente por <h3>) — isso quebra a hierarquia do documento e pode confundir leitores de tela."
+  },
+  "fix": {
+    "en": "Use heading levels sequentially: <h1> → <h2> → <h3>. Never skip a level.",
+    "fr": "Utilisez les niveaux de titre séquentiellement : <h1> → <h2> → <h3>. Ne sautez jamais un niveau.",
+    "es": "Use niveles de encabezado secuencialmente: <h1> → <h2> → <h3>. Nunca omita un nivel.",
+    "de": "Verwenden Sie Überschriftenebenen sequenziell: <h1> → <h2> → <h3>. Überspringen Sie niemals eine Ebene.",
+    "pt": "Use níveis de título sequencialmente: <h1> → <h2> → <h3>. Nunca pule um nível."
+  },
+  "success_message": {
+    "en": "Heading levels are sequential — document structure is correct for screen readers.",
+    "fr": "Les niveaux de titre sont séquentiels — la structure du document est correcte pour les lecteurs d'écran.",
+    "es": "Los niveles de encabezado son secuenciales — la estructura del documento es correcta para lectores de pantalla.",
+    "de": "Überschriftenebenen sind sequenziell — die Dokumentstruktur ist korrekt für Screenreader.",
+    "pt": "Níveis de título são sequenciais — a estrutura do documento está correta para leitores de tela."
+  }
+}

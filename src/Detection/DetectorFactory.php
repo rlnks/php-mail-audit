@@ -14,6 +14,8 @@ class DetectorFactory
         'correlation'            => CorrelationDetector::class,
         'preheader'              => PreheaderDetector::class,
         'html_metric'            => HtmlMetricDetector::class,
+        'heading_order'          => HeadingOrderDetector::class,
+        'link_no_text'           => HtmlLinkNoTextDetector::class,
     ];
 
     public static function make(string $type): DetectorInterface

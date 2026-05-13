@@ -338,13 +338,25 @@ class MailAuditTest extends TestCase
         );
     }
 
-    public function test_at_import_in_style_triggers_warning(): void
+    public function test_at_import_in_style_triggers_info(): void
     {
         $this->assertRuleTriggered(
             '<style>@import url("https://fonts.googleapis.com/css?family=Roboto");</style>',
             'css-at-import',
-            'warning'
+            'info'
         );
+    }
+
+    public function test_at_import_without_link_triggers_warning(): void
+    {
+        $html = '<style>@import url("https://fonts.googleapis.com/css?family=Roboto");</style><p style="font-family:Roboto,Arial;">Hello</p>';
+        $this->assertRuleTriggered($html, 'css-at-import-no-link', 'warning');
+    }
+
+    public function test_at_import_with_link_does_not_trigger_warning(): void
+    {
+        $html = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"><style>@import url("https://fonts.googleapis.com/css?family=Roboto");</style><p style="font-family:Roboto,Arial;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'css-at-import-no-link');
     }
 
     public function test_style_block_rules_silent_without_style_tag(): void
@@ -572,6 +584,197 @@ class MailAuditTest extends TestCase
 
         $this->assertLessThan(60, $result['score']);
         $this->assertGreaterThan(0, $result['summary']['errors']);
+    }
+
+    // --- heading-order ---
+
+    public function test_heading_skip_triggers_info(): void
+    {
+        $html = '<h1>Title</h1><h3>Section</h3>';
+        $this->assertRuleTriggered($html, 'heading-order', 'info');
+    }
+
+    public function test_heading_skip_two_levels_triggers_info(): void
+    {
+        $html = '<h1>Title</h1><h4>Sub</h4>';
+        $this->assertRuleTriggered($html, 'heading-order', 'info');
+    }
+
+    public function test_sequential_headings_do_not_trigger(): void
+    {
+        $html = '<h1>Title</h1><h2>Section</h2><h3>Sub</h3>';
+        $this->assertRuleNotTriggered($html, 'heading-order');
+    }
+
+    public function test_heading_can_jump_down_levels(): void
+    {
+        // Jumping back to a higher heading (lower number) is fine
+        $html = '<h1>Title</h1><h2>Section</h2><h1>Another Title</h1>';
+        $this->assertRuleNotTriggered($html, 'heading-order');
+    }
+
+    public function test_heading_order_location_points_to_skipped_tag(): void
+    {
+        $html = '<h1>Title</h1><h3>Skipped</h3>';
+        $result = $this->audit->analyze($html);
+        $insight = array_values(array_filter($result['insights'], fn($i) => $i['id'] === 'heading-order'))[0];
+
+        $this->assertNotEmpty($insight['locations']);
+        $snippet = substr($html, $insight['locations'][0]['offset_start'], $insight['locations'][0]['offset_end'] - $insight['locations'][0]['offset_start']);
+        $this->assertStringContainsString('h3', strtolower($snippet));
+    }
+
+    // --- link-no-text ---
+
+    public function test_link_without_text_triggers_warning(): void
+    {
+        $html = '<a href="https://example.com"><img src="img.jpg" alt=""></a>';
+        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
+    }
+
+    public function test_link_with_text_does_not_trigger(): void
+    {
+        $html = '<a href="https://example.com">Click here</a>';
+        $this->assertRuleNotTriggered($html, 'link-no-text');
+    }
+
+    public function test_link_with_image_and_alt_does_not_trigger(): void
+    {
+        $html = '<a href="https://example.com"><img src="img.jpg" alt="Go to homepage"></a>';
+        $this->assertRuleNotTriggered($html, 'link-no-text');
+    }
+
+    public function test_link_with_no_image_no_text_triggers(): void
+    {
+        $html = '<a href="https://example.com"></a>';
+        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
+    }
+
+    public function test_link_with_image_no_alt_attr_triggers(): void
+    {
+        $html = '<a href="https://example.com"><img src="img.jpg"></a>';
+        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
+    }
+
+    // --- text-image-ratio ---
+
+    public function test_image_heavy_email_triggers_ratio_warning(): void
+    {
+        $imgs = str_repeat('<img src="https://example.com/x.jpg" width="600" height="300" alt="Banner">', 5);
+        $html = '<html lang="en"><body><table role="presentation"><tr><td>' . $imgs . '<p>Hi</p></td></tr></table></body></html>';
+        $this->assertRuleTriggered($html, 'text-image-ratio', 'warning');
+    }
+
+    public function test_text_rich_email_does_not_trigger_ratio(): void
+    {
+        $para = str_repeat('<p style="font-family:Arial;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>', 3);
+        $html = '<html lang="en"><body><table role="presentation"><tr><td>'
+            . '<img src="https://example.com/banner.jpg" width="600" height="200" alt="Banner">'
+            . $para
+            . '</td></tr></table></body></html>';
+        $this->assertRuleNotTriggered($html, 'text-image-ratio');
+    }
+
+    public function test_text_only_email_does_not_trigger_ratio(): void
+    {
+        $html = '<html lang="en"><body><p>Hello world, this is a text-only email with plenty of content.</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'text-image-ratio');
+    }
+
+    public function test_ratio_does_not_fire_on_fragment(): void
+    {
+        // Fragment (no <body>) — should be skipped
+        $imgs = str_repeat('<img src="x.jpg" alt="">', 10);
+        $html = '<table><tr><td>' . $imgs . '</td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'text-image-ratio');
+    }
+
+    // --- Integration: real email scenarios ---
+
+    public function test_well_formed_complete_email_scores_high(): void
+    {
+        $html = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome</title>
+</head>
+<body>
+<div style="display:none;font-size:1px;max-height:0;overflow:hidden;">Preview text &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td style="font-family:Arial,sans-serif;font-size:16px;color:#333333;padding:20px;">
+            <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#000000;">Welcome aboard</h1>
+            <h2 style="font-family:Arial,sans-serif;font-size:18px;color:#333333;">Your account is ready</h2>
+            <img src="https://example.com/banner.jpg" width="560" height="200" alt="Welcome banner" style="display:block;max-width:100%;">
+            <p style="font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#333333;">
+                Thank you for joining us. Your account has been created and is ready to use.
+                Click the button below to get started and explore all the features available to you.
+            </p>
+            <a href="https://example.com/start" style="display:inline-block;padding:12px 24px;background-color:#007bff;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-size:16px;border-radius:4px;">Get started</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+HTML;
+
+        $result = (new MailAudit())->analyze($html);
+
+        $this->assertGreaterThanOrEqual(85, $result['score'], 'Well-formed email should score ≥ 85');
+        $this->assertSame(0, $result['summary']['errors'], 'Well-formed email should have no errors');
+    }
+
+    public function test_poorly_formed_email_has_errors_and_low_score(): void
+    {
+        $html = <<<HTML
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<div style="display:flex;width:600px;">
+    <img src="http://example.com/banner.jpg">
+    <img src="http://example.com/img2.jpg">
+    <img src="http://example.com/img3.jpg">
+    <p>Hi</p>
+</div>
+</body>
+</html>
+HTML;
+
+        $result = (new MailAudit())->analyze($html);
+
+        $this->assertGreaterThan(0, $result['summary']['errors'], 'Should have at least one error');
+        $this->assertLessThan(75, $result['score'], 'Poorly formed email should score < 75');
+    }
+
+    public function test_complete_email_heading_and_link_rules_fire(): void
+    {
+        $html = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+<div style="display:none;overflow:hidden;">Preview &nbsp;&zwnj;</div>
+<table role="presentation">
+    <tr><td style="font-family:Arial;">
+        <h1 style="font-family:Arial;">Title</h1>
+        <h3 style="font-family:Arial;">Skipped h2</h3>
+        <p style="font-family:Arial;">Some content here for the email body text.</p>
+        <a href="https://example.com"><img src="https://example.com/cta.jpg" alt="" width="200" height="60"></a>
+    </td></tr>
+</table>
+</body>
+</html>
+HTML;
+
+        $result = (new MailAudit())->analyze($html);
+        $ids    = array_column($result['insights'], 'id');
+
+        $this->assertContains('heading-order', $ids, 'heading-order should fire on h1→h3 skip');
+        $this->assertContains('link-no-text', $ids, 'link-no-text should fire on image link with empty alt');
     }
 
     // --- Helpers ---

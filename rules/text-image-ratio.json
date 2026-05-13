@@ -1,0 +1,40 @@
+{
+  "id": "text-image-ratio",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.litmus.com/blog/email-spam-filters/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 6,
+  "tags": ["html", "spam", "images"],
+  "detection": {
+    "type": "html_metric",
+    "metric": "text_image_ratio",
+    "operator": "lt",
+    "threshold": 15
+  },
+  "affected_clients": {
+    "all": { "supported": false, "notes": "Image-heavy emails are flagged by spam filters and fail when images are blocked" }
+  },
+  "message": {
+    "en": "Email is too image-heavy — very little readable text relative to the number of images. Spam filters penalize this pattern and recipients with images disabled will see a nearly blank email.",
+    "fr": "L'email contient trop d'images par rapport au texte lisible. Les filtres anti-spam pénalisent ce modèle et les destinataires avec les images désactivées verront un email presque vide.",
+    "es": "El email tiene demasiadas imágenes — muy poco texto legible en relación al número de imágenes. Los filtros de spam penalizan este patrón y los destinatarios con imágenes deshabilitadas verán un email casi en blanco.",
+    "de": "E-Mail ist zu bildlastig — sehr wenig lesbarer Text im Verhältnis zur Anzahl der Bilder. Spam-Filter bestrafen dieses Muster und Empfänger mit deaktivierten Bildern sehen eine fast leere E-Mail.",
+    "pt": "O email tem imagens demais — muito pouco texto legível em relação ao número de imagens. Filtros de spam penalizam esse padrão e destinatários com imagens desabilitadas verão um email quase em branco."
+  },
+  "fix": {
+    "en": "Add more visible text content, or reduce the number of images. Aim for a meaningful text block per image section. Every image should also have descriptive alt text as a fallback.",
+    "fr": "Ajoutez plus de contenu texte visible, ou réduisez le nombre d'images. Visez un bloc de texte significatif par section d'image. Chaque image doit aussi avoir un texte alt descriptif en fallback.",
+    "es": "Agregue más contenido de texto visible, o reduzca el número de imágenes. Apunte a un bloque de texto significativo por sección de imagen. Cada imagen también debe tener texto alt descriptivo como fallback.",
+    "de": "Fügen Sie mehr sichtbaren Textinhalt hinzu oder reduzieren Sie die Anzahl der Bilder. Streben Sie einen bedeutungsvollen Textblock pro Bildabschnitt an. Jedes Bild sollte auch einen beschreibenden Alt-Text als Fallback haben.",
+    "pt": "Adicione mais conteúdo de texto visível, ou reduza o número de imagens. Mire em um bloco de texto significativo por seção de imagem. Cada imagem também deve ter texto alt descritivo como fallback."
+  },
+  "success_message": {
+    "en": "Good text/image balance — spam filters are less likely to flag this email.",
+    "fr": "Bon équilibre texte/image — les filtres anti-spam sont moins susceptibles de signaler cet email.",
+    "es": "Buen equilibrio texto/imagen — los filtros de spam tienen menos probabilidad de marcar este email.",
+    "de": "Gutes Text/Bild-Verhältnis — Spam-Filter werden diese E-Mail mit geringerer Wahrscheinlichkeit markieren.",
+    "pt": "Bom equilíbrio texto/imagem — filtros de spam têm menos probabilidade de marcar este email."
+  }
+}
