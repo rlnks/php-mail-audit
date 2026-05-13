@@ -251,7 +251,7 @@ Not every rule generates a passed item — only rules that define a `success_mes
 
 ```php
 [
-    'total_rules_checked' => 45,  // total rules evaluated
+    'total_rules_checked' => 56,  // total rules evaluated
     'total_issues'        => 3,   // rules that fired
     'errors'              => 1,   // severity = error
     'warnings'            => 1,   // severity = warning
@@ -264,7 +264,7 @@ Not every rule generates a passed item — only rules that define a `success_mes
 
 ## Bundled Rules
 
-45 rules ship with the package. The philosophy: **flag bad usage, not feature presence**. Media queries, hover states, and class selectors used correctly (with inline fallbacks) score well. The engine penalizes the *absence* of fallbacks, not the features themselves.
+56 rules ship with the package. The philosophy: **flag bad usage, not feature presence**. Media queries, hover states, and class selectors used correctly (with inline fallbacks) score well. The engine penalizes the *absence* of fallbacks, not the features themselves.
 
 ### Errors — break rendering in major clients
 
@@ -303,6 +303,10 @@ Not every rule generates a passed item — only rules that define a `success_mes
 | `url-unencoded` | Unencoded space in a URL (`href` or `src`) — breaks the link in all clients | 5 |
 | `css-at-import` | `@import` in `<style>` silently ignored by Gmail/Outlook | 5 |
 | `no-transform` | CSS `transform` not supported in Outlook or Gmail | 5 |
+| `css-at-import-no-link` | `@import` in `<style>` with no `<link>` fallback — font will not load in clients that strip `<style>` blocks | 5 |
+| `link-no-text` | `<a>` with no accessible text or descriptive image `alt` — screen readers announce it as an unlabeled link | 5 |
+| `text-image-ratio` | Email is mostly images with very little readable text — high spam filter risk, renders blank when images are blocked | 6 |
+| `email-max-width` | Fixed-width `<table>` over 600 px — overflows the Outlook rendering pane and narrow viewports | 5 |
 
 ### Info — usage noted, minimal score impact
 
@@ -327,6 +331,13 @@ Rules in this category flag the **presence** of a feature that is often used cor
 | `div-content` | `<div>` used as content wrapper — acceptable, but `<td>` preferred for compatibility | 1 |
 | `empty-alt-img` | `<img alt="">` detected — verify image is truly decorative and carries no information | 1 |
 | `nbsp-missing` | Regular space between a number and a currency/unit symbol — may break across lines on narrow screens | 1 |
+| `heading-order` | Heading levels skipped (e.g. `<h1>` directly followed by `<h3>`) — hurts accessibility and screen reader navigation | 2 |
+| `tracking-pixel` | 1×1 tracking pixel detected — note that Apple Mail Privacy Protection may trigger false open events | 0 |
+| `font-family-unquoted` | Multi-word font name used without quotes in `font-family` — may be misinterpreted by some CSS parsers | 2 |
+| `missing-charset` | No character encoding declaration in `<head>` — some clients may misrender special characters | 2 |
+| `missing-doctype` | No `<!DOCTYPE html>` declaration — some clients fall back to quirks mode rendering | 2 |
+| `table-cellspacing` | `<table>` without `cellpadding="0" cellspacing="0"` — default cell spacing varies across clients | 2 |
+| `missing-body-bgcolor` | No background color on `<body>` — some clients display a grey or off-white default background | 1 |
 
 ---
 
@@ -527,6 +538,57 @@ Measures a numeric property of the HTML and fires when it exceeds a threshold. C
 }
 ```
 
+### `heading_order`
+
+Detects heading levels that are skipped in document order (e.g. `<h1>` directly followed by `<h3>`). No configuration options.
+
+```json
+{
+  "type": "heading_order"
+}
+```
+
+### `html_link_no_text`
+
+Fires when an `<a>` element has no accessible text — no text node content and no child `<img>` with a non-empty `alt`. No configuration options.
+
+```json
+{
+  "type": "html_link_no_text"
+}
+```
+
+### `html_tracking_pixel`
+
+Detects `<img>` elements with `width="1"` and `height="1"`, the classic open-tracking pattern. No configuration options.
+
+```json
+{
+  "type": "html_tracking_pixel"
+}
+```
+
+### `css_font_family`
+
+Detects multi-word font names used without quotes in `font-family` declarations (e.g. `font-family: Open Sans` instead of `font-family: 'Open Sans'`). No configuration options.
+
+```json
+{
+  "type": "css_font_family"
+}
+```
+
+### `html_table_width`
+
+Fires when a `<table>` element carries an inline `width` in pixels that exceeds `max_width` (default: 600).
+
+```json
+{
+  "type": "html_table_width",
+  "max_width": 600
+}
+```
+
 ---
 
 ## Localization
@@ -673,6 +735,37 @@ vendor/bin/mailaudit sync --config=config/mailaudit.php --dry-run
 | `MAILAUDIT_ENDPOINT` | Remote KB endpoint URL |
 | `MAILAUDIT_API_KEY` | API key for pro tier |
 | `MAILAUDIT_CACHE_PATH` | Absolute path to the local cache file |
+
+---
+
+### `audit` — analyze an email file
+
+```bash
+vendor/bin/mailaudit audit path/to/email.html
+vendor/bin/mailaudit audit path/to/email.html --locale=fr
+vendor/bin/mailaudit audit path/to/email.html --format=json
+```
+
+**Example output (text):**
+
+```
+SCORE: 84/100 — email.html
+────────────────────────────────────────────
+[ERROR  ] no-flexbox                 Flexbox is not supported in Outlook...
+[WARN   ] missing-https              HTTP links detected — email clients b...
+[INFO   ] div-content                <div> used as content wrapper — acce...
+────────────────────────────────────────────
+✓ no-script   ✓ img-dimensions   ✓ table-role-presentation
+```
+
+**With `--format=json`**, the full `analyze()` result array is printed as pretty-printed JSON — same structure as documented in [Result Format](#result-format).
+
+### `audit` options
+
+| Option | Description |
+|---|---|
+| `--locale=<code>` | Locale for messages: `en` (default), `fr`, `es`, `de`, `pt` |
+| `--format=json` | Output the full result as JSON instead of the formatted summary |
 
 ---
 
