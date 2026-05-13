@@ -51,13 +51,18 @@ class PreheaderDetector extends AbstractDetector
     /** @return array{content:string, offset:int, length:int}|null */
     private function findPreheader(string $html): ?array
     {
-        // Standard preheader: div with display:none and overflow:hidden in style (order-independent)
-        if (!preg_match_all('/<div\b[^>]+style\s*=\s*"([^"]*)"[^>]*>/i', $html, $tags, PREG_OFFSET_CAPTURE)) {
+        // Step 1: find all <div> opening tags — [^>]* handles any number of spaces between attributes
+        if (!preg_match_all('/<div\b[^>]*>/i', $html, $tags, PREG_OFFSET_CAPTURE)) {
             return null;
         }
 
-        foreach ($tags[0] as $i => [$openTag, $tagOffset]) {
-            $style = $tags[1][$i][0];
+        foreach ($tags[0] as [$openTag, $tagOffset]) {
+            // Step 2: extract style value (\s before "style" prevents matching data-style)
+            if (!preg_match('/\sstyle\s*=\s*(?:"([^"]*)"|\'([^\']*)\')/i', $openTag, $sm)) {
+                continue;
+            }
+            $style = $sm[1] !== '' ? $sm[1] : $sm[2];
+
             $hasNone   = (bool) preg_match('/display\s*:\s*none/i', $style);
             $hasHidden = (bool) preg_match('/overflow\s*:\s*hidden/i', $style);
 

@@ -16,16 +16,18 @@ class HtmlTagWithStyleDetector extends AbstractDetector
         $useRegex    = $detection['regex'] ?? false;
         $locations   = [];
 
-        $regex = '/<' . preg_quote($tag, '/') . '(?:\s[^>]*)?\s+style\s*=\s*(?:"([^"]*?)"|\'([^\']*?)\'|([^\s>]+))[^>]*>/si';
-
-        if (!preg_match_all($regex, $html, $matches, PREG_OFFSET_CAPTURE)) {
+        // Step 1: find all opening tags — [^>]* handles any number of spaces between attributes
+        if (!preg_match_all('/<' . preg_quote($tag, '/') . '\b[^>]*>/si', $html, $tagMatches, PREG_OFFSET_CAPTURE)) {
             return $locations;
         }
 
-        foreach ($matches[0] as $i => [$tagHtml, $offset]) {
-            $styleValue = $matches[1][$i][0] !== ''
-                ? $matches[1][$i][0]
-                : ($matches[2][$i][0] !== '' ? $matches[2][$i][0] : $matches[3][$i][0]);
+        foreach ($tagMatches[0] as [$tagHtml, $offset]) {
+            // Step 2: extract inline style value
+            // \s before "style" ensures we match the attribute, not e.g. data-style
+            if (!preg_match('/\sstyle\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))/i', $tagHtml, $sm)) {
+                continue;
+            }
+            $styleValue = $sm[1] !== '' ? $sm[1] : ($sm[2] !== '' ? $sm[2] : ($sm[3] ?? ''));
 
             foreach ($cssPatterns as $pattern) {
                 $hit = $useRegex

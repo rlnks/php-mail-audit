@@ -965,6 +965,28 @@ HTML;
         $this->assertContains('link-no-text', $ids, 'link-no-text should fire on image link with empty alt');
     }
 
+    // --- Multiple-whitespace robustness ---
+
+    public function test_double_space_before_style_still_triggers(): void
+    {
+        // <div  style="display:flex"> — two spaces between tag name and style
+        $html = '<div  style="display:flex;">test</div>';
+        $this->assertRuleTriggered($html, 'no-flexbox', 'error');
+    }
+
+    public function test_double_space_in_img_with_descriptive_alt_does_not_trigger_link_no_text(): void
+    {
+        $html = '<a  href="https://example.com"><img  src="img.jpg" alt="Company logo"></a>';
+        $this->assertRuleNotTriggered($html, 'link-no-text');
+    }
+
+    public function test_double_space_preheader_detected(): void
+    {
+        $html = '<body><div  style="display:none;overflow:hidden;">Preview text</div><p>Body</p></body>';
+        // preheader-missing must NOT fire when preheader is present with double-space attributes
+        $this->assertRuleNotTriggered($html, 'preheader-missing');
+    }
+
     // --- Helpers ---
 
     private function assertRuleTriggered(string $html, string $ruleId, string $severity): void
