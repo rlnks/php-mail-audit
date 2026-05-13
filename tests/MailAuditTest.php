@@ -405,6 +405,13 @@ class MailAuditTest extends TestCase
         );
     }
 
+    public function test_font_no_fallback_does_not_fire_with_quoted_first_font(): void
+    {
+        $html = '<style>@font-face{font-family:"Kia";src:url(x.woff);}</style>'
+              . '<p style="font-family:\'Kia Signature Regular\', \'Open Sans\', Arial, \'Helvetica Neue\', Helvetica, sans-serif;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'font-no-fallback');
+    }
+
     public function test_media_query_without_inline_triggers_warning(): void
     {
         $this->assertRuleTriggered(

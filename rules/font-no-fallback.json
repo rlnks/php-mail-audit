@@ -16,7 +16,7 @@
     "fallback": {
       "type": "css_property",
       "regex": true,
-      "patterns": ["font-family\\s*:[^;\"']*,"]
+      "patterns": ["font-family\\s*:\\s*(?:'[^']*'|\"[^\"]*\"|[^;'\"]+)\\s*,"]
     }
   },
   "affected_clients": {
