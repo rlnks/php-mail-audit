@@ -1,7 +1,7 @@
 {
   "id": "style-no-inline-fallback",
   "version": "1.0",
-  "updated_at": "2026-05-12",
+  "updated_at": "2026-05-13",
   "source": "https://www.caniemail.com/features/html-style/",
   "tier": "free",
   "severity": "warning",
@@ -14,7 +14,7 @@
       "patterns": ["<style"]
     },
     "fallback": {
-      "type": "css_property",
+      "type": "html_content",
       "patterns": ["style="]
     }
   },
