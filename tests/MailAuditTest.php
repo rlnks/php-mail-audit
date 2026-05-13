@@ -633,9 +633,15 @@ class MailAuditTest extends TestCase
 
     // --- link-no-text ---
 
-    public function test_link_without_text_triggers_warning(): void
+    public function test_link_completely_empty_triggers_warning(): void
     {
-        $html = '<a href="https://example.com"><img src="img.jpg" alt=""></a>';
+        $html = '<a href="https://example.com"></a>';
+        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
+    }
+
+    public function test_link_whitespace_only_triggers_warning(): void
+    {
+        $html = '<a href="https://example.com">   </a>';
         $this->assertRuleTriggered($html, 'link-no-text', 'warning');
     }
 
@@ -645,22 +651,24 @@ class MailAuditTest extends TestCase
         $this->assertRuleNotTriggered($html, 'link-no-text');
     }
 
+    public function test_link_with_image_empty_alt_does_not_trigger_link_no_text(): void
+    {
+        // Image with empty alt is handled by empty-alt-img, not link-no-text
+        $html = '<a href="https://example.com"><img src="img.jpg" alt=""></a>';
+        $this->assertRuleNotTriggered($html, 'link-no-text');
+    }
+
     public function test_link_with_image_and_alt_does_not_trigger(): void
     {
         $html = '<a href="https://example.com"><img src="img.jpg" alt="Go to homepage"></a>';
         $this->assertRuleNotTriggered($html, 'link-no-text');
     }
 
-    public function test_link_with_no_image_no_text_triggers(): void
+    public function test_link_with_image_no_alt_attr_does_not_trigger_link_no_text(): void
     {
-        $html = '<a href="https://example.com"></a>';
-        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
-    }
-
-    public function test_link_with_image_no_alt_attr_triggers(): void
-    {
+        // An img tag (even without alt) is a child element — not our concern here
         $html = '<a href="https://example.com"><img src="img.jpg"></a>';
-        $this->assertRuleTriggered($html, 'link-no-text', 'warning');
+        $this->assertRuleNotTriggered($html, 'link-no-text');
     }
 
     // --- tracking-pixel ---
@@ -962,7 +970,7 @@ HTML;
         $ids    = array_column($result['insights'], 'id');
 
         $this->assertContains('heading-order', $ids, 'heading-order should fire on h1→h3 skip');
-        $this->assertContains('link-no-text', $ids, 'link-no-text should fire on image link with empty alt');
+        $this->assertContains('empty-alt-img', $ids, 'empty-alt-img should fire on image with empty alt inside a link');
     }
 
     // --- Multiple-whitespace robustness ---

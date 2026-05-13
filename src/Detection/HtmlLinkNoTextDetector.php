@@ -3,12 +3,8 @@
 namespace MailAudit\Detection;
 
 /**
- * Fires when an <a> tag contains no accessible text:
- *  - no text nodes, AND
- *  - no <img> with a non-empty alt attribute.
- *
- * An image-only link is accessible when the image has descriptive alt text.
- * An image-only link with alt="" (or no alt) is inaccessible.
+ * Fires when an <a> tag is completely empty — no text and no child elements.
+ * Links with images (even with alt="") are not flagged here; use empty-alt-img for that.
  */
 class HtmlLinkNoTextDetector extends AbstractDetector
 {
@@ -26,13 +22,13 @@ class HtmlLinkNoTextDetector extends AbstractDetector
         foreach ($matches[0] as $i => [$fullMatch, $offset]) {
             $content = $matches[1][$i][0];
 
-            // Has visible text — accessible
+            // Has visible text → accessible
             if (trim(strip_tags($content)) !== '') {
                 continue;
             }
 
-            // No text: check whether any contained <img> provides alt text
-            if ($this->hasImageWithAlt($content)) {
+            // Has any child element (img, span, etc.) → not our concern
+            if (preg_match('/<[a-z]/i', $content)) {
                 continue;
             }
 
@@ -40,22 +36,5 @@ class HtmlLinkNoTextDetector extends AbstractDetector
         }
 
         return $locations;
-    }
-
-    private function hasImageWithAlt(string $content): bool
-    {
-        if (!preg_match_all('/<img\b[^>]*>/i', $content, $imgs)) {
-            return false;
-        }
-
-        foreach ($imgs[0] as $imgTag) {
-            // alt="something" or alt='something' (non-empty)
-            if (preg_match('/\balt\s*=\s*"([^"]+)"/i', $imgTag) ||
-                preg_match("/\\balt\\s*=\\s*'([^']+)'/i", $imgTag)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
