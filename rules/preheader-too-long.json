@@ -1,0 +1,34 @@
+{
+  "id": "preheader-too-long",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://litmus.com/blog/the-ultimate-guide-to-preview-text-support",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "best-practice"],
+  "detection": {
+    "type": "preheader",
+    "mode": "too_long",
+    "max_length": 150
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": true, "notes": "Typically shows 85–100 chars in preview" },
+    "outlook_desktop": { "supported": true, "notes": "Typically shows 130–140 chars" },
+    "apple_mail": { "supported": true, "notes": "Typically shows 140–150 chars" }
+  },
+  "message": {
+    "en": "Preheader text is longer than 150 characters (excluding filler) — most email clients truncate at 85–150 characters, so the end of your message will be cut off.",
+    "fr": "Le texte de préen-tête fait plus de 150 caractères (hors remplissage) — la plupart des clients email tronquent à 85–150 caractères, la fin de votre message sera coupée.",
+    "es": "El texto de preencabezado tiene más de 150 caracteres (excluyendo relleno) — la mayoría de los clientes email truncan a 85–150 caracteres, el final de su mensaje se cortará.",
+    "de": "Preheader-Text ist länger als 150 Zeichen (ohne Füllzeichen) — die meisten E-Mail-Clients kürzen bei 85–150 Zeichen ab, daher wird das Ende Ihrer Nachricht abgeschnitten.",
+    "pt": "O texto do preheader tem mais de 150 caracteres (excluindo preenchimento) — a maioria dos clientes email trunca em 85–150 caracteres, então o final da sua mensagem será cortado."
+  },
+  "fix": {
+    "en": "Keep your preheader text under 100 characters to ensure it displays fully in all major clients. Fill the remaining space with &nbsp;&zwnj; to prevent body content from appearing in the preview.",
+    "fr": "Gardez votre texte de préen-tête en dessous de 100 caractères pour qu'il s'affiche entièrement dans tous les principaux clients. Remplissez l'espace restant avec &nbsp;&zwnj; pour éviter que le contenu du corps apparaisse dans l'aperçu.",
+    "es": "Mantenga el texto de preencabezado por debajo de 100 caracteres para que se muestre completamente en todos los clientes principales. Rellene el espacio restante con &nbsp;&zwnj; para evitar que el contenido del cuerpo aparezca en la vista previa.",
+    "de": "Halten Sie Ihren Preheader-Text unter 100 Zeichen, damit er in allen wichtigen Clients vollständig angezeigt wird. Füllen Sie den restlichen Platz mit &nbsp;&zwnj;, um zu verhindern, dass Body-Inhalt in der Vorschau erscheint.",
+    "pt": "Mantenha o texto do preheader abaixo de 100 caracteres para garantir que seja exibido completamente em todos os principais clientes. Preencha o espaço restante com &nbsp;&zwnj; para evitar que o conteúdo do corpo apareça na prévia."
+  }
+}

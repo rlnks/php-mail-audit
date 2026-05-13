@@ -1,0 +1,40 @@
+{
+  "id": "html-too-large",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://support.google.com/mail/answer/6195454",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 10,
+  "tags": ["html", "best-practice"],
+  "detection": {
+    "type": "html_metric",
+    "metric": "size",
+    "threshold": 102400
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": false, "notes": "Gmail clips HTML at 102 KB — a 'Message clipped' link appears" },
+    "gmail_mobile": { "supported": false, "notes": "Same 102 KB clip behaviour" }
+  },
+  "message": {
+    "en": "Email HTML exceeds 102 KB — Gmail will clip the message and show a 'Message clipped' link, hiding all content below the cut-off.",
+    "fr": "Le HTML de l'email dépasse 102 Ko — Gmail va tronquer le message et afficher un lien 'Message tronqué', masquant tout le contenu en dessous de la coupure.",
+    "es": "El HTML del email supera los 102 KB — Gmail truncará el mensaje y mostrará un enlace 'Mensaje recortado', ocultando todo el contenido por debajo del corte.",
+    "de": "E-Mail-HTML überschreitet 102 KB — Gmail schneidet die Nachricht ab und zeigt einen 'Nachricht gekürzt'-Link an, der den gesamten Inhalt unterhalb der Kürzung verbirgt.",
+    "pt": "O HTML do email excede 102 KB — o Gmail vai truncar a mensagem e mostrar um link 'Mensagem recortada', ocultando todo o conteúdo abaixo do corte."
+  },
+  "fix": {
+    "en": "Reduce HTML size by: removing HTML comments, shortening inline style values, reducing image count, or splitting into multiple emails.",
+    "fr": "Réduire la taille du HTML en : supprimant les commentaires HTML, raccourcissant les valeurs de style inline, réduisant le nombre d'images, ou en divisant en plusieurs emails.",
+    "es": "Reducir el tamaño del HTML: eliminando comentarios HTML, acortando valores de estilo inline, reduciendo el número de imágenes, o dividiendo en múltiples emails.",
+    "de": "HTML-Größe reduzieren durch: Entfernen von HTML-Kommentaren, Kürzen von Inline-Style-Werten, Reduzieren der Bildanzahl oder Aufteilen in mehrere E-Mails.",
+    "pt": "Reduza o tamanho do HTML: removendo comentários HTML, encurtando valores de estilo inline, reduzindo o número de imagens, ou dividindo em múltiplos emails."
+  },
+  "success_message": {
+    "en": "Email HTML is under 102 KB — no Gmail clipping risk.",
+    "fr": "Le HTML de l'email fait moins de 102 Ko — aucun risque de troncature Gmail.",
+    "es": "El HTML del email está por debajo de los 102 KB — sin riesgo de recorte de Gmail.",
+    "de": "E-Mail-HTML ist unter 102 KB — kein Gmail-Kürzungsrisiko.",
+    "pt": "O HTML do email está abaixo de 102 KB — sem risco de truncamento pelo Gmail."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "preheader-missing",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://litmus.com/blog/the-ultimate-guide-to-preview-text-support",
+  "tier": "free",
+  "severity": "info",
+  "weight": 3,
+  "tags": ["html", "best-practice"],
+  "detection": {
+    "type": "preheader",
+    "mode": "missing"
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": true, "notes": "Shows preheader in inbox preview" },
+    "outlook_web": { "supported": true, "notes": "Shows preheader in inbox preview" },
+    "apple_mail": { "supported": true, "notes": "Shows preheader in inbox preview" },
+    "outlook_desktop": { "supported": true, "notes": "Shows preheader in inbox preview" }
+  },
+  "message": {
+    "en": "No preheader text detected — the inbox preview will show the first visible text of the email, which is often an unrelated link or navigation text.",
+    "fr": "Aucun texte de préen-tête détecté — l'aperçu dans la boîte de réception affichera le premier texte visible de l'email, qui est souvent un lien ou du texte de navigation sans rapport.",
+    "es": "No se detectó texto de preencabezado — la vista previa en la bandeja de entrada mostrará el primer texto visible del email, que a menudo es un enlace o texto de navegación no relacionado.",
+    "de": "Kein Preheader-Text erkannt — die Posteingangsvorschau zeigt den ersten sichtbaren Text der E-Mail, der oft ein unzusammenhängender Link oder Navigationstext ist.",
+    "pt": "Nenhum texto de preheader detectado — a visualização na caixa de entrada mostrará o primeiro texto visível do email, que geralmente é um link ou texto de navegação não relacionado."
+  },
+  "fix": {
+    "en": "Add a hidden preheader div immediately after <body>: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Your preview text here &nbsp;&zwnj;</div>",
+    "fr": "Ajouter un div preheader caché immédiatement après <body> : <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Votre texte d'aperçu &nbsp;&zwnj;</div>",
+    "es": "Agregar un div preheader oculto inmediatamente después de <body>: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Su texto de vista previa &nbsp;&zwnj;</div>",
+    "de": "Einen versteckten Preheader-Div direkt nach <body> hinzufügen: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Ihr Vorschautext &nbsp;&zwnj;</div>",
+    "pt": "Adicionar um div preheader oculto imediatamente após <body>: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Seu texto de prévia &nbsp;&zwnj;</div>"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "empty-alt-img",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/WAI/tutorials/images/decorative/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 1,
+  "tags": ["html", "accessibility", "images"],
+  "detection": {
+    "type": "html_attribute_missing",
+    "tag": "img",
+    "attributes": ["alt"],
+    "only_empty": true
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Empty alt hides image from screen readers — verify image is truly decorative" }
+  },
+  "message": {
+    "en": "Image with empty alt=\"\" detected — this hides the image from screen readers. Verify it is truly decorative and carries no information.",
+    "fr": "Image avec alt=\"\" vide détectée — cela masque l'image aux lecteurs d'écran. Vérifiez qu'elle est vraiment décorative et ne porte aucune information.",
+    "es": "Imagen con alt=\"\" vacío detectada — esto oculta la imagen a los lectores de pantalla. Verifique que sea verdaderamente decorativa y no lleve información.",
+    "de": "Bild mit leerem alt=\"\" erkannt — dies verbirgt das Bild vor Screen-Readern. Überprüfen Sie, ob es wirklich dekorativ ist und keine Information trägt.",
+    "pt": "Imagem com alt=\"\" vazio detectada — isso oculta a imagem dos leitores de tela. Verifique se é realmente decorativa e não carrega informação."
+  },
+  "fix": {
+    "en": "If the image conveys information or is a CTA, add a descriptive alt text. Keep alt=\"\" only for purely decorative images (spacers, backgrounds).",
+    "fr": "Si l'image transmet une information ou est un CTA, ajoutez un texte alt descriptif. Gardez alt=\"\" uniquement pour les images purement décoratives (espaceurs, fonds).",
+    "es": "Si la imagen transmite información o es un CTA, agregue un texto alt descriptivo. Mantenga alt=\"\" solo para imágenes puramente decorativas (espaciadores, fondos).",
+    "de": "Wenn das Bild Informationen vermittelt oder ein CTA ist, fügen Sie einen beschreibenden Alt-Text hinzu. Behalten Sie alt=\"\" nur für rein dekorative Bilder (Abstandshalter, Hintergründe).",
+    "pt": "Se a imagem transmite informação ou é um CTA, adicione um texto alt descritivo. Mantenha alt=\"\" apenas para imagens puramente decorativas (espaçadores, fundos)."
+  }
+}

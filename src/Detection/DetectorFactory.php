@@ -12,6 +12,8 @@ class DetectorFactory
         'html_content'           => HtmlContentDetector::class,
         'style_block'            => StyleBlockDetector::class,
         'correlation'            => CorrelationDetector::class,
+        'preheader'              => PreheaderDetector::class,
+        'html_metric'            => HtmlMetricDetector::class,
     ];
 
     public static function make(string $type): DetectorInterface

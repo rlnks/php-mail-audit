@@ -1,0 +1,32 @@
+{
+  "id": "nbsp-missing",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://en.wikipedia.org/wiki/Non-breaking_space",
+  "tier": "free",
+  "severity": "info",
+  "weight": 1,
+  "tags": ["html", "typography"],
+  "detection": {
+    "type": "css_property",
+    "regex": true,
+    "patterns": ["\\d[ ]+[€$£¥%°]", "[€$£¥%°][ ]+\\d"]
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Line breaks at these positions look unprofessional on narrow screens" }
+  },
+  "message": {
+    "en": "Regular space found between a number and a currency/unit symbol — this may break across lines on narrow screens.",
+    "fr": "Un espace normal a été trouvé entre un nombre et un symbole de devise/unité — cela peut créer un saut de ligne indésirable sur les écrans étroits.",
+    "es": "Se encontró un espacio normal entre un número y un símbolo de divisa/unidad — esto puede causar un salto de línea no deseado en pantallas estrechas.",
+    "de": "Normales Leerzeichen zwischen Zahl und Währungs-/Einheitssymbol gefunden — dies kann auf schmalen Bildschirmen zu unerwünschten Zeilenumbrüchen führen.",
+    "pt": "Espaço normal encontrado entre um número e um símbolo de moeda/unidade — isso pode quebrar a linha em telas estreitas."
+  },
+  "fix": {
+    "en": "Replace the space with &nbsp; to prevent unwanted line breaks: 100&nbsp;€ or 50&nbsp;%.",
+    "fr": "Remplacer l'espace par &nbsp; pour éviter les sauts de ligne indésirables : 100&nbsp;€ ou 50&nbsp;%.",
+    "es": "Reemplazar el espacio por &nbsp; para prevenir saltos de línea no deseados: 100&nbsp;€ o 50&nbsp;%.",
+    "de": "Das Leerzeichen durch &nbsp; ersetzen, um unerwünschte Zeilenumbrüche zu vermeiden: 100&nbsp;€ oder 50&nbsp;%.",
+    "pt": "Substituir o espaço por &nbsp; para evitar quebras de linha indesejadas: 100&nbsp;€ ou 50&nbsp;%."
+  }
+}

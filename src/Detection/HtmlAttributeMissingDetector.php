@@ -29,8 +29,14 @@ class HtmlAttributeMissingDetector extends AbstractDetector
             return $locations;
         }
 
+        $onlyEmpty = $detection['only_empty'] ?? false;
+
         foreach ($m[0] as [$tagHtml, $offset]) {
-            if ($this->isMissingAttribute($tagHtml, $attributes, $value)) {
+            $fires = $onlyEmpty
+                ? $this->isPresentButEmpty($tagHtml, $attributes)
+                : $this->isMissingAttribute($tagHtml, $attributes, $value);
+
+            if ($fires) {
                 $locations[] = $this->buildLocation($html, $offset, strlen($tagHtml));
             }
         }
@@ -53,6 +59,18 @@ class HtmlAttributeMissingDetector extends AbstractDetector
             }
         }
 
+        return false;
+    }
+
+    /** Fires only when the attribute IS present but its value is empty. */
+    private function isPresentButEmpty(string $tagHtml, array $attributes): bool
+    {
+        foreach ($attributes as $attr) {
+            $pattern = '/\b' . preg_quote($attr, '/') . '\s*=\s*(?:""|\'\')/i';
+            if (preg_match($pattern, $tagHtml)) {
+                return true;
+            }
+        }
         return false;
     }
 }

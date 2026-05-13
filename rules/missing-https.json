@@ -1,0 +1,41 @@
+{
+  "id": "missing-https",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.emailonacid.com/blog/article/email-development/http-vs-https/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 6,
+  "tags": ["html", "security", "images"],
+  "detection": {
+    "type": "html_content",
+    "regex": true,
+    "patterns": ["src\\s*=\\s*[\"']http://", "href\\s*=\\s*[\"']http://"]
+  },
+  "affected_clients": {
+    "outlook_web": { "supported": false, "notes": "Blocks mixed content" },
+    "gmail_web": { "supported": false, "notes": "Blocks mixed content" },
+    "apple_mail": { "supported": false, "notes": "May block mixed content" }
+  },
+  "message": {
+    "en": "HTTP (non-HTTPS) links or image sources detected — email clients and browsers block mixed content, causing images to not load and links to show security warnings.",
+    "fr": "Des liens ou sources d'images en HTTP (non-HTTPS) ont été détectés — les clients email et navigateurs bloquent le contenu mixte, causant le non-chargement des images et des avertissements de sécurité sur les liens.",
+    "es": "Se detectaron enlaces o fuentes de imágenes en HTTP (no HTTPS) — los clientes email y navegadores bloquean el contenido mixto, causando que las imágenes no carguen y los enlaces muestren advertencias de seguridad.",
+    "de": "HTTP (nicht-HTTPS) Links oder Bildquellen erkannt — E-Mail-Clients und Browser blockieren gemischte Inhalte, was dazu führt, dass Bilder nicht geladen werden und Links Sicherheitswarnungen anzeigen.",
+    "pt": "Links ou fontes de imagens em HTTP (não HTTPS) detectados — clientes email e navegadores bloqueiam conteúdo misto, fazendo com que imagens não carreguem e links mostrem avisos de segurança."
+  },
+  "fix": {
+    "en": "Replace all http:// URLs with https:// — ensure your image hosting and landing pages support HTTPS.",
+    "fr": "Remplacer toutes les URLs http:// par https:// — s'assurer que votre hébergement d'images et vos pages de destination supportent le HTTPS.",
+    "es": "Reemplazar todas las URLs http:// por https:// — asegurarse de que su alojamiento de imágenes y páginas de destino soporten HTTPS.",
+    "de": "Alle http://-URLs durch https:// ersetzen — sicherstellen, dass Ihr Bild-Hosting und Landingpages HTTPS unterstützen.",
+    "pt": "Substituir todas as URLs http:// por https:// — garantir que seu hospedagem de imagens e páginas de destino suportam HTTPS."
+  },
+  "success_message": {
+    "en": "All links and image sources use HTTPS — no mixed content issues.",
+    "fr": "Tous les liens et sources d'images utilisent HTTPS — aucun problème de contenu mixte.",
+    "es": "Todos los enlaces y fuentes de imágenes usan HTTPS — sin problemas de contenido mixto.",
+    "de": "Alle Links und Bildquellen verwenden HTTPS — keine Mixed-Content-Probleme.",
+    "pt": "Todos os links e fontes de imagens usam HTTPS — sem problemas de conteúdo misto."
+  }
+}

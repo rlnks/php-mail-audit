@@ -1,0 +1,46 @@
+{
+  "id": "missing-lang",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/International/questions/qa-html-language-declarations",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "accessibility"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<html"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "regex": true,
+      "patterns": ["<html[^>]+lang\\s*="]
+    }
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Missing lang attribute affects screen readers and translation tools" }
+  },
+  "message": {
+    "en": "The <html> element is missing a lang attribute — screen readers and translation tools rely on it to determine the document language.",
+    "fr": "L'élément <html> n'a pas d'attribut lang — les lecteurs d'écran et outils de traduction en ont besoin pour déterminer la langue du document.",
+    "es": "El elemento <html> no tiene atributo lang — los lectores de pantalla y herramientas de traducción lo necesitan para determinar el idioma del documento.",
+    "de": "Das <html>-Element fehlt ein lang-Attribut — Bildschirmleser und Übersetzungstools benötigen es zur Spracherkennung.",
+    "pt": "O elemento <html> não tem atributo lang — leitores de tela e ferramentas de tradução precisam dele para determinar o idioma do documento."
+  },
+  "fix": {
+    "en": "Add a lang attribute to the <html> tag: <html lang=\"en\"> or <html lang=\"fr\">.",
+    "fr": "Ajoutez un attribut lang à la balise <html> : <html lang=\"fr\"> ou <html lang=\"en\">.",
+    "es": "Agregue un atributo lang al tag <html>: <html lang=\"es\"> o <html lang=\"en\">.",
+    "de": "Fügen Sie ein lang-Attribut zum <html>-Tag hinzu: <html lang=\"de\"> oder <html lang=\"en\">.",
+    "pt": "Adicione um atributo lang ao tag <html>: <html lang=\"pt\"> ou <html lang=\"en\">."
+  },
+  "success_message": {
+    "en": "The <html> element has a lang attribute — screen readers will correctly identify the document language.",
+    "fr": "L'élément <html> a un attribut lang — les lecteurs d'écran identifieront correctement la langue du document.",
+    "es": "El elemento <html> tiene atributo lang — los lectores de pantalla identificarán correctamente el idioma del documento.",
+    "de": "Das <html>-Element hat ein lang-Attribut — Bildschirmleser werden die Sprache korrekt erkennen.",
+    "pt": "O elemento <html> tem atributo lang — leitores de tela identificarão corretamente o idioma do documento."
+  }
+}

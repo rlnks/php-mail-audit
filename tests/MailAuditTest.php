@@ -129,12 +129,20 @@ class MailAuditTest extends TestCase
         );
     }
 
-    public function test_css_variables_trigger_warning(): void
+    public function test_css_variables_without_fallback_triggers_error(): void
     {
         $this->assertRuleTriggered(
             '<td style="color: var(--brand-color);">text</td>',
             'no-css-variables',
-            'warning'
+            'error'
+        );
+    }
+
+    public function test_css_variables_with_fallback_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<td style="color: var(--brand-color, #ff0000);">text</td>',
+            'no-css-variables'
         );
     }
 
@@ -400,6 +408,155 @@ class MailAuditTest extends TestCase
             '<html><head><style>@media (max-width: 600px) { td { display: block; } }</style></head><body><table><tr><td style="display: table-cell;">Hello</td></tr></table></body></html>',
             'media-no-inline-base'
         );
+    }
+
+    // --- New quality / structure rules ---
+
+    public function test_empty_alt_triggers_info(): void
+    {
+        $this->assertRuleTriggered(
+            '<img src="banner.png" alt="" width="600" height="200">',
+            'empty-alt-img',
+            'info'
+        );
+    }
+
+    public function test_descriptive_alt_does_not_trigger_empty_alt(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<img src="banner.png" alt="Product banner" width="600" height="200">',
+            'empty-alt-img'
+        );
+    }
+
+    public function test_missing_lang_triggers_on_full_document(): void
+    {
+        $this->assertRuleTriggered(
+            '<html><head><title>Test</title></head><body><p>Hello</p></body></html>',
+            'missing-lang',
+            'info'
+        );
+    }
+
+    public function test_present_lang_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<html lang="en"><head></head><body><p>Hello</p></body></html>',
+            'missing-lang'
+        );
+    }
+
+    public function test_missing_lang_silent_on_fragment(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<table><tr><td>Hello</td></tr></table>',
+            'missing-lang'
+        );
+    }
+
+    public function test_missing_viewport_triggers_on_full_document(): void
+    {
+        $this->assertRuleTriggered(
+            '<html><head><title>Test</title></head><body><p>Hello</p></body></html>',
+            'missing-viewport',
+            'info'
+        );
+    }
+
+    public function test_present_viewport_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><p>Hello</p></body></html>',
+            'missing-viewport'
+        );
+    }
+
+    public function test_http_image_triggers_warning(): void
+    {
+        $this->assertRuleTriggered(
+            '<img src="http://example.com/image.jpg" alt="Test" width="600" height="200">',
+            'missing-https',
+            'warning'
+        );
+    }
+
+    public function test_https_image_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<img src="https://example.com/image.jpg" alt="Test" width="600" height="200">',
+            'missing-https'
+        );
+    }
+
+    public function test_nbsp_missing_triggers_on_currency_space(): void
+    {
+        $this->assertRuleTriggered(
+            '<td>Price: 100 €</td>',
+            'nbsp-missing',
+            'info'
+        );
+    }
+
+    public function test_nbsp_encoded_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<td>Price: 100&nbsp;€</td>',
+            'nbsp-missing'
+        );
+    }
+
+    public function test_url_with_space_triggers_warning(): void
+    {
+        $this->assertRuleTriggered(
+            '<a href="https://example.com/my page.html">link</a>',
+            'url-unencoded',
+            'warning'
+        );
+    }
+
+    public function test_url_without_space_does_not_trigger(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<a href="https://example.com/my-page.html">link</a>',
+            'url-unencoded'
+        );
+    }
+
+    public function test_preheader_missing_triggers_on_full_document(): void
+    {
+        $this->assertRuleTriggered(
+            '<html><head></head><body><table><tr><td>Hello</td></tr></table></body></html>',
+            'preheader-missing',
+            'info'
+        );
+    }
+
+    public function test_preheader_missing_silent_on_fragment(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<table><tr><td>Hello</td></tr></table>',
+            'preheader-missing'
+        );
+    }
+
+    public function test_preheader_present_does_not_trigger_missing(): void
+    {
+        $html = '<html><body><div style="display:none;font-size:1px;max-height:0px;overflow:hidden;">Preview text &nbsp;&zwnj;</div><table><tr><td>Hello</td></tr></table></body></html>';
+        $this->assertRuleNotTriggered($html, 'preheader-missing');
+    }
+
+    public function test_preheader_too_long_triggers(): void
+    {
+        $longText = str_repeat('A', 160);
+        $html = '<html><body><div style="display:none;overflow:hidden;">' . $longText . '</div><p>Body</p></body></html>';
+        $this->assertRuleTriggered($html, 'preheader-too-long', 'info');
+    }
+
+    public function test_preheader_filling_not_counted_in_length(): void
+    {
+        $filling = str_repeat('&nbsp;&zwnj;', 100);
+        $html = '<html><body><div style="display:none;overflow:hidden;">Short preview ' . $filling . '</div><p>Body</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'preheader-too-long');
     }
 
     // --- Multiple issues compound the score ---

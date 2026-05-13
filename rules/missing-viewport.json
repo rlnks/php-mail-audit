@@ -1,0 +1,45 @@
+{
+  "id": "missing-viewport",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "responsive"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<head"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "patterns": ["name=\"viewport\"", "name='viewport'"]
+    }
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Without viewport meta, mobile clients may render at desktop width" }
+  },
+  "message": {
+    "en": "No viewport meta tag found — mobile email clients may render the email at desktop width, requiring pinch-to-zoom.",
+    "fr": "Aucune balise meta viewport trouvée — les clients email mobile pourraient afficher l'email à la largeur bureau, nécessitant un zoom.",
+    "es": "No se encontró meta etiqueta viewport — los clientes email móviles podrían renderizar el email al ancho de escritorio, requiriendo zoom.",
+    "de": "Kein Viewport-Meta-Tag gefunden — mobile E-Mail-Clients könnten die E-Mail in Desktop-Breite rendern, was Pinch-to-Zoom erfordert.",
+    "pt": "Nenhuma meta tag viewport encontrada — clientes email móveis podem renderizar o email na largura desktop, exigindo zoom."
+  },
+  "fix": {
+    "en": "Add in the <head>: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "fr": "Ajouter dans le <head> : <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "es": "Agregar en el <head>: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "de": "Im <head> hinzufügen: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "pt": "Adicionar no <head>: <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+  },
+  "success_message": {
+    "en": "Viewport meta tag present — mobile rendering is properly configured.",
+    "fr": "Balise meta viewport présente — le rendu mobile est correctement configuré.",
+    "es": "Meta etiqueta viewport presente — el renderizado móvil está correctamente configurado.",
+    "de": "Viewport-Meta-Tag vorhanden — Mobile-Rendering ist korrekt konfiguriert.",
+    "pt": "Meta tag viewport presente — renderização mobile está corretamente configurada."
+  }
+}

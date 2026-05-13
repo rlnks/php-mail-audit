@@ -1,0 +1,32 @@
+{
+  "id": "url-unencoded",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.rfc-editor.org/rfc/rfc3986",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 5,
+  "tags": ["html", "links"],
+  "detection": {
+    "type": "html_content",
+    "regex": true,
+    "patterns": ["(href|src)\\s*=\\s*\"https?://[^\"]*[ ][^\"]*\"", "(href|src)\\s*=\\s*'https?://[^']*[ ][^']*'"]
+  },
+  "affected_clients": {
+    "all": { "supported": false, "notes": "Unencoded spaces in URLs break the link in all clients" }
+  },
+  "message": {
+    "en": "Unencoded space found in a URL (href or src) — links with spaces will break in all email clients and browsers.",
+    "fr": "Un espace non encodé a été trouvé dans une URL (href ou src) — les liens avec des espaces ne fonctionneront pas dans tous les clients email et navigateurs.",
+    "es": "Se encontró un espacio no codificado en una URL (href o src) — los enlaces con espacios no funcionarán en ningún cliente email ni navegador.",
+    "de": "Nicht kodiertes Leerzeichen in einer URL (href oder src) gefunden — Links mit Leerzeichen funktionieren in keinem E-Mail-Client oder Browser.",
+    "pt": "Espaço não codificado encontrado em uma URL (href ou src) — links com espaços não funcionarão em nenhum cliente email ou navegador."
+  },
+  "fix": {
+    "en": "Replace spaces in URLs with %20: https://example.com/my%20page.html",
+    "fr": "Remplacer les espaces dans les URLs par %20 : https://example.com/ma%20page.html",
+    "es": "Reemplazar los espacios en las URLs por %20: https://example.com/mi%20pagina.html",
+    "de": "Leerzeichen in URLs durch %20 ersetzen: https://example.com/meine%20seite.html",
+    "pt": "Substituir espaços nas URLs por %20: https://example.com/minha%20pagina.html"
+  }
+}
