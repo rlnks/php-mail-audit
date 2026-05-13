@@ -251,7 +251,7 @@ Not every rule generates a passed item — only rules that define a `success_mes
 
 ```php
 [
-    'total_rules_checked' => 32,  // total rules evaluated
+    'total_rules_checked' => 45,  // total rules evaluated
     'total_issues'        => 3,   // rules that fired
     'errors'              => 1,   // severity = error
     'warnings'            => 1,   // severity = warning
@@ -264,7 +264,7 @@ Not every rule generates a passed item — only rules that define a `success_mes
 
 ## Bundled Rules
 
-36 rules ship with the package. The philosophy: **flag bad usage, not feature presence**. Media queries, hover states, and class selectors used correctly (with inline fallbacks) score well. The engine penalizes the *absence* of fallbacks, not the features themselves.
+45 rules ship with the package. The philosophy: **flag bad usage, not feature presence**. Media queries, hover states, and class selectors used correctly (with inline fallbacks) score well. The engine penalizes the *absence* of fallbacks, not the features themselves.
 
 ### Errors — break rendering in major clients
 
@@ -282,12 +282,14 @@ Not every rule generates a passed item — only rules that define a `success_mes
 | `no-object-fit` | `object-fit` not supported in any major client | 8 |
 | `no-css-filter` | CSS `filter` not supported in Outlook or Gmail | 8 |
 | `no-clip-path` | `clip-path` not supported in any major client | 8 |
+| `no-css-variables` | CSS `var()` used **without a fallback value** — Outlook and Gmail silently ignore the property entirely | 7 |
 
 ### Warnings — real problems when fallbacks are missing
 
 | Rule ID | Description | Weight |
 |---|---|---|
 | `style-no-inline-fallback` | `<style>` block present but **zero** inline styles — layout breaks entirely when Gmail/Outlook strip the style block | 12 |
+| `html-too-large` | HTML exceeds 102 KB — Gmail clips the message and shows a "Message clipped" link | 10 |
 | `media-no-inline-base` | `@media` queries present but no inline style baseline — responsive layout has no fallback for Gmail/Outlook | 10 |
 | `img-dimensions` | `<img>` without `width`/`height` — layout breaks when images are blocked | 8 |
 | `no-float` | `float` breaks column layouts in Outlook 2007–2019 | 8 |
@@ -295,9 +297,10 @@ Not every rule generates a passed item — only rules that define a `success_mes
 | `no-picture` | `<picture>` / `srcset` not supported in Outlook or Gmail | 8 |
 | `missing-alt-img` | `<img>` without `alt` shows broken icons when images blocked | 7 |
 | `no-css-calc` | `calc()` not supported in Outlook 2007–2019 or Gmail | 7 |
-| `no-css-variables` | CSS `var(--x)` not supported in Outlook or Gmail | 7 |
+| `missing-https` | HTTP (non-HTTPS) `src`/`href` detected — email clients block mixed content, breaking images and links | 6 |
 | `no-div-layout` | `<div>` with layout CSS (`width`, `float`, `margin`, etc.) — box model ignored by Outlook | 6 |
 | `no-animation` | CSS `animation` / `@keyframes` ignored by Outlook and Gmail | 6 |
+| `url-unencoded` | Unencoded space in a URL (`href` or `src`) — breaks the link in all clients | 5 |
 | `css-at-import` | `@import` in `<style>` silently ignored by Gmail/Outlook | 5 |
 | `no-transform` | CSS `transform` not supported in Outlook or Gmail | 5 |
 
@@ -312,12 +315,18 @@ Rules in this category flag the **presence** of a feature that is often used cor
 | `no-box-shadow` | `box-shadow` not supported in Outlook | 3 |
 | `no-transition` | CSS `transition` not supported in Outlook or Gmail | 3 |
 | `table-role-presentation` | Layout tables without `role="presentation"` confuse screen readers | 3 |
+| `preheader-missing` | No preheader div found — inbox preview will show unrelated body text | 3 |
 | `inline-css` | `<style>` block present — acceptable when inline fallback styles are defined | 2 |
 | `css-class-selectors` | Class-based CSS in `<style>` — Gmail strips `class` attributes | 2 |
 | `css-media-queries` | `@media` queries detected — great when paired with inline styles | 2 |
 | `no-external-fonts` | External font loaded — supported in Apple Mail, not Gmail/Outlook | 2 |
+| `missing-lang` | `<html>` without `lang` attribute — screen readers and translation tools rely on it | 2 |
+| `missing-viewport` | No `<meta name="viewport">` — mobile clients may render at desktop width | 2 |
+| `preheader-too-long` | Preheader text exceeds 150 characters (filler excluded) — most clients truncate at 85–150 chars | 2 |
 | `css-pseudo-selectors` | `:hover`, `:focus` etc. detected — ignored in Outlook/Gmail, use as enhancement only | 1 |
 | `div-content` | `<div>` used as content wrapper — acceptable, but `<td>` preferred for compatibility | 1 |
+| `empty-alt-img` | `<img alt="">` detected — verify image is truly decorative and carries no information | 1 |
+| `nbsp-missing` | Regular space between a number and a currency/unit symbol — may break across lines on narrow screens | 1 |
 
 ---
 
@@ -382,6 +391,17 @@ With value check:
 }
 ```
 
+With `"only_empty": true` — fires when the attribute is present but empty (`alt=""`). Useful for distinguishing missing alt text from intentionally empty alt text:
+
+```json
+{
+  "type": "html_attribute_missing",
+  "tag": "img",
+  "attributes": ["alt"],
+  "only_empty": true
+}
+```
+
 ### `html_content`
 
 Matches arbitrary string patterns anywhere in the raw HTML string.
@@ -390,6 +410,16 @@ Matches arbitrary string patterns anywhere in the raw HTML string.
 {
   "type": "html_content",
   "patterns": ["fonts.googleapis.com", "@import url"]
+}
+```
+
+Supports `"regex": true` for patterns requiring precision. The `~` character is used as the regex delimiter internally — escape it as `\\~` if needed in a pattern:
+
+```json
+{
+  "type": "html_content",
+  "regex": true,
+  "patterns": ["src\\s*=\\s*[\"']http://", "href\\s*=\\s*[\"']http://"]
 }
 ```
 
@@ -456,6 +486,44 @@ With regex:
   "type": "style_block",
   "regex": true,
   "patterns": ["\\.([a-zA-Z_-][\\w-]*)\\s*[{,:\\[]"]
+}
+```
+
+### `preheader`
+
+Detects the standard email preheader pattern — a `<div>` with both `display:none` and `overflow:hidden` in its inline `style`. Two modes:
+
+- **`missing`** — fires when no preheader div is found in a complete document (one that contains a `<body>` tag). Fragments are skipped.
+- **`too_long`** — fires when the visible preheader text exceeds `max_length` characters. Filler characters (`&nbsp;`, `&zwnj;`, and their Unicode equivalents) are stripped before measuring, so filling with spacers does not inflate the count.
+
+```json
+{
+  "type": "preheader",
+  "mode": "missing"
+}
+```
+
+```json
+{
+  "type": "preheader",
+  "mode": "too_long",
+  "max_length": 150
+}
+```
+
+### `html_metric`
+
+Measures a numeric property of the HTML and fires when it exceeds a threshold. Currently supported metrics:
+
+| Metric | Description |
+|---|---|
+| `size` | Total byte length of the HTML string (`strlen`) |
+
+```json
+{
+  "type": "html_metric",
+  "metric": "size",
+  "threshold": 102400
 }
 ```
 
