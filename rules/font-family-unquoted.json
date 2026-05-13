@@ -1,0 +1,37 @@
+{
+  "id": "font-family-unquoted",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/TR/CSS2/fonts.html#font-family-prop",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["css", "fonts", "best-practice"],
+  "detection": {
+    "type": "css_font_family"
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Most parsers are lenient, but strict clients may fail to recognize unquoted multi-word font names" }
+  },
+  "message": {
+    "en": "Multi-word font name used without quotes in font-family — CSS requires quotes around names that contain spaces (e.g. 'Open Sans', not Open Sans).",
+    "fr": "Nom de police multi-mots utilisé sans guillemets dans font-family — CSS exige des guillemets autour des noms qui contiennent des espaces (ex. 'Open Sans', pas Open Sans).",
+    "es": "Nombre de fuente de varias palabras usado sin comillas en font-family — CSS requiere comillas alrededor de nombres que contienen espacios (ej. 'Open Sans', no Open Sans).",
+    "de": "Mehrteiliger Schriftname ohne Anführungszeichen in font-family verwendet — CSS erfordert Anführungszeichen um Namen mit Leerzeichen (z.B. 'Open Sans', nicht Open Sans).",
+    "pt": "Nome de fonte com várias palavras usado sem aspas em font-family — CSS exige aspas em torno de nomes que contêm espaços (ex. 'Open Sans', não Open Sans)."
+  },
+  "fix": {
+    "en": "Wrap multi-word font names in single quotes: font-family: 'Open Sans', Arial, sans-serif.",
+    "fr": "Encadrez les noms de polices multi-mots avec des guillemets simples : font-family: 'Open Sans', Arial, sans-serif.",
+    "es": "Envuelva los nombres de fuentes de varias palabras entre comillas simples: font-family: 'Open Sans', Arial, sans-serif.",
+    "de": "Mehrteilige Schriftnamen in einfache Anführungszeichen einschließen: font-family: 'Open Sans', Arial, sans-serif.",
+    "pt": "Envolva nomes de fontes com várias palavras em aspas simples: font-family: 'Open Sans', Arial, sans-serif."
+  },
+  "success_message": {
+    "en": "All multi-word font names in font-family are properly quoted.",
+    "fr": "Tous les noms de polices multi-mots dans font-family sont correctement entre guillemets.",
+    "es": "Todos los nombres de fuentes de varias palabras en font-family están correctamente entre comillas.",
+    "de": "Alle mehrteiligen Schriftnamen in font-family sind korrekt in Anführungszeichen.",
+    "pt": "Todos os nomes de fontes com várias palavras em font-family estão corretamente entre aspas."
+  }
+}

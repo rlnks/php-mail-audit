@@ -656,6 +656,75 @@ class MailAuditTest extends TestCase
         $this->assertRuleTriggered($html, 'link-no-text', 'warning');
     }
 
+    // --- tracking-pixel ---
+
+    public function test_tracking_pixel_triggers_info(): void
+    {
+        $html = '<img src="https://track.example.com/open.gif" width="1" height="1" alt="">';
+        $this->assertRuleTriggered($html, 'tracking-pixel', 'info');
+    }
+
+    public function test_tracking_pixel_with_style_triggers_info(): void
+    {
+        $html = '<img src="https://track.example.com/open.gif" alt="" style="width:1px;height:1px;">';
+        $this->assertRuleTriggered($html, 'tracking-pixel', 'info');
+    }
+
+    public function test_regular_image_does_not_trigger_tracking_pixel(): void
+    {
+        $html = '<img src="https://example.com/banner.jpg" width="600" height="200" alt="Banner">';
+        $this->assertRuleNotTriggered($html, 'tracking-pixel');
+    }
+
+    public function test_tracking_pixel_has_zero_weight_no_score_impact(): void
+    {
+        $html = '<table role="presentation"><tr><td style="color:red;">Hello</td></tr></table>'
+            . '<img src="https://track.example.com/open.gif" width="1" height="1" alt="">';
+        $result = $this->audit->analyze($html);
+
+        $this->assertSame(100, $result['score'], 'Tracking pixel with weight=0 should not reduce score');
+        $ids = array_column($result['insights'], 'id');
+        $this->assertContains('tracking-pixel', $ids, 'Tracking pixel should still appear in insights');
+    }
+
+    // --- font-family-unquoted ---
+
+    public function test_unquoted_multiword_font_triggers_info(): void
+    {
+        $html = '<p style="font-family: Open Sans, Arial, sans-serif;">Hello</p>';
+        $this->assertRuleTriggered($html, 'font-family-unquoted', 'info');
+    }
+
+    public function test_unquoted_multiword_font_in_style_block_triggers_info(): void
+    {
+        $html = '<style>p { font-family: Times New Roman, serif; }</style><p style="font-family: Times New Roman, serif;">Hello</p>';
+        $this->assertRuleTriggered($html, 'font-family-unquoted', 'info');
+    }
+
+    public function test_quoted_multiword_font_does_not_trigger(): void
+    {
+        $html = '<p style="font-family: \'Open Sans\', Arial, sans-serif;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'font-family-unquoted');
+    }
+
+    public function test_double_quoted_multiword_font_does_not_trigger(): void
+    {
+        $html = '<p style="font-family: &quot;Open Sans&quot;, Arial, sans-serif;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'font-family-unquoted');
+    }
+
+    public function test_single_word_fonts_do_not_trigger(): void
+    {
+        $html = '<p style="font-family: Arial, Helvetica, sans-serif;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'font-family-unquoted');
+    }
+
+    public function test_generic_families_do_not_trigger(): void
+    {
+        $html = '<p style="font-family: serif;">Hello</p>';
+        $this->assertRuleNotTriggered($html, 'font-family-unquoted');
+    }
+
     // --- text-image-ratio ---
 
     public function test_image_heavy_email_triggers_ratio_warning(): void
