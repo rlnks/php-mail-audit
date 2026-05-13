@@ -16,7 +16,7 @@ class MailAuditTest extends TestCase
 
     public function test_clean_email_scores_100(): void
     {
-        $html = '<table role="presentation"><tr><td style="color:red;">Hello</td></tr></table>';
+        $html = '<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="color:red;">Hello</td></tr></table>';
 
         $result = $this->audit->analyze($html);
 
@@ -678,7 +678,7 @@ class MailAuditTest extends TestCase
 
     public function test_tracking_pixel_has_zero_weight_no_score_impact(): void
     {
-        $html = '<table role="presentation"><tr><td style="color:red;">Hello</td></tr></table>'
+        $html = '<table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="color:red;">Hello</td></tr></table>'
             . '<img src="https://track.example.com/open.gif" width="1" height="1" alt="">';
         $result = $this->audit->analyze($html);
 
@@ -723,6 +723,118 @@ class MailAuditTest extends TestCase
     {
         $html = '<p style="font-family: serif;">Hello</p>';
         $this->assertRuleNotTriggered($html, 'font-family-unquoted');
+    }
+
+    // --- missing-charset ---
+
+    public function test_missing_charset_triggers_on_head_without_meta(): void
+    {
+        $html = '<html><head><title>Email</title></head><body><p>Hello</p></body></html>';
+        $this->assertRuleTriggered($html, 'missing-charset', 'info');
+    }
+
+    public function test_missing_charset_does_not_fire_on_fragment(): void
+    {
+        $html = '<table><tr><td>Hello</td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'missing-charset');
+    }
+
+    public function test_charset_declared_does_not_trigger(): void
+    {
+        $html = '<html><head><meta charset="UTF-8"></head><body><p>Hello</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'missing-charset');
+    }
+
+    // --- missing-doctype ---
+
+    public function test_missing_doctype_triggers_on_html_without_declaration(): void
+    {
+        $html = '<html lang="en"><head></head><body><p>Hello</p></body></html>';
+        $this->assertRuleTriggered($html, 'missing-doctype', 'info');
+    }
+
+    public function test_missing_doctype_does_not_fire_on_fragment(): void
+    {
+        $html = '<p>Hello world</p>';
+        $this->assertRuleNotTriggered($html, 'missing-doctype');
+    }
+
+    public function test_doctype_present_does_not_trigger(): void
+    {
+        $html = '<!DOCTYPE html><html lang="en"><head></head><body><p>Hello</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'missing-doctype');
+    }
+
+    // --- table-cellspacing ---
+
+    public function test_table_without_cellpadding_triggers(): void
+    {
+        $html = '<table width="600"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleTriggered($html, 'table-cellspacing', 'info');
+    }
+
+    public function test_table_with_cellpadding_cellspacing_zero_does_not_trigger(): void
+    {
+        $html = '<table width="600" cellpadding="0" cellspacing="0"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'table-cellspacing');
+    }
+
+    public function test_table_with_nonzero_cellpadding_triggers(): void
+    {
+        $html = '<table cellpadding="10" cellspacing="0"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleTriggered($html, 'table-cellspacing', 'info');
+    }
+
+    // --- email-max-width ---
+
+    public function test_table_wider_than_600_triggers_warning(): void
+    {
+        $html = '<table width="700"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleTriggered($html, 'email-max-width', 'warning');
+    }
+
+    public function test_table_exactly_600_does_not_trigger(): void
+    {
+        $html = '<table width="600"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'email-max-width');
+    }
+
+    public function test_full_width_wrapper_does_not_trigger(): void
+    {
+        $html = '<table width="100%"><tr><td><table width="600"><tr><td>Hello</td></tr></table></td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'email-max-width');
+    }
+
+    public function test_table_with_style_width_over_600_triggers(): void
+    {
+        $html = '<table style="width:800px;"><tr><td>Hello</td></tr></table>';
+        $this->assertRuleTriggered($html, 'email-max-width', 'warning');
+    }
+
+    // --- missing-body-bgcolor ---
+
+    public function test_body_without_bgcolor_triggers_info(): void
+    {
+        $html = '<html><body><p>Hello</p></body></html>';
+        $this->assertRuleTriggered($html, 'missing-body-bgcolor', 'info');
+    }
+
+    public function test_body_with_bgcolor_does_not_trigger(): void
+    {
+        $html = '<html><body bgcolor="#ffffff"><p>Hello</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'missing-body-bgcolor');
+    }
+
+    public function test_body_with_inline_background_color_does_not_trigger(): void
+    {
+        $html = '<html><body style="background-color:#ffffff;"><p>Hello</p></body></html>';
+        $this->assertRuleNotTriggered($html, 'missing-body-bgcolor');
+    }
+
+    public function test_body_bgcolor_does_not_fire_on_fragment(): void
+    {
+        $html = '<table><tr><td>Hello</td></tr></table>';
+        $this->assertRuleNotTriggered($html, 'missing-body-bgcolor');
     }
 
     // --- text-image-ratio ---

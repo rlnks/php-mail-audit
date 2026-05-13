@@ -1,0 +1,46 @@
+{
+  "id": "missing-charset",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.w3.org/International/questions/qa-html-encoding-declarations",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "structure", "encoding"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<head"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "regex": true,
+      "patterns": ["<meta[^>]+charset", "<meta[^>]+Content-Type"]
+    }
+  },
+  "affected_clients": {
+    "all": { "supported": "partial", "notes": "Without charset declaration, special characters may render as garbled text in some clients" }
+  },
+  "message": {
+    "en": "No character encoding declaration found in <head> — without it, special characters (accents, symbols) may render incorrectly in some email clients.",
+    "fr": "Aucune déclaration d'encodage de caractères trouvée dans <head> — sans elle, les caractères spéciaux (accents, symboles) peuvent s'afficher incorrectement dans certains clients email.",
+    "es": "No se encontró declaración de codificación de caracteres en <head> — sin ella, los caracteres especiales (acentos, símbolos) pueden renderizarse incorrectamente en algunos clientes email.",
+    "de": "Keine Zeichenkodierungsdeklaration in <head> gefunden — ohne sie können Sonderzeichen (Akzente, Symbole) in manchen E-Mail-Clients falsch dargestellt werden.",
+    "pt": "Nenhuma declaração de codificação de caracteres encontrada em <head> — sem ela, caracteres especiais (acentos, símbolos) podem ser renderizados incorretamente em alguns clientes email."
+  },
+  "fix": {
+    "en": "Add <meta charset=\"UTF-8\"> as the first element inside <head>.",
+    "fr": "Ajoutez <meta charset=\"UTF-8\"> comme premier élément dans <head>.",
+    "es": "Agregue <meta charset=\"UTF-8\"> como primer elemento dentro de <head>.",
+    "de": "Fügen Sie <meta charset=\"UTF-8\"> als erstes Element in <head> hinzu.",
+    "pt": "Adicione <meta charset=\"UTF-8\"> como primeiro elemento dentro de <head>."
+  },
+  "success_message": {
+    "en": "Character encoding declared — special characters will render correctly.",
+    "fr": "Encodage de caractères déclaré — les caractères spéciaux s'afficheront correctement.",
+    "es": "Codificación de caracteres declarada — los caracteres especiales se renderizarán correctamente.",
+    "de": "Zeichenkodierung deklariert — Sonderzeichen werden korrekt dargestellt.",
+    "pt": "Codificação de caracteres declarada — caracteres especiais serão renderizados corretamente."
+  }
+}

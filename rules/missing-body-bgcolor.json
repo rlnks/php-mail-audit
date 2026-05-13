@@ -1,0 +1,47 @@
+{
+  "id": "missing-body-bgcolor",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.caniemail.com/features/html-bgcolor/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 1,
+  "tags": ["html", "structure", "dark-mode"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<body"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "regex": true,
+      "patterns": ["<body[^>]+bgcolor\\s*=", "<body[^>]+background-color\\s*:"]
+    }
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": true, "notes": "Outlook may show a white or grey background behind the email if body bgcolor is not set" },
+    "all": { "supported": "partial", "notes": "Without an explicit body background color, clients may show their own default which can conflict in dark mode" }
+  },
+  "message": {
+    "en": "No background color set on <body> — some clients will show their own default background (often white or grey) which may conflict with your email design, especially in dark mode.",
+    "fr": "Aucune couleur d'arrière-plan définie sur <body> — certains clients afficheront leur propre fond par défaut (souvent blanc ou gris) qui peut entrer en conflit avec votre design email, notamment en mode sombre.",
+    "es": "No hay color de fondo definido en <body> — algunos clientes mostrarán su propio fondo predeterminado (a menudo blanco o gris) que puede entrar en conflicto con su diseño email, especialmente en modo oscuro.",
+    "de": "Keine Hintergrundfarbe für <body> gesetzt — manche Clients zeigen ihren eigenen Standardhintergrund (oft weiß oder grau), der mit Ihrem E-Mail-Design kollidieren kann, besonders im Dunkelmodus.",
+    "pt": "Nenhuma cor de fundo definida em <body> — alguns clientes mostrarão seu próprio fundo padrão (geralmente branco ou cinza) que pode conflitar com seu design email, especialmente no modo escuro."
+  },
+  "fix": {
+    "en": "Add a bgcolor attribute to <body>: <body bgcolor=\"#ffffff\">. Also set it via CSS: <body style=\"background-color:#ffffff;\"> for broader support.",
+    "fr": "Ajoutez un attribut bgcolor à <body> : <body bgcolor=\"#ffffff\">. Définissez-le également via CSS : <body style=\"background-color:#ffffff;\"> pour une meilleure compatibilité.",
+    "es": "Agregue un atributo bgcolor a <body>: <body bgcolor=\"#ffffff\">. También configúrelo via CSS: <body style=\"background-color:#ffffff;\"> para mayor compatibilidad.",
+    "de": "Fügen Sie ein bgcolor-Attribut zu <body> hinzu: <body bgcolor=\"#ffffff\">. Setzen Sie es auch per CSS: <body style=\"background-color:#ffffff;\"> für breitere Unterstützung.",
+    "pt": "Adicione um atributo bgcolor ao <body>: <body bgcolor=\"#ffffff\">. Também defina via CSS: <body style=\"background-color:#ffffff;\"> para maior suporte."
+  },
+  "success_message": {
+    "en": "Background color set on <body> — consistent background across all clients.",
+    "fr": "Couleur d'arrière-plan définie sur <body> — arrière-plan cohérent sur tous les clients.",
+    "es": "Color de fondo definido en <body> — fondo consistente en todos los clientes.",
+    "de": "Hintergrundfarbe für <body> gesetzt — konsistenter Hintergrund in allen Clients.",
+    "pt": "Cor de fundo definida em <body> — fundo consistente em todos os clientes."
+  }
+}

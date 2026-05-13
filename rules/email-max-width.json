@@ -1,0 +1,40 @@
+{
+  "id": "email-max-width",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.litmus.com/blog/email-design-reference/",
+  "tier": "free",
+  "severity": "warning",
+  "weight": 5,
+  "tags": ["html", "layout", "responsive"],
+  "detection": {
+    "type": "table_max_width",
+    "max_width": 600
+  },
+  "affected_clients": {
+    "gmail_web": { "supported": false, "notes": "Emails wider than ~600px cause horizontal scrolling on most desktop clients" },
+    "outlook_desktop": { "supported": false, "notes": "Outlook desktop window is often narrower than 800px" },
+    "all": { "supported": "partial", "notes": "600px is the safe maximum for universal compatibility" }
+  },
+  "message": {
+    "en": "Table with fixed width exceeding 600px detected — emails wider than 600px cause horizontal scrolling on most desktop clients and don't adapt well to mobile.",
+    "fr": "Table avec une largeur fixe dépassant 600px détectée — les emails plus larges que 600px causent un défilement horizontal sur la plupart des clients desktop et ne s'adaptent pas bien au mobile.",
+    "es": "Tabla con ancho fijo superior a 600px detectada — los emails más anchos que 600px causan desplazamiento horizontal en la mayoría de clientes desktop y no se adaptan bien al móvil.",
+    "de": "Tabelle mit fester Breite über 600px erkannt — E-Mails breiter als 600px verursachen horizontales Scrollen in den meisten Desktop-Clients und passen sich nicht gut an Mobile an.",
+    "pt": "Tabela com largura fixa superior a 600px detectada — emails mais largos que 600px causam rolagem horizontal na maioria dos clientes desktop e não se adaptam bem ao mobile."
+  },
+  "fix": {
+    "en": "Set your content table to a maximum of 600px wide. Use width=\"100%\" on an outer wrapper table to apply background colors or styles, with the 600px content table nested inside.",
+    "fr": "Définissez votre table de contenu à un maximum de 600px de large. Utilisez width=\"100%\" sur une table enveloppante externe pour appliquer des couleurs ou styles de fond, avec la table de contenu 600px imbriquée à l'intérieur.",
+    "es": "Configure su tabla de contenido a un máximo de 600px de ancho. Use width=\"100%\" en una tabla envolvente externa para aplicar colores o estilos de fondo, con la tabla de contenido de 600px anidada dentro.",
+    "de": "Setzen Sie Ihre Inhaltstabelle auf maximal 600px Breite. Verwenden Sie width=\"100%\" auf einer äußeren Wrapper-Tabelle für Hintergrundfarben oder -stile, mit der 600px Inhaltstabelle darin.",
+    "pt": "Defina sua tabela de conteúdo com no máximo 600px de largura. Use width=\"100%\" em uma tabela wrapper externa para aplicar cores ou estilos de fundo, com a tabela de conteúdo de 600px aninhada dentro."
+  },
+  "success_message": {
+    "en": "All tables are within the 600px maximum width — no horizontal scrolling risk.",
+    "fr": "Toutes les tables sont dans la largeur maximale de 600px — aucun risque de défilement horizontal.",
+    "es": "Todas las tablas están dentro del ancho máximo de 600px — sin riesgo de desplazamiento horizontal.",
+    "de": "Alle Tabellen liegen innerhalb der maximalen Breite von 600px — kein Risiko für horizontales Scrollen.",
+    "pt": "Todas as tabelas estão dentro da largura máxima de 600px — sem risco de rolagem horizontal."
+  }
+}

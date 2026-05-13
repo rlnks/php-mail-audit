@@ -1,0 +1,33 @@
+{
+  "id": "table-cellspacing",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.campaignmonitor.com/css/table-properties/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "layout", "tables"],
+  "detection": {
+    "type": "html_attribute_missing",
+    "tag": "table",
+    "attributes": ["cellpadding", "cellspacing"],
+    "attribute_value": "0"
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "notes": "Outlook adds default cell spacing — explicit cellpadding=0 cellspacing=0 is needed for pixel-perfect layout" }
+  },
+  "message": {
+    "en": "<table> found without cellpadding=\"0\" cellspacing=\"0\" — Outlook adds default cell spacing that can break pixel-perfect layouts.",
+    "fr": "<table> trouvé sans cellpadding=\"0\" cellspacing=\"0\" — Outlook ajoute un espacement de cellule par défaut qui peut casser les mises en page précises.",
+    "es": "<table> encontrado sin cellpadding=\"0\" cellspacing=\"0\" — Outlook agrega espaciado de celda predeterminado que puede romper layouts pixel-perfect.",
+    "de": "<table> ohne cellpadding=\"0\" cellspacing=\"0\" gefunden — Outlook fügt Standard-Zellenabstand hinzu, der pixelgenaue Layouts zerstören kann.",
+    "pt": "<table> encontrado sem cellpadding=\"0\" cellspacing=\"0\" — Outlook adiciona espaçamento de célula padrão que pode quebrar layouts pixel-perfect."
+  },
+  "fix": {
+    "en": "Add cellpadding=\"0\" cellspacing=\"0\" to all layout tables. Control spacing with CSS padding on <td> instead.",
+    "fr": "Ajoutez cellpadding=\"0\" cellspacing=\"0\" à toutes les tables de mise en page. Contrôlez l'espacement avec CSS padding sur <td> à la place.",
+    "es": "Agregue cellpadding=\"0\" cellspacing=\"0\" a todas las tablas de layout. Controle el espaciado con CSS padding en <td> en su lugar.",
+    "de": "Fügen Sie cellpadding=\"0\" cellspacing=\"0\" zu allen Layout-Tabellen hinzu. Steuern Sie den Abstand stattdessen mit CSS-Padding auf <td>.",
+    "pt": "Adicione cellpadding=\"0\" cellspacing=\"0\" a todas as tabelas de layout. Controle o espaçamento com CSS padding em <td>."
+  }
+}

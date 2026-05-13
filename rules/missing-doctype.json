@@ -1,0 +1,47 @@
+{
+  "id": "missing-doctype",
+  "version": "1.0",
+  "updated_at": "2026-05-13",
+  "source": "https://www.caniemail.com/features/html-doctype/",
+  "tier": "free",
+  "severity": "info",
+  "weight": 2,
+  "tags": ["html", "structure"],
+  "detection": {
+    "type": "correlation",
+    "trigger": {
+      "type": "html_content",
+      "patterns": ["<html"]
+    },
+    "fallback": {
+      "type": "html_content",
+      "regex": true,
+      "patterns": ["<!DOCTYPE\\s+html"]
+    }
+  },
+  "affected_clients": {
+    "outlook_desktop": { "supported": false, "notes": "Missing DOCTYPE can trigger quirks mode rendering in some Outlook versions" },
+    "all": { "supported": "partial", "notes": "DOCTYPE sets the rendering mode — its absence may cause unexpected layout differences" }
+  },
+  "message": {
+    "en": "No <!DOCTYPE html> declaration found — without it, some email clients may render in quirks mode, causing unpredictable layout differences.",
+    "fr": "Aucune déclaration <!DOCTYPE html> trouvée — sans elle, certains clients email peuvent utiliser le mode quirks, entraînant des différences de mise en page imprévisibles.",
+    "es": "No se encontró declaración <!DOCTYPE html> — sin ella, algunos clientes email pueden renderizar en modo quirks, causando diferencias de diseño impredecibles.",
+    "de": "Keine <!DOCTYPE html>-Deklaration gefunden — ohne sie könnten manche E-Mail-Clients im Quirks-Modus rendern, was zu unvorhersehbaren Layout-Unterschieden führt.",
+    "pt": "Nenhuma declaração <!DOCTYPE html> encontrada — sem ela, alguns clientes email podem renderizar em modo quirks, causando diferenças de layout imprevisíveis."
+  },
+  "fix": {
+    "en": "Add <!DOCTYPE html> as the very first line of your email HTML, before the <html> tag.",
+    "fr": "Ajoutez <!DOCTYPE html> comme toute première ligne de votre HTML email, avant la balise <html>.",
+    "es": "Agregue <!DOCTYPE html> como la primera línea de su HTML email, antes de la etiqueta <html>.",
+    "de": "Fügen Sie <!DOCTYPE html> als erste Zeile Ihres E-Mail-HTML ein, vor dem <html>-Tag.",
+    "pt": "Adicione <!DOCTYPE html> como a primeira linha do seu HTML email, antes da tag <html>."
+  },
+  "success_message": {
+    "en": "DOCTYPE declaration present — rendering mode is explicitly set.",
+    "fr": "Déclaration DOCTYPE présente — le mode de rendu est explicitement défini.",
+    "es": "Declaración DOCTYPE presente — el modo de renderizado está explícitamente definido.",
+    "de": "DOCTYPE-Deklaration vorhanden — der Rendering-Modus ist explizit gesetzt.",
+    "pt": "Declaração DOCTYPE presente — o modo de renderização está explicitamente definido."
+  }
+}

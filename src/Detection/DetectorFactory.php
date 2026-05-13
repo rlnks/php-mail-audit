@@ -18,6 +18,7 @@ class DetectorFactory
         'link_no_text'           => HtmlLinkNoTextDetector::class,
         'tracking_pixel'         => HtmlTrackingPixelDetector::class,
         'css_font_family'        => CssFontFamilyDetector::class,
+        'table_max_width'        => HtmlTableWidthDetector::class,
     ];
 
     public static function make(string $type): DetectorInterface
