@@ -2,6 +2,7 @@
 <?php
 
 use MailAudit\Loader\RuleLoader;
+use MailAudit\MailAudit;
 
 $autoloads = [
     __DIR__ . '/../vendor/autoload.php',
@@ -62,13 +63,75 @@ if ($command === 'sync') {
     exit(0);
 }
 
+if ($command === 'audit') {
+    $file   = $argv[2] ?? null;
+    $locale = 'en';
+    $format = 'text';
+
+    foreach ($argv as $arg) {
+        if (str_starts_with($arg, '--locale=')) {
+            $locale = substr($arg, 9);
+        } elseif ($arg === '--format=json') {
+            $format = 'json';
+        }
+    }
+
+    if (!$file) {
+        fwrite(STDERR, "Error: no file specified.\nUsage: mailaudit audit path/to/email.html\n");
+        exit(1);
+    }
+    if (!file_exists($file)) {
+        fwrite(STDERR, "Error: file not found: {$file}\n");
+        exit(1);
+    }
+
+    $result = (new MailAudit([], $locale))->analyze((string) file_get_contents($file));
+
+    if ($format === 'json') {
+        echo json_encode($result, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
+        exit(0);
+    }
+
+    $sep = str_repeat('─', 44);
+
+    echo "SCORE: {$result['score']}/100 — " . basename($file) . "\n";
+    echo "{$sep}\n";
+
+    foreach ($result['insights'] as $insight) {
+        $label = match($insight['severity']) {
+            'error'   => '[ERROR  ]',
+            'warning' => '[WARN   ]',
+            default   => '[INFO   ]',
+        };
+        $id  = str_pad($insight['id'], 24);
+        $msg = is_array($insight['message']) ? ($insight['message'][$locale] ?? reset($insight['message'])) : $insight['message'];
+        if (mb_strlen($msg) > 50) {
+            $msg = mb_substr($msg, 0, 47) . '...';
+        }
+        echo "{$label} {$id} {$msg}\n";
+    }
+
+    if (!empty($result['passed'])) {
+        echo "{$sep}\n";
+        $checks = array_map(fn($p) => "✓ {$p['id']}", $result['passed']);
+        echo implode('   ', $checks) . "\n";
+    }
+
+    exit(0);
+}
+
 echo <<<HELP
 MailAudit CLI
 
 Usage:
-  mailaudit sync [options]    Fetch and cache the remote rule KB
+  mailaudit audit <file> [options]   Analyze an email HTML file
+  mailaudit sync [options]           Fetch and cache the remote rule KB
 
-Options:
+Audit options:
+  --locale=<code>   Output locale: en (default), fr, es, de, pt
+  --format=json     Output full JSON result instead of formatted summary
+
+Sync options:
   --config=<path>   Path to a PHP config file returning an array
   --dry-run         Fetch but do not write the cache
 
