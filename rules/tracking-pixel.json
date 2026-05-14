@@ -6,13 +6,23 @@
   "tier": "free",
   "severity": "info",
   "weight": 0,
-  "tags": ["html", "tracking", "images"],
+  "tags": [
+    "html",
+    "tracking",
+    "images"
+  ],
   "detection": {
     "type": "tracking_pixel"
   },
   "affected_clients": {
-    "apple_mail": { "supported": false, "notes": "Apple Mail Privacy Protection (MPP) pre-loads all images including tracking pixels, making open rates unreliable" },
-    "gmail_web": { "supported": "partial", "notes": "Gmail proxies images — open tracking works but the IP and device info is from Google's proxy" }
+    "apple_mail": {
+      "supported": false,
+      "notes": "Apple Mail Privacy Protection (MPP) pre-loads all images including tracking pixels, making open rates unreliable"
+    },
+    "gmail_web": {
+      "supported": "partial",
+      "notes": "Gmail proxies images — open tracking works but the IP and device info is from Google's proxy"
+    }
   },
   "message": {
     "en": "Tracking pixel(s) detected (1×1 image) — note that Apple Mail Privacy Protection pre-loads all images, making open-rate tracking unreliable in Apple Mail.",
@@ -27,5 +37,12 @@
     "es": "No se requiere acción si los píxeles de seguimiento son intencionales. Asegúrese de que usen HTTPS, tengan alt=\"\" y estén alojados en un dominio confiable. Para el seguimiento de aperturas de Apple Mail, considere alternativas del lado del servidor.",
     "de": "Keine Maßnahme erforderlich, wenn Tracking-Pixel beabsichtigt sind. Stellen Sie sicher, dass sie HTTPS verwenden, alt=\"\" haben und auf einer zuverlässigen Domain gehostet werden. Für Apple Mail Open-Tracking sollten Sie serverseitige Alternativen in Betracht ziehen.",
     "pt": "Nenhuma ação necessária se os pixels de rastreamento são intencionais. Certifique-se de que usam HTTPS, têm alt=\"\" e estão hospedados em um domínio confiável. Para rastreamento de abertura no Apple Mail, considere alternativas no lado do servidor."
+  },
+  "success_message": {
+    "en": "No tracking pixels detected — the email does not contain any 1x1 transparent images used for open tracking.",
+    "fr": "Aucun pixel de suivi détecté — l'email ne contient aucune image transparente 1x1 utilisée pour le suivi d'ouverture.",
+    "es": "No se detectaron píxeles de seguimiento — el email no contiene imágenes transparentes 1x1 usadas para rastrear aperturas.",
+    "de": "Keine Tracking-Pixel erkannt — die E-Mail enthält keine transparenten 1x1-Bilder zum Öffnungs-Tracking.",
+    "pt": "Nenhum pixel de rastreamento detectado — o e-mail não contém imagens transparentes 1x1 usadas para rastreamento de abertura."
   }
 }

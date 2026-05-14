@@ -6,16 +6,30 @@
   "tier": "free",
   "severity": "info",
   "weight": 4,
-  "tags": ["css", "visual"],
+  "tags": [
+    "css",
+    "visual"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["border-radius"]
+    "patterns": [
+      "border-radius"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": true },
-    "gmail_web": { "supported": true },
-    "apple_mail": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": true
+    },
+    "gmail_web": {
+      "supported": true
+    },
+    "apple_mail": {
+      "supported": true
+    }
   },
   "message": {
     "en": "border-radius is ignored by Outlook desktop — rounded corners will appear square.",
@@ -30,5 +44,12 @@
     "es": "Asegurarse de que el diseño sea aceptable con esquinas cuadradas como fallback para usuarios de Outlook.",
     "de": "Sicherstellen, dass das Design mit eckigen Ecken als Fallback für Outlook-Nutzer akzeptabel ist.",
     "pt": "Garantir que o design seja aceitável com cantos quadrados como fallback para usuários do Outlook."
+  },
+  "success_message": {
+    "en": "No border-radius used — corners are square and will render consistently in all clients including Outlook.",
+    "fr": "Aucun border-radius utilisé — les coins sont carrés et s'afficheront de manière cohérente dans tous les clients y compris Outlook.",
+    "es": "No se usó border-radius — las esquinas son cuadradas y se renderizarán de forma consistente en todos los clientes incluyendo Outlook.",
+    "de": "Kein border-radius verwendet — Ecken sind eckig und werden in allen Clients einschließlich Outlook konsistent dargestellt.",
+    "pt": "Nenhum border-radius usado — os cantos são quadrados e serão renderizados de forma consistente em todos os clientes incluindo Outlook."
   }
 }

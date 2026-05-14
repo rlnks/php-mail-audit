@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "error",
   "weight": 8,
-  "tags": ["css", "visual"],
+  "tags": [
+    "css",
+    "visual"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["filter:"]
+    "patterns": [
+      "filter:"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "CSS filter (blur, brightness, grayscale, etc.) is not supported in Outlook or Gmail — visual effects will be ignored.",
@@ -31,5 +47,12 @@
     "es": "Aplicar los efectos visuales directamente en las imágenes antes de exportarlas. No depender de los filtros CSS para el renderizado del email.",
     "de": "Visuelle Effekte direkt auf Bilder vor dem Export anwenden. Nicht auf CSS-Filter für das E-Mail-Rendering vertrauen.",
     "pt": "Aplicar efeitos visuais diretamente nas imagens antes de exportá-las. Não depender de filtros CSS para renderização de e-mail."
+  },
+  "success_message": {
+    "en": "No CSS filters used — images and elements will appear unaltered in all email clients.",
+    "fr": "Aucun filtre CSS utilisé — les images et éléments apparaîtront non altérés dans tous les clients email.",
+    "es": "No se usaron filtros CSS — las imágenes y elementos aparecerán sin alteraciones en todos los clientes de email.",
+    "de": "Keine CSS-Filter verwendet — Bilder und Elemente erscheinen in allen E-Mail-Clients unverändert.",
+    "pt": "Nenhum filtro CSS usado — imagens e elementos aparecerão inalterados em todos os clientes de e-mail."
   }
 }

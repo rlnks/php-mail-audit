@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "error",
   "weight": 10,
-  "tags": ["html", "media"],
+  "tags": [
+    "html",
+    "media"
+  ],
   "detection": {
     "type": "html_tag",
-    "patterns": ["audio"]
+    "patterns": [
+      "audio"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": false },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "<audio> elements are not supported in any major email client.",
@@ -31,5 +47,12 @@
     "es": "Enlazar al contenido de audio en una página externa en lugar de incrustarlo en el correo.",
     "de": "Auf den Audioinhalt auf einer externen Seite verlinken, anstatt ihn in die E-Mail einzubetten.",
     "pt": "Vincular ao conteúdo de áudio em uma página externa em vez de incorporá-lo no e-mail."
+  },
+  "success_message": {
+    "en": "No <audio> elements found — email clients will not have to handle unsupported media.",
+    "fr": "Aucun élément <audio> trouvé — les clients email n'auront pas à gérer des médias non supportés.",
+    "es": "No se encontraron elementos <audio> — los clientes de email no tendrán que manejar medios no soportados.",
+    "de": "Keine <audio>-Elemente gefunden — E-Mail-Clients müssen keine nicht unterstützten Medien verarbeiten.",
+    "pt": "Nenhum elemento <audio> encontrado — clientes de e-mail não precisarão lidar com mídia não suportada."
   }
 }

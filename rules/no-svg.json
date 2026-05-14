@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "error",
   "weight": 12,
-  "tags": ["html", "images"],
+  "tags": [
+    "html",
+    "images"
+  ],
   "detection": {
     "type": "html_tag",
-    "patterns": ["svg"]
+    "patterns": [
+      "svg"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "SVG images are not supported in Outlook or Gmail — they will not render.",
@@ -31,5 +47,12 @@
     "es": "Convertir SVG a PNG o WebP y referenciarlos con una etiqueta <img> estándar.",
     "de": "SVG in PNG oder WebP konvertieren und mit einem Standard-<img>-Tag referenzieren.",
     "pt": "Converter SVG para PNG ou WebP e referenciá-los com uma tag <img> padrão."
+  },
+  "success_message": {
+    "en": "No <svg> elements found — images are served in formats supported by all email clients.",
+    "fr": "Aucun élément <svg> trouvé — les images sont servies dans des formats supportés par tous les clients email.",
+    "es": "No se encontraron elementos <svg> — las imágenes se sirven en formatos soportados por todos los clientes de email.",
+    "de": "Keine <svg>-Elemente gefunden — Bilder werden in Formaten bereitgestellt, die alle E-Mail-Clients unterstützen.",
+    "pt": "Nenhum elemento <svg> encontrado — imagens são fornecidas em formatos suportados por todos os clientes de e-mail."
   }
 }

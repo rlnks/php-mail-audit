@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "warning",
   "weight": 7,
-  "tags": ["css", "layout"],
+  "tags": [
+    "css",
+    "layout"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["calc("]
+    "patterns": [
+      "calc("
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "2007-2019" },
-    "outlook_web": { "supported": true },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "2007-2019"
+    },
+    "outlook_web": {
+      "supported": true
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": true
+    }
   },
   "message": {
     "en": "CSS calc() is not supported in Outlook desktop 2007–2019 or Gmail — computed values will not apply.",
@@ -31,5 +47,12 @@
     "es": "Reemplazar las expresiones calc() con valores fijos en píxeles o porcentaje que funcionen en todos los clientes.",
     "de": "calc()-Ausdrücke durch feste Pixel- oder Prozentwerte ersetzen, die bei allen Clients funktionieren.",
     "pt": "Substituir expressões calc() por valores fixos em pixels ou porcentagem que funcionem em todos os clientes."
+  },
+  "success_message": {
+    "en": "No calc() functions used — dimensions are fixed and will render correctly in all clients.",
+    "fr": "Aucune fonction calc() utilisée — les dimensions sont fixes et s'afficheront correctement dans tous les clients.",
+    "es": "No se usaron funciones calc() — las dimensiones son fijas y se renderizarán correctamente en todos los clientes.",
+    "de": "Keine calc()-Funktionen verwendet — Abmessungen sind fest und werden in allen Clients korrekt dargestellt.",
+    "pt": "Nenhuma função calc() usada — as dimensões são fixas e serão renderizadas corretamente em todos os clientes."
   }
 }

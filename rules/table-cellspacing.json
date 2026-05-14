@@ -6,15 +6,25 @@
   "tier": "free",
   "severity": "info",
   "weight": 2,
-  "tags": ["html", "layout", "tables"],
+  "tags": [
+    "html",
+    "layout",
+    "tables"
+  ],
   "detection": {
     "type": "html_attribute_missing",
     "tag": "table",
-    "attributes": ["cellpadding", "cellspacing"],
+    "attributes": [
+      "cellpadding",
+      "cellspacing"
+    ],
     "attribute_value": "0"
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "notes": "Outlook adds default cell spacing — explicit cellpadding=0 cellspacing=0 is needed for pixel-perfect layout" }
+    "outlook_desktop": {
+      "supported": false,
+      "notes": "Outlook adds default cell spacing — explicit cellpadding=0 cellspacing=0 is needed for pixel-perfect layout"
+    }
   },
   "message": {
     "en": "<table> found without cellpadding=\"0\" cellspacing=\"0\" — Outlook adds default cell spacing that can break pixel-perfect layouts.",
@@ -29,5 +39,12 @@
     "es": "Agregue cellpadding=\"0\" cellspacing=\"0\" a todas las tablas de layout. Controle el espaciado con CSS padding en <td> en su lugar.",
     "de": "Fügen Sie cellpadding=\"0\" cellspacing=\"0\" zu allen Layout-Tabellen hinzu. Steuern Sie den Abstand stattdessen mit CSS-Padding auf <td>.",
     "pt": "Adicione cellpadding=\"0\" cellspacing=\"0\" a todas as tabelas de layout. Controle o espaçamento com CSS padding em <td>."
+  },
+  "success_message": {
+    "en": "All layout tables have cellpadding=\"0\" cellspacing=\"0\" — no unexpected spacing will appear in Outlook.",
+    "fr": "Toutes les tables de mise en page ont cellpadding=\"0\" cellspacing=\"0\" — aucun espacement inattendu n'apparaîtra dans Outlook.",
+    "es": "Todas las tablas de layout tienen cellpadding=\"0\" cellspacing=\"0\" — no aparecerá espaciado inesperado en Outlook.",
+    "de": "Alle Layout-Tabellen haben cellpadding=\"0\" cellspacing=\"0\" — kein unerwarteter Abstand erscheint in Outlook.",
+    "pt": "Todas as tabelas de layout têm cellpadding=\"0\" cellspacing=\"0\" — nenhum espaçamento inesperado aparecerá no Outlook."
   }
 }

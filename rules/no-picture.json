@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "warning",
   "weight": 8,
-  "tags": ["html", "images"],
+  "tags": [
+    "html",
+    "images"
+  ],
   "detection": {
     "type": "html_tag",
-    "patterns": ["picture"]
+    "patterns": [
+      "picture"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "<picture> element and <source> srcset are not supported in Outlook or Gmail — only the fallback <img> will render, if present.",
@@ -31,5 +47,12 @@
     "es": "Siempre incluir un <img> de fallback estándar dentro de <picture>. Considerar usar una sola imagen optimizada.",
     "de": "Immer ein Standard-<img>-Fallback innerhalb von <picture> einfügen. Erwägen, stattdessen ein einziges optimiertes Bild zu verwenden.",
     "pt": "Sempre incluir um <img> de fallback padrão dentro de <picture>. Considerar usar uma única imagem otimizada."
+  },
+  "success_message": {
+    "en": "No <picture> elements found — images are served as standard <img> tags supported everywhere.",
+    "fr": "Aucun élément <picture> trouvé — les images sont servies comme balises <img> standard supportées partout.",
+    "es": "No se encontraron elementos <picture> — las imágenes se sirven como etiquetas <img> estándar soportadas en todos lados.",
+    "de": "Keine <picture>-Elemente gefunden — Bilder werden als Standard-<img>-Tags bereitgestellt, die überall unterstützt werden.",
+    "pt": "Nenhum elemento <picture> encontrado — imagens são fornecidas como tags <img> padrão suportadas em todos os lugares."
   }
 }

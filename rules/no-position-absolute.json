@@ -6,16 +6,33 @@
   "tier": "free",
   "severity": "info",
   "weight": 5,
-  "tags": ["css", "layout"],
+  "tags": [
+    "css",
+    "layout"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["position: absolute", "position:absolute", "position: fixed", "position:fixed"]
+    "patterns": [
+      "position: absolute",
+      "position:absolute",
+      "position: fixed",
+      "position:fixed"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "gmail_web": { "supported": false },
-    "outlook_web": { "supported": false },
-    "apple_mail": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    }
   },
   "message": {
     "en": "CSS position absolute/fixed is not supported in most email clients.",
@@ -30,5 +47,12 @@
     "es": "Usar un layout basado en tablas para controlar el posicionamiento de los elementos.",
     "de": "Ein tabellenbasiertes Layout zur Steuerung der Elementpositionierung verwenden.",
     "pt": "Usar layout baseado em tabelas para controlar o posicionamento dos elementos."
+  },
+  "success_message": {
+    "en": "No position:absolute used — all elements follow the normal document flow, compatible with email clients.",
+    "fr": "Aucun position:absolute utilisé — tous les éléments suivent le flux normal du document, compatible avec les clients email.",
+    "es": "No se usó position:absolute — todos los elementos siguen el flujo normal del documento, compatible con los clientes de email.",
+    "de": "Kein position:absolute verwendet — alle Elemente folgen dem normalen Dokumentfluss, kompatibel mit E-Mail-Clients.",
+    "pt": "Nenhum position:absolute usado — todos os elementos seguem o fluxo normal do documento, compatível com clientes de e-mail."
   }
 }

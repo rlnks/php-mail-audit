@@ -6,16 +6,30 @@
   "tier": "free",
   "severity": "info",
   "weight": 3,
-  "tags": ["css", "animation"],
+  "tags": [
+    "css",
+    "animation"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["transition:"]
+    "patterns": [
+      "transition:"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    }
   },
   "message": {
     "en": "CSS transitions are not supported in Outlook or Gmail — hover and state animations will not play.",
@@ -30,5 +44,12 @@
     "es": "Usar las transiciones solo como mejora progresiva. El diseño debe ser completamente funcional sin ellas.",
     "de": "Übergänge nur als progressive Verbesserung verwenden. Das Design muss ohne sie vollständig funktional sein.",
     "pt": "Usar transições apenas como aprimoramento progressivo. O design deve ser totalmente funcional sem elas."
+  },
+  "success_message": {
+    "en": "No CSS transitions used — all visual states are static and will render consistently in all clients.",
+    "fr": "Aucune transition CSS utilisée — tous les états visuels sont statiques et s'afficheront de manière cohérente dans tous les clients.",
+    "es": "No se usaron transiciones CSS — todos los estados visuales son estáticos y se renderizarán de forma consistente en todos los clientes.",
+    "de": "Keine CSS-Übergänge verwendet — alle visuellen Zustände sind statisch und werden in allen Clients konsistent dargestellt.",
+    "pt": "Nenhuma transição CSS usada — todos os estados visuais são estáticos e serão renderizados de forma consistente em todos os clientes."
   }
 }

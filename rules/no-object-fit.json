@@ -6,16 +6,30 @@
   "tier": "free",
   "severity": "error",
   "weight": 8,
-  "tags": ["css", "images"],
+  "tags": [
+    "css",
+    "images"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["object-fit:"]
+    "patterns": [
+      "object-fit:"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    }
   },
   "message": {
     "en": "object-fit is not supported in any major email client — images will not be cropped or contained as intended.",
@@ -30,5 +44,12 @@
     "es": "Pre-recortar y redimensionar las imágenes a las dimensiones exactas necesarias antes de incrustarlas en el correo.",
     "de": "Bilder vor dem Einbetten in die E-Mail auf die genauen benötigten Abmessungen zuschneiden und skalieren.",
     "pt": "Pré-recortar e redimensionar imagens para as dimensões exatas necessárias antes de incorporá-las no e-mail."
+  },
+  "success_message": {
+    "en": "No object-fit used — image sizing is handled with compatible HTML width and height attributes.",
+    "fr": "Aucun object-fit utilisé — le dimensionnement des images est géré avec les attributs HTML width/height compatibles.",
+    "es": "No se usó object-fit — el dimensionamiento de imágenes se maneja con atributos HTML width y height compatibles.",
+    "de": "Kein object-fit verwendet — Bildgrößen werden mit kompatiblen HTML-Attributen width und height gehandhabt.",
+    "pt": "Nenhum object-fit usado — o dimensionamento de imagens é tratado com atributos HTML width e height compatíveis."
   }
 }

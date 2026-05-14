@@ -6,17 +6,34 @@
   "tier": "free",
   "severity": "warning",
   "weight": 6,
-  "tags": ["css", "animation"],
+  "tags": [
+    "css",
+    "animation"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["animation:", "@keyframes"]
+    "patterns": [
+      "animation:",
+      "@keyframes"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": true
+    }
   },
   "message": {
     "en": "CSS animations and @keyframes are not supported in Outlook or Gmail — animated elements will appear static.",
@@ -31,5 +48,12 @@
     "es": "Asegurarse de que el estado estático (no animado) de todos los elementos sea visualmente correcto. Usar imágenes GIF como fallback para animaciones críticas.",
     "de": "Sicherstellen, dass der statische (nicht animierte) Zustand aller Elemente visuell korrekt ist. GIF-Bilder als Fallback für wichtige Animationen verwenden.",
     "pt": "Garantir que o estado estático (não animado) de todos os elementos seja visualmente correto. Usar imagens GIF como fallback para animações críticas."
+  },
+  "success_message": {
+    "en": "No CSS animations or @keyframes used — all clients will render the email consistently.",
+    "fr": "Aucune animation CSS ni @keyframes utilisé — tous les clients afficheront l'email de manière cohérente.",
+    "es": "No se usaron animaciones CSS ni @keyframes — todos los clientes renderizarán el email de forma consistente.",
+    "de": "Keine CSS-Animationen oder @keyframes verwendet — alle Clients zeigen die E-Mail konsistent an.",
+    "pt": "Nenhuma animação CSS ou @keyframes usados — todos os clientes renderizarão o e-mail de forma consistente."
   }
 }

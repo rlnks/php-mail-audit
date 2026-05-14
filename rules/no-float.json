@@ -6,16 +6,33 @@
   "tier": "free",
   "severity": "warning",
   "weight": 8,
-  "tags": ["css", "layout"],
+  "tags": [
+    "css",
+    "layout"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["float: left", "float:left", "float: right", "float:right"]
+    "patterns": [
+      "float: left",
+      "float:left",
+      "float: right",
+      "float:right"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "2007-2019" },
-    "outlook_web": { "supported": true },
-    "gmail_web": { "supported": true },
-    "apple_mail": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "2007-2019"
+    },
+    "outlook_web": {
+      "supported": true
+    },
+    "gmail_web": {
+      "supported": true
+    },
+    "apple_mail": {
+      "supported": true
+    }
   },
   "message": {
     "en": "CSS float is poorly supported in older Outlook versions and can break column layouts.",
@@ -30,5 +47,12 @@
     "es": "Usar celdas <td> lado a lado dentro de una <table> en lugar de elementos flotantes.",
     "de": "Nebeneinanderliegende <td>-Zellen innerhalb einer <table> statt schwebender Elemente verwenden.",
     "pt": "Usar células <td> lado a lado dentro de uma <table> em vez de elementos flutuantes."
+  },
+  "success_message": {
+    "en": "No float used — layout is built with table-based methods compatible with all email clients.",
+    "fr": "Aucun float utilisé — la mise en page est construite avec des méthodes basées sur les tables compatibles avec tous les clients email.",
+    "es": "No se usó float — el layout está construido con métodos basados en tablas compatibles con todos los clientes de email.",
+    "de": "Kein float verwendet — das Layout wird mit tabellenbasierten Methoden aufgebaut, die mit allen E-Mail-Clients kompatibel sind.",
+    "pt": "Nenhum float usado — o layout é construído com métodos baseados em tabelas compatíveis com todos os clientes de e-mail."
   }
 }

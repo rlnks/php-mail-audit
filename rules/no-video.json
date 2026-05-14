@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "error",
   "weight": 12,
-  "tags": ["html", "media"],
+  "tags": [
+    "html",
+    "media"
+  ],
   "detection": {
     "type": "html_tag",
-    "patterns": ["video"]
+    "patterns": [
+      "video"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "<video> elements are not supported in Outlook or Gmail — the video will not appear.",
@@ -31,5 +47,12 @@
     "es": "Usar un GIF animado o una imagen estática enlazada al video. Agregar un botón de reproducción visible sobre la imagen.",
     "de": "Animiertes GIF oder statisches Bild mit Link zum Video verwenden. Einen sichtbaren Play-Button als Overlay auf dem Bild hinzufügen.",
     "pt": "Usar um GIF animado ou imagem estática vinculada ao vídeo. Adicionar um botão de reprodução visível como sobreposição na imagem."
+  },
+  "success_message": {
+    "en": "No <video> elements found — no unsupported media will be stripped by email clients.",
+    "fr": "Aucun élément <video> trouvé — aucun média non supporté ne sera supprimé par les clients email.",
+    "es": "No se encontraron elementos <video> — ningún medio no soportado será eliminado por los clientes de email.",
+    "de": "Keine <video>-Elemente gefunden — keine nicht unterstützten Medien werden von E-Mail-Clients entfernt.",
+    "pt": "Nenhum elemento <video> encontrado — nenhuma mídia não suportada será removida por clientes de e-mail."
   }
 }

@@ -6,14 +6,23 @@
   "tier": "free",
   "severity": "info",
   "weight": 1,
-  "tags": ["html", "typography"],
+  "tags": [
+    "html",
+    "typography"
+  ],
   "detection": {
     "type": "css_property",
     "regex": true,
-    "patterns": ["\\d[ ]+[€$£¥%°]", "[€$£¥%°][ ]+\\d"]
+    "patterns": [
+      "\\d[ ]+[€$£¥%°]",
+      "[€$£¥%°][ ]+\\d"
+    ]
   },
   "affected_clients": {
-    "all": { "supported": "partial", "notes": "Line breaks at these positions look unprofessional on narrow screens" }
+    "all": {
+      "supported": "partial",
+      "notes": "Line breaks at these positions look unprofessional on narrow screens"
+    }
   },
   "message": {
     "en": "Regular space found between a number and a currency/unit symbol — this may break across lines on narrow screens.",
@@ -28,5 +37,12 @@
     "es": "Reemplazar el espacio por &nbsp; para prevenir saltos de línea no deseados: 100&nbsp;€ o 50&nbsp;%.",
     "de": "Das Leerzeichen durch &nbsp; ersetzen, um unerwünschte Zeilenumbrüche zu vermeiden: 100&nbsp;€ oder 50&nbsp;%.",
     "pt": "Substituir o espaço por &nbsp; para evitar quebras de linha indesejadas: 100&nbsp;€ ou 50&nbsp;%."
+  },
+  "success_message": {
+    "en": "No problematic spacing found between numbers and currency or unit symbols.",
+    "fr": "Aucun espacement problématique trouvé entre les nombres et les symboles de devise ou unité.",
+    "es": "No se encontró espaciado problemático entre números y símbolos de divisa o unidad.",
+    "de": "Kein problematischer Abstand zwischen Zahlen und Währungs- oder Einheitssymbolen gefunden.",
+    "pt": "Nenhum espaçamento problemático encontrado entre números e símbolos de moeda ou unidade."
   }
 }

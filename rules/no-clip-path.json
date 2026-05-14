@@ -6,16 +6,30 @@
   "tier": "free",
   "severity": "error",
   "weight": 8,
-  "tags": ["css", "visual"],
+  "tags": [
+    "css",
+    "visual"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["clip-path:"]
+    "patterns": [
+      "clip-path:"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    }
   },
   "message": {
     "en": "clip-path is not supported in any major email client — clipped shapes will be ignored and elements will render in full.",
@@ -30,5 +44,12 @@
     "es": "Usar imágenes pre-recortadas en lugar de clip-path. Exportar la forma deseada directamente desde tu herramienta de diseño.",
     "de": "Vorher zugeschnittene Bilder statt clip-path verwenden. Die gewünschte Form direkt aus dem Design-Tool exportieren.",
     "pt": "Usar imagens pré-recortadas em vez de clip-path. Exportar a forma desejada diretamente da sua ferramenta de design."
+  },
+  "success_message": {
+    "en": "No clip-path used — all elements will be fully visible in every email client.",
+    "fr": "Aucun clip-path utilisé — tous les éléments seront entièrement visibles dans chaque client email.",
+    "es": "No se usó clip-path — todos los elementos serán completamente visibles en cada cliente de email.",
+    "de": "Kein clip-path verwendet — alle Elemente sind in jedem E-Mail-Client vollständig sichtbar.",
+    "pt": "Nenhum clip-path usado — todos os elementos serão totalmente visíveis em cada cliente de e-mail."
   }
 }

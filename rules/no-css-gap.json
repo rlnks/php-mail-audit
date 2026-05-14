@@ -6,17 +6,35 @@
   "tier": "free",
   "severity": "error",
   "weight": 9,
-  "tags": ["css", "layout"],
+  "tags": [
+    "css",
+    "layout"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["gap:", "row-gap:", "column-gap:"]
+    "patterns": [
+      "gap:",
+      "row-gap:",
+      "column-gap:"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": false },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "CSS gap (row-gap, column-gap) is not supported in any major email client — spacing between flex or grid items will be ignored.",
@@ -31,5 +49,12 @@
     "es": "Usar padding o margin en las celdas de tabla, o añadir columnas/filas espaciadoras en tu layout de tabla HTML.",
     "de": "Padding oder Margin auf Tabellenzellen verwenden oder Abstands-Spalten/-Zeilen im HTML-Tabellen-Layout hinzufügen.",
     "pt": "Usar padding ou margin em células de tabela, ou adicionar colunas/linhas espaçadoras no layout de tabela HTML."
+  },
+  "success_message": {
+    "en": "No CSS gap property used — spacing is handled by methods compatible with all clients.",
+    "fr": "Aucune propriété CSS gap utilisée — l'espacement est géré par des méthodes compatibles avec tous les clients.",
+    "es": "No se usó la propiedad CSS gap — el espaciado se maneja con métodos compatibles con todos los clientes.",
+    "de": "Keine CSS-Gap-Eigenschaft verwendet — Abstände werden mit clientkompatiblen Methoden gehandhabt.",
+    "pt": "Nenhuma propriedade CSS gap usada — o espaçamento é tratado por métodos compatíveis com todos os clientes."
   }
 }

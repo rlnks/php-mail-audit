@@ -6,17 +6,33 @@
   "tier": "free",
   "severity": "error",
   "weight": 15,
-  "tags": ["html", "security"],
+  "tags": [
+    "html",
+    "security"
+  ],
   "detection": {
     "type": "html_tag",
-    "patterns": ["iframe"]
+    "patterns": [
+      "iframe"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": false },
-    "samsung_email": { "supported": false }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": false
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "<iframe> elements are blocked by all email clients — embedded content will not display.",
@@ -31,5 +47,12 @@
     "es": "Reemplazar las integraciones iframe con una imagen enlazada o un botón CTA que apunte al contenido externo.",
     "de": "Iframe-Einbettungen durch ein verlinktes Bild oder einen CTA-Button ersetzen, der auf den externen Inhalt verweist.",
     "pt": "Substituir incorporações iframe por uma imagem vinculada ou botão CTA apontando para o conteúdo externo."
+  },
+  "success_message": {
+    "en": "No <iframe> elements found — email clients will not strip or block embedded frames.",
+    "fr": "Aucun élément <iframe> trouvé — les clients email ne supprimeront ni ne bloqueront les frames intégrées.",
+    "es": "No se encontraron elementos <iframe> — los clientes de email no eliminarán ni bloquearán marcos incrustados.",
+    "de": "Keine <iframe>-Elemente gefunden — E-Mail-Clients werden keine eingebetteten Frames entfernen oder blockieren.",
+    "pt": "Nenhum elemento <iframe> encontrado — clientes de e-mail não removerão nem bloquearão quadros incorporados."
   }
 }

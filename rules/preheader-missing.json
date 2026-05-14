@@ -6,16 +6,31 @@
   "tier": "free",
   "severity": "info",
   "weight": 3,
-  "tags": ["html", "best-practice"],
+  "tags": [
+    "html",
+    "best-practice"
+  ],
   "detection": {
     "type": "preheader",
     "mode": "missing"
   },
   "affected_clients": {
-    "gmail_web": { "supported": true, "notes": "Shows preheader in inbox preview" },
-    "outlook_web": { "supported": true, "notes": "Shows preheader in inbox preview" },
-    "apple_mail": { "supported": true, "notes": "Shows preheader in inbox preview" },
-    "outlook_desktop": { "supported": true, "notes": "Shows preheader in inbox preview" }
+    "gmail_web": {
+      "supported": true,
+      "notes": "Shows preheader in inbox preview"
+    },
+    "outlook_web": {
+      "supported": true,
+      "notes": "Shows preheader in inbox preview"
+    },
+    "apple_mail": {
+      "supported": true,
+      "notes": "Shows preheader in inbox preview"
+    },
+    "outlook_desktop": {
+      "supported": true,
+      "notes": "Shows preheader in inbox preview"
+    }
   },
   "message": {
     "en": "No preheader text detected — the inbox preview will show the first visible text of the email, which is often an unrelated link or navigation text.",
@@ -30,5 +45,12 @@
     "es": "Agregar un div preheader oculto inmediatamente después de <body>: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Su texto de vista previa &nbsp;&zwnj;</div>",
     "de": "Einen versteckten Preheader-Div direkt nach <body> hinzufügen: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Ihr Vorschautext &nbsp;&zwnj;</div>",
     "pt": "Adicionar um div preheader oculto imediatamente após <body>: <div style=\"display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">Seu texto de prévia &nbsp;&zwnj;</div>"
+  },
+  "success_message": {
+    "en": "Preheader text is present — inbox preview will show meaningful content instead of the first line of the email.",
+    "fr": "Le texte de prévisualisation est présent — l'aperçu de la boîte de réception affichera un contenu significatif plutôt que la première ligne de l'email.",
+    "es": "El texto de preencabezado está presente — la vista previa de la bandeja de entrada mostrará contenido significativo en lugar de la primera línea del email.",
+    "de": "Preheader-Text ist vorhanden — die Posteingangsvorschau zeigt aussagekräftigen Inhalt statt der ersten Zeile der E-Mail.",
+    "pt": "O texto do preheader está presente — a visualização da caixa de entrada mostrará conteúdo significativo em vez da primeira linha do e-mail."
   }
 }

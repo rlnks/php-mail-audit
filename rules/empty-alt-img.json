@@ -6,15 +6,24 @@
   "tier": "free",
   "severity": "info",
   "weight": 1,
-  "tags": ["html", "accessibility", "images"],
+  "tags": [
+    "html",
+    "accessibility",
+    "images"
+  ],
   "detection": {
     "type": "html_attribute_missing",
     "tag": "img",
-    "attributes": ["alt"],
+    "attributes": [
+      "alt"
+    ],
     "only_empty": true
   },
   "affected_clients": {
-    "all": { "supported": "partial", "notes": "Empty alt hides image from screen readers — verify image is truly decorative" }
+    "all": {
+      "supported": "partial",
+      "notes": "Empty alt hides image from screen readers — verify image is truly decorative"
+    }
   },
   "message": {
     "en": "Image with empty alt=\"\" detected — this hides the image from screen readers. Verify it is truly decorative and carries no information.",
@@ -29,5 +38,12 @@
     "es": "Si la imagen transmite información o es un CTA, agregue un texto alt descriptivo. Mantenga alt=\"\" solo para imágenes puramente decorativas (espaciadores, fondos).",
     "de": "Wenn das Bild Informationen vermittelt oder ein CTA ist, fügen Sie einen beschreibenden Alt-Text hinzu. Behalten Sie alt=\"\" nur für rein dekorative Bilder (Abstandshalter, Hintergründe).",
     "pt": "Se a imagem transmite informação ou é um CTA, adicione um texto alt descritivo. Mantenha alt=\"\" apenas para imagens puramente decorativas (espaçadores, fundos)."
+  },
+  "success_message": {
+    "en": "All images with empty alt are intentionally decorative — screen readers will skip them correctly.",
+    "fr": "Toutes les images avec alt vide sont intentionnellement décoratives — les lecteurs d'écran les ignoreront correctement.",
+    "es": "Todas las imágenes con alt vacío son intencionalmente decorativas — los lectores de pantalla las omitirán correctamente.",
+    "de": "Alle Bilder mit leerem Alt sind bewusst dekorativ — Screenreader überspringen sie korrekt.",
+    "pt": "Todas as imagens com alt vazio são intencionalmente decorativas — leitores de tela as ignorarão corretamente."
   }
 }

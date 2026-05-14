@@ -6,16 +6,30 @@
   "tier": "free",
   "severity": "info",
   "weight": 3,
-  "tags": ["css", "visual"],
+  "tags": [
+    "css",
+    "visual"
+  ],
   "detection": {
     "type": "css_property",
-    "patterns": ["box-shadow"]
+    "patterns": [
+      "box-shadow"
+    ]
   },
   "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": true },
-    "apple_mail": { "supported": true }
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "gmail_web": {
+      "supported": true
+    },
+    "apple_mail": {
+      "supported": true
+    }
   },
   "message": {
     "en": "box-shadow is not supported in Outlook desktop or Outlook web.",
@@ -30,5 +44,12 @@
     "es": "Usar un borde sólido como fallback o eliminar completamente el efecto de sombra.",
     "de": "Einen durchgehenden Rahmen als Fallback verwenden oder den Schatteneffekt ganz entfernen.",
     "pt": "Usar uma borda sólida como fallback ou remover completamente o efeito de sombra."
+  },
+  "success_message": {
+    "en": "No box-shadow used — shadows are not present and will not be stripped by Outlook.",
+    "fr": "Aucun box-shadow utilisé — les ombres ne sont pas présentes et ne seront pas supprimées par Outlook.",
+    "es": "No se usó box-shadow — las sombras no están presentes y no serán eliminadas por Outlook.",
+    "de": "Kein box-shadow verwendet — Schatten sind nicht vorhanden und werden von Outlook nicht entfernt.",
+    "pt": "Nenhum box-shadow usado — sombras não estão presentes e não serão removidas pelo Outlook."
   }
 }

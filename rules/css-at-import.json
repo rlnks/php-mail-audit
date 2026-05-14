@@ -6,19 +6,39 @@
   "tier": "free",
   "severity": "info",
   "weight": 2,
-  "tags": ["css", "fonts", "external"],
+  "tags": [
+    "css",
+    "fonts",
+    "external"
+  ],
   "detection": {
     "type": "style_block",
     "regex": false,
-    "patterns": ["@import"]
+    "patterns": [
+      "@import"
+    ]
   },
   "affected_clients": {
-    "gmail_web": { "supported": false, "versions": "all" },
-    "gmail_mobile": { "supported": false },
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
+    "gmail_web": {
+      "supported": false,
+      "versions": "all"
+    },
+    "gmail_mobile": {
+      "supported": false
+    },
+    "outlook_desktop": {
+      "supported": false,
+      "versions": "all"
+    },
+    "outlook_web": {
+      "supported": false
+    },
+    "apple_mail": {
+      "supported": true
+    },
+    "samsung_email": {
+      "supported": false
+    }
   },
   "message": {
     "en": "@import detected inside a <style> block — Gmail and Outlook silently ignore it. Pair it with a <link> tag so clients that strip @import still load the resource.",
@@ -33,5 +53,12 @@
     "es": "Agregue una etiqueta <link rel=\"stylesheet\"> en el <head> para el mismo recurso — el @import entonces sirve como fallback para clientes que no soportan <link> en email.",
     "de": "Fügen Sie ein <link rel=\"stylesheet\">-Tag im <head> für die gleiche Ressource hinzu — das @import dient dann als Fallback für Clients, die <link> in E-Mails nicht unterstützen.",
     "pt": "Adicione uma tag <link rel=\"stylesheet\"> no <head> para o mesmo recurso — o @import então serve como fallback para clientes que não suportam <link> em email."
+  },
+  "success_message": {
+    "en": "No external stylesheets imported via @import — all styles are self-contained.",
+    "fr": "Aucune feuille de style externe importée via @import — tous les styles sont autonomes.",
+    "es": "No se importaron hojas de estilo externas mediante @import — todos los estilos son autónomos.",
+    "de": "Keine externen Stylesheets via @import importiert — alle Styles sind in sich abgeschlossen.",
+    "pt": "Nenhuma folha de estilos externa importada via @import — todos os estilos são independentes."
   }
 }
