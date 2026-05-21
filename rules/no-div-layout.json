@@ -11,6 +11,7 @@
     "type": "html_tag_with_style",
     "tag": "div",
     "regex": true,
+    "exclude_inside": ["td"],
     "css_patterns": [
       "(?<![a-z-])width\\s*:\\s*(?!0)",
       "display\\s*:\\s*(block|inline-block)",

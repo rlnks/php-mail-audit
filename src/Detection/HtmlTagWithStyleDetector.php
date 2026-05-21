@@ -11,10 +11,19 @@ class HtmlTagWithStyleDetector extends AbstractDetector
      */
     public function findMatches(string $html, array $detection): array
     {
-        $tag         = $detection['tag'] ?? 'div';
-        $cssPatterns = $detection['css_patterns'] ?? [];
-        $useRegex    = $detection['regex'] ?? false;
-        $locations   = [];
+        $tag           = $detection['tag'] ?? 'div';
+        $cssPatterns   = $detection['css_patterns'] ?? [];
+        $useRegex      = $detection['regex'] ?? false;
+        $excludeInside = $detection['exclude_inside'] ?? [];
+        $skipTextOnly  = $detection['skip_text_only'] ?? false;
+        $locations     = [];
+
+        $excludeRanges = [];
+        foreach ($excludeInside as $parentTag) {
+            foreach ($this->getTagRanges($html, $parentTag) as $range) {
+                $excludeRanges[] = $range;
+            }
+        }
 
         // Step 1: find all opening tags — [^>]* handles any number of spaces between attributes
         if (!preg_match_all('/<' . preg_quote($tag, '/') . '\b[^>]*>/si', $html, $tagMatches, PREG_OFFSET_CAPTURE)) {
@@ -22,6 +31,13 @@ class HtmlTagWithStyleDetector extends AbstractDetector
         }
 
         foreach ($tagMatches[0] as [$tagHtml, $offset]) {
+            if ($excludeRanges && $this->isOffsetInRanges($offset, $excludeRanges)) {
+                continue;
+            }
+            if ($skipTextOnly && $this->isDivContentTextOnly($html, $offset)) {
+                continue;
+            }
+
             // Step 2: extract inline style value
             // \s before "style" ensures we match the attribute, not e.g. data-style
             if (!preg_match('/\sstyle\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))/i', $tagHtml, $sm)) {

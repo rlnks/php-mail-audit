@@ -221,12 +221,36 @@ class MailAuditTest extends TestCase
         );
     }
 
-    public function test_content_div_triggers_info(): void
+    public function test_structural_div_triggers_content_info(): void
     {
         $this->assertRuleTriggered(
-            '<div>content only</div>',
+            '<div><p>Paragraph inside div</p></div>',
             'div-content',
             'info'
+        );
+    }
+
+    public function test_text_only_div_does_not_trigger_content_info(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<div>text content only</div>',
+            'div-content'
+        );
+    }
+
+    public function test_div_inside_td_does_not_trigger_content_info(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<table><tr><td><div>text content</div></td></tr></table>',
+            'div-content'
+        );
+    }
+
+    public function test_div_with_style_inside_td_does_not_trigger_layout_warning(): void
+    {
+        $this->assertRuleNotTriggered(
+            '<table><tr><td><div style="margin: 0; padding: 0;">text</div></td></tr></table>',
+            'no-div-layout'
         );
     }
 

@@ -9,7 +9,9 @@
   "tags": ["html", "layout"],
   "detection": {
     "type": "html_tag",
-    "patterns": ["div"]
+    "patterns": ["div"],
+    "exclude_inside": ["td"],
+    "skip_text_only": true
   },
   "affected_clients": {
     "outlook_desktop": { "supported": "partial", "notes": "Div is rendered but box model may be ignored" },

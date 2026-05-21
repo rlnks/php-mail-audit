@@ -10,7 +10,16 @@ class HtmlTagDetector extends AbstractDetector
 {
     public function findMatches(string $html, array $detection): array
     {
-        $locations = [];
+        $locations     = [];
+        $excludeInside = $detection['exclude_inside'] ?? [];
+        $skipTextOnly  = $detection['skip_text_only'] ?? false;
+
+        $excludeRanges = [];
+        foreach ($excludeInside as $parentTag) {
+            foreach ($this->getTagRanges($html, $parentTag) as $range) {
+                $excludeRanges[] = $range;
+            }
+        }
 
         foreach ($detection['patterns'] ?? [] as $tag) {
             $tag   = trim($tag, '<');
@@ -18,6 +27,12 @@ class HtmlTagDetector extends AbstractDetector
 
             if (preg_match_all($regex, $html, $m, PREG_OFFSET_CAPTURE)) {
                 foreach ($m[0] as [$match, $offset]) {
+                    if ($excludeRanges && $this->isOffsetInRanges($offset, $excludeRanges)) {
+                        continue;
+                    }
+                    if ($skipTextOnly && $this->isDivContentTextOnly($html, $offset)) {
+                        continue;
+                    }
                     $locations[] = $this->buildLocation($html, $offset, strlen($match));
                 }
             }
