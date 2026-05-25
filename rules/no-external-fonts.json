@@ -1,42 +1,63 @@
 {
-  "id": "no-external-fonts",
-  "version": "1.1",
-  "updated_at": "2026-05-12",
-  "source": "https://www.caniemail.com/features/css-at-font-face/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 2,
-  "tags": ["css", "fonts"],
-  "detection": {
-    "type": "html_content",
-    "patterns": ["fonts.googleapis.com", "fonts.gstatic.com", "@import url", "@font-face"]
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
-  },
-  "message": {
-    "en": "External font detected — supported in Apple Mail and some modern clients, but not in Gmail or Outlook.",
-    "fr": "Police externe détectée — supportée dans Apple Mail et certains clients modernes, mais pas dans Gmail ni Outlook.",
-    "es": "Fuente externa detectada — compatible con Apple Mail y algunos clientes modernos, pero no con Gmail ni Outlook.",
-    "de": "Externe Schrift erkannt — unterstützt in Apple Mail und einigen modernen Clients, aber nicht in Gmail oder Outlook.",
-    "pt": "Fonte externa detectada — suportada no Apple Mail e em alguns clientes modernos, mas não no Gmail ou Outlook."
-  },
-  "fix": {
-    "en": "Always define a font-family stack with web-safe fallbacks inline on every element: font-family: 'CustomFont', Arial, sans-serif.",
-    "fr": "Toujours définir une pile font-family avec des fallbacks web-safe inline sur chaque élément : font-family: 'CustomFont', Arial, sans-serif.",
-    "es": "Siempre definir una pila font-family con fallbacks web-safe inline en cada elemento: font-family: 'CustomFont', Arial, sans-serif.",
-    "de": "Immer einen font-family-Stack mit web-sicheren Fallbacks inline auf jedem Element definieren: font-family: 'CustomFont', Arial, sans-serif.",
-    "pt": "Sempre definir uma pilha font-family com fallbacks web-safe inline em cada elemento: font-family: 'CustomFont', Arial, sans-serif."
-  },
-  "success_message": {
-    "en": "No external fonts detected — consistent font rendering across all clients.",
-    "fr": "Aucune police externe détectée — rendu typographique cohérent dans tous les clients.",
-    "es": "No se detectaron fuentes externas — renderizado tipográfico consistente en todos los clientes.",
-    "de": "Keine externen Schriften erkannt — konsistente Schriftdarstellung in allen Clients.",
-    "pt": "Nenhuma fonte externa detectada — renderização tipográfica consistente em todos os clientes."
-  }
+    "id": "no-external-fonts",
+    "version": "1.2",
+    "updated_at": "2026-05-25",
+    "source": "https:\/\/www.caniemail.com\/features\/css-at-font-face\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 2,
+    "tags": [
+        "css",
+        "fonts"
+    ],
+    "detection": {
+        "type": "html_content",
+        "patterns": [
+            "fonts.googleapis.com",
+            "fonts.gstatic.com",
+            "@import url",
+            "@font-face"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "External font detected — supported in Apple Mail and some modern clients, but not in Gmail or Outlook.",
+        "fr": "Police externe détectée — supportée dans Apple Mail et certains clients modernes, mais pas dans Gmail ni Outlook.",
+        "es": "Fuente externa detectada — compatible con Apple Mail y algunos clientes modernos, pero no con Gmail ni Outlook.",
+        "de": "Externe Schrift erkannt — unterstützt in Apple Mail und einigen modernen Clients, aber nicht in Gmail oder Outlook.",
+        "pt": "Fonte externa detectada — suportada no Apple Mail e em alguns clientes modernos, mas não no Gmail ou Outlook."
+    },
+    "fix": {
+        "en": "Always define a font-family stack with web-safe fallbacks inline on every element: font-family: 'CustomFont', Arial, sans-serif.",
+        "fr": "Toujours définir une pile font-family avec des fallbacks web-safe inline sur chaque élément : font-family: 'CustomFont', Arial, sans-serif.",
+        "es": "Siempre definir una pila font-family con fallbacks web-safe inline en cada elemento: font-family: 'CustomFont', Arial, sans-serif.",
+        "de": "Immer einen font-family-Stack mit web-sicheren Fallbacks inline auf jedem Element definieren: font-family: 'CustomFont', Arial, sans-serif.",
+        "pt": "Sempre definir uma pilha font-family com fallbacks web-safe inline em cada elemento: font-family: 'CustomFont', Arial, sans-serif."
+    },
+    "success_message": {
+        "en": "No external fonts detected — consistent font rendering across all clients.",
+        "fr": "Aucune police externe détectée — rendu typographique cohérent dans tous les clients.",
+        "es": "No se detectaron fuentes externas — renderizado tipográfico consistente en todos los clientes.",
+        "de": "Keine externen Schriften erkannt — konsistente Schriftdarstellung in allen Clients.",
+        "pt": "Nenhuma fonte externa detectada — renderização tipográfica consistente em todos os clientes."
+    }
 }

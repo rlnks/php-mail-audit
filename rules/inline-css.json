@@ -1,41 +1,62 @@
 {
-  "id": "inline-css",
-  "version": "1.1",
-  "updated_at": "2026-05-12",
-  "source": "https://www.caniemail.com/features/html-style/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 2,
-  "tags": ["css", "best-practice"],
-  "detection": {
-    "type": "html_content",
-    "patterns": ["<style", "<link rel=\"stylesheet\"", "<link rel='stylesheet'"]
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "gmail_web": { "supported": false },
-    "outlook_web": { "supported": true },
-    "apple_mail": { "supported": true }
-  },
-  "message": {
-    "en": "A <style> block or external stylesheet is present — this is acceptable when inline fallback styles are also defined on each element.",
-    "fr": "Un bloc <style> ou une feuille de style externe est présent — c'est acceptable lorsque des styles inline de fallback sont également définis sur chaque élément.",
-    "es": "Hay un bloque <style> o hoja de estilo externa — es aceptable cuando también se definen estilos inline de fallback en cada elemento.",
-    "de": "Ein <style>-Block oder externes Stylesheet ist vorhanden — akzeptabel, wenn auch Inline-Fallback-Styles auf jedem Element definiert sind.",
-    "pt": "Um bloco <style> ou folha de estilo externa está presente — aceitável quando estilos inline de fallback também são definidos em cada elemento."
-  },
-  "fix": {
-    "en": "Use the hybrid approach: inline styles for critical layout, <style> block for enhancements (hover, media queries, animations).",
-    "fr": "Utiliser l'approche hybride : styles inline pour le layout critique, bloc <style> pour les améliorations (hover, media queries, animations).",
-    "es": "Usar el enfoque híbrido: estilos inline para layout crítico, bloque <style> para mejoras (hover, media queries, animaciones).",
-    "de": "Den hybriden Ansatz verwenden: Inline-Styles für kritisches Layout, <style>-Block für Verbesserungen (Hover, Media Queries, Animationen).",
-    "pt": "Usar a abordagem híbrida: estilos inline para layout crítico, bloco <style> para melhorias (hover, media queries, animações)."
-  },
-  "success_message": {
-    "en": "No embedded or external stylesheets — all styles are inlined.",
-    "fr": "Aucune feuille de style embarquée ou externe — tous les styles sont en inline.",
-    "es": "No hay hojas de estilo embebidas o externas — todos los estilos están en línea.",
-    "de": "Keine eingebetteten oder externen Stylesheets — alle Styles sind inline.",
-    "pt": "Nenhuma folha de estilo incorporada ou externa — todos os estilos estão inline."
-  }
+    "id": "inline-css",
+    "version": "1.2",
+    "updated_at": "2026-05-25",
+    "source": "https:\/\/www.caniemail.com\/features\/html-style\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 2,
+    "tags": [
+        "css",
+        "best-practice"
+    ],
+    "detection": {
+        "type": "html_content",
+        "patterns": [
+            "<style",
+            "<link rel=\"stylesheet\"",
+            "<link rel='stylesheet'"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "A <style> block or external stylesheet is present — this is acceptable when inline fallback styles are also defined on each element.",
+        "fr": "Un bloc <style> ou une feuille de style externe est présent — c'est acceptable lorsque des styles inline de fallback sont également définis sur chaque élément.",
+        "es": "Hay un bloque <style> o hoja de estilo externa — es aceptable cuando también se definen estilos inline de fallback en cada elemento.",
+        "de": "Ein <style>-Block oder externes Stylesheet ist vorhanden — akzeptabel, wenn auch Inline-Fallback-Styles auf jedem Element definiert sind.",
+        "pt": "Um bloco <style> ou folha de estilo externa está presente — aceitável quando estilos inline de fallback também são definidos em cada elemento."
+    },
+    "fix": {
+        "en": "Use the hybrid approach: inline styles for critical layout, <style> block for enhancements (hover, media queries, animations).",
+        "fr": "Utiliser l'approche hybride : styles inline pour le layout critique, bloc <style> pour les améliorations (hover, media queries, animations).",
+        "es": "Usar el enfoque híbrido: estilos inline para layout crítico, bloque <style> para mejoras (hover, media queries, animaciones).",
+        "de": "Den hybriden Ansatz verwenden: Inline-Styles für kritisches Layout, <style>-Block für Verbesserungen (Hover, Media Queries, Animationen).",
+        "pt": "Usar a abordagem híbrida: estilos inline para layout crítico, bloco <style> para melhorias (hover, media queries, animações)."
+    },
+    "success_message": {
+        "en": "No embedded or external stylesheets — all styles are inlined.",
+        "fr": "Aucune feuille de style embarquée ou externe — tous les styles sont en inline.",
+        "es": "No hay hojas de estilo embebidas o externas — todos los estilos están en línea.",
+        "de": "Keine eingebetteten oder externen Stylesheets — alle Styles sind inline.",
+        "pt": "Nenhuma folha de estilo incorporada ou externa — todos os estilos estão inline."
+    }
 }
