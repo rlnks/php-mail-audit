@@ -1,42 +1,65 @@
 {
-  "id": "css-pseudo-selectors",
-  "version": "1.1",
-  "updated_at": "2026-05-12",
-  "source": "https://www.caniemail.com/features/css-pseudo-class-hover/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 1,
-  "tags": ["css", "interactive"],
-  "detection": {
-    "type": "style_block",
-    "regex": false,
-    "patterns": [":hover", ":focus", ":active", ":visited", ":checked"]
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "gmail_web": { "supported": false },
-    "outlook_web": { "supported": false },
-    "apple_mail": { "supported": true }
-  },
-  "message": {
-    "en": "CSS pseudo-selectors (:hover, :focus, etc.) are used as interactive enhancement — they will be silently ignored in Outlook and Gmail.",
-    "fr": "Des pseudo-sélecteurs CSS (:hover, :focus, etc.) sont utilisés comme amélioration interactive — ils seront silencieusement ignorés dans Outlook et Gmail.",
-    "es": "Se usan pseudo-selectores CSS (:hover, :focus, etc.) como mejora interactiva — serán silenciosamente ignorados en Outlook y Gmail.",
-    "de": "CSS-Pseudoselektoren (:hover, :focus, etc.) werden als interaktive Verbesserung eingesetzt — sie werden in Outlook und Gmail stillschweigend ignoriert.",
-    "pt": "Pseudo-seletores CSS (:hover, :focus, etc.) são usados como melhoria interativa — serão silenciosamente ignorados no Outlook e Gmail."
-  },
-  "fix": {
-    "en": "Good practice — ensure the design is fully functional without these states.",
-    "fr": "Bonne pratique — s'assurer que le design est pleinement fonctionnel sans ces états.",
-    "es": "Buena práctica — asegurarse de que el diseño sea completamente funcional sin estos estados.",
-    "de": "Gute Praxis — sicherstellen, dass das Design ohne diese Zustände vollständig funktionsfähig ist.",
-    "pt": "Boa prática — garantir que o design seja totalmente funcional sem esses estados."
-  },
-  "success_message": {
-    "en": "No interactive pseudo-selectors detected.",
-    "fr": "Aucun pseudo-sélecteur interactif détecté.",
-    "es": "No se detectaron pseudo-selectores interactivos.",
-    "de": "Keine interaktiven Pseudoselektoren erkannt.",
-    "pt": "Nenhum pseudo-seletor interativo detectado."
-  }
+    "id": "css-pseudo-selectors",
+    "version": "1.2",
+    "updated_at": "2026-06-08",
+    "source": "https:\/\/www.caniemail.com\/features\/css-pseudo-class-hover\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 1,
+    "tags": [
+        "css",
+        "interactive"
+    ],
+    "detection": {
+        "type": "style_block",
+        "regex": false,
+        "patterns": [
+            ":hover",
+            ":focus",
+            ":active",
+            ":visited",
+            ":checked"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "CSS pseudo-selectors (:hover, :focus, etc.) are used as interactive enhancement — they will be silently ignored in Outlook and Gmail.",
+        "fr": "Des pseudo-sélecteurs CSS (:hover, :focus, etc.) sont utilisés comme amélioration interactive — ils seront silencieusement ignorés dans Outlook et Gmail.",
+        "es": "Se usan pseudo-selectores CSS (:hover, :focus, etc.) como mejora interactiva — serán silenciosamente ignorados en Outlook y Gmail.",
+        "de": "CSS-Pseudoselektoren (:hover, :focus, etc.) werden als interaktive Verbesserung eingesetzt — sie werden in Outlook und Gmail stillschweigend ignoriert.",
+        "pt": "Pseudo-seletores CSS (:hover, :focus, etc.) são usados como melhoria interativa — serão silenciosamente ignorados no Outlook e Gmail."
+    },
+    "fix": {
+        "en": "Good practice — ensure the design is fully functional without these states.",
+        "fr": "Bonne pratique — s'assurer que le design est pleinement fonctionnel sans ces états.",
+        "es": "Buena práctica — asegurarse de que el diseño sea completamente funcional sin estos estados.",
+        "de": "Gute Praxis — sicherstellen, dass das Design ohne diese Zustände vollständig funktionsfähig ist.",
+        "pt": "Boa prática — garantir que o design seja totalmente funcional sem esses estados."
+    },
+    "success_message": {
+        "en": "No interactive pseudo-selectors detected.",
+        "fr": "Aucun pseudo-sélecteur interactif détecté.",
+        "es": "No se detectaron pseudo-selectores interactivos.",
+        "de": "Keine interaktiven Pseudoselektoren erkannt.",
+        "pt": "Nenhum pseudo-seletor interativo detectado."
+    }
 }
