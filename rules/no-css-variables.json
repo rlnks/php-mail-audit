@@ -1,50 +1,69 @@
 {
-  "id": "no-css-variables",
-  "version": "1.2",
-  "updated_at": "2026-05-13",
-  "source": "https://www.caniemail.com/features/css-variables/",
-  "tier": "free",
-  "severity": "error",
-  "weight": 7,
-  "tags": ["css"],
-  "detection": {
-    "type": "correlation",
-    "trigger": {
-      "type": "css_property",
-      "patterns": ["var(--"]
+    "id": "no-css-variables",
+    "version": "1.3",
+    "updated_at": "2026-06-22",
+    "source": "https:\/\/www.caniemail.com\/features\/css-variables\/",
+    "tier": "free",
+    "severity": "error",
+    "weight": 7,
+    "tags": [
+        "css"
+    ],
+    "detection": {
+        "type": "correlation",
+        "trigger": {
+            "type": "css_property",
+            "patterns": [
+                "var(--"
+            ]
+        },
+        "fallback": {
+            "type": "css_property",
+            "regex": true,
+            "patterns": [
+                "var\\(--[^,)]+,"
+            ]
+        }
     },
-    "fallback": {
-      "type": "css_property",
-      "regex": true,
-      "patterns": ["var\\(--[^,)]+,"]
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "CSS custom properties (var()) used without a fallback value — Outlook and Gmail will silently ignore the property entirely.",
+        "fr": "Des propriétés CSS personnalisées (var()) sont utilisées sans valeur de fallback — Outlook et Gmail ignoreront silencieusement la propriété entièrement.",
+        "es": "Se usan propiedades CSS personalizadas (var()) sin valor de fallback — Outlook y Gmail ignorarán silenciosamente la propiedad por completo.",
+        "de": "CSS-Custom-Properties (var()) ohne Fallback-Wert verwendet — Outlook und Gmail werden die Eigenschaft stillschweigend vollständig ignorieren.",
+        "pt": "Propriedades CSS personalizadas (var()) usadas sem valor de fallback — Outlook e Gmail ignorarão silenciosamente a propriedade completamente."
+    },
+    "fix": {
+        "en": "Add a fallback value inside var(): var(--brand-color, #ff0000). Or replace variables with their actual values directly on each element.",
+        "fr": "Ajouter une valeur de fallback dans var() : var(--brand-color, #ff0000). Ou remplacer les variables par leurs valeurs réelles directement sur chaque élément.",
+        "es": "Agregar un valor de fallback dentro de var(): var(--brand-color, #ff0000). O reemplazar las variables por sus valores reales directamente en cada elemento.",
+        "de": "Einen Fallback-Wert in var() hinzufügen: var(--brand-color, #ff0000). Oder Variablen durch ihre tatsächlichen Werte direkt an jedem Element ersetzen.",
+        "pt": "Adicionar um valor de fallback dentro de var(): var(--brand-color, #ff0000). Ou substituir as variáveis pelos seus valores reais diretamente em cada elemento."
+    },
+    "success_message": {
+        "en": "No CSS custom properties detected — values are compatible with Outlook and Gmail.",
+        "fr": "Aucune propriété CSS personnalisée détectée — les valeurs sont compatibles avec Outlook et Gmail.",
+        "es": "No se detectaron propiedades CSS personalizadas — los valores son compatibles con Outlook y Gmail.",
+        "de": "Keine CSS-Custom-Properties erkannt — Werte sind kompatibel mit Outlook und Gmail.",
+        "pt": "Nenhuma propriedade CSS personalizada detectada — os valores são compatíveis com Outlook e Gmail."
     }
-  },
-  "affected_clients": {
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": false },
-    "gmail_web": { "supported": false },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": false }
-  },
-  "message": {
-    "en": "CSS custom properties (var()) used without a fallback value — Outlook and Gmail will silently ignore the property entirely.",
-    "fr": "Des propriétés CSS personnalisées (var()) sont utilisées sans valeur de fallback — Outlook et Gmail ignoreront silencieusement la propriété entièrement.",
-    "es": "Se usan propiedades CSS personalizadas (var()) sin valor de fallback — Outlook y Gmail ignorarán silenciosamente la propiedad por completo.",
-    "de": "CSS-Custom-Properties (var()) ohne Fallback-Wert verwendet — Outlook und Gmail werden die Eigenschaft stillschweigend vollständig ignorieren.",
-    "pt": "Propriedades CSS personalizadas (var()) usadas sem valor de fallback — Outlook e Gmail ignorarão silenciosamente a propriedade completamente."
-  },
-  "fix": {
-    "en": "Add a fallback value inside var(): var(--brand-color, #ff0000). Or replace variables with their actual values directly on each element.",
-    "fr": "Ajouter une valeur de fallback dans var() : var(--brand-color, #ff0000). Ou remplacer les variables par leurs valeurs réelles directement sur chaque élément.",
-    "es": "Agregar un valor de fallback dentro de var(): var(--brand-color, #ff0000). O reemplazar las variables por sus valores reales directamente en cada elemento.",
-    "de": "Einen Fallback-Wert in var() hinzufügen: var(--brand-color, #ff0000). Oder Variablen durch ihre tatsächlichen Werte direkt an jedem Element ersetzen.",
-    "pt": "Adicionar um valor de fallback dentro de var(): var(--brand-color, #ff0000). Ou substituir as variáveis pelos seus valores reais diretamente em cada elemento."
-  },
-  "success_message": {
-    "en": "No CSS custom properties detected — values are compatible with Outlook and Gmail.",
-    "fr": "Aucune propriété CSS personnalisée détectée — les valeurs sont compatibles avec Outlook et Gmail.",
-    "es": "No se detectaron propiedades CSS personalizadas — los valores son compatibles con Outlook y Gmail.",
-    "de": "Keine CSS-Custom-Properties erkannt — Werte sind kompatibel mit Outlook und Gmail.",
-    "pt": "Nenhuma propriedade CSS personalizada detectada — os valores são compatíveis com Outlook e Gmail."
-  }
 }
