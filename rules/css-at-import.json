@@ -1,64 +1,62 @@
 {
-  "id": "css-at-import",
-  "version": "1.2",
-  "updated_at": "2026-05-13",
-  "source": "https://www.caniemail.com/features/css-at-import/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 2,
-  "tags": [
-    "css",
-    "fonts",
-    "external"
-  ],
-  "detection": {
-    "type": "style_block",
-    "regex": false,
-    "patterns": [
-      "@import"
-    ]
-  },
-  "affected_clients": {
-    "gmail_web": {
-      "supported": false,
-      "versions": "all"
+    "id": "css-at-import",
+    "version": "1.3",
+    "updated_at": "2026-07-27",
+    "source": "https:\/\/www.caniemail.com\/features\/css-at-import\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 2,
+    "tags": [
+        "css",
+        "fonts",
+        "external"
+    ],
+    "detection": {
+        "type": "style_block",
+        "regex": false,
+        "patterns": [
+            "@import"
+        ]
     },
-    "gmail_mobile": {
-      "supported": false
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
     },
-    "outlook_desktop": {
-      "supported": false,
-      "versions": "all"
+    "message": {
+        "en": "@import detected inside a <style> block — Gmail and Outlook silently ignore it. Pair it with a <link> tag so clients that strip @import still load the resource.",
+        "fr": "@import détecté dans un bloc <style> — Gmail et Outlook l'ignorent silencieusement. Associez-le à une balise <link> pour que les clients qui suppriment @import chargent quand même la ressource.",
+        "es": "@import detectado dentro de un bloque <style> — Gmail y Outlook lo ignoran silenciosamente. Combínelo con una etiqueta <link> para que los clientes que eliminan @import aún carguen el recurso.",
+        "de": "@import in einem <style>-Block erkannt — Gmail und Outlook ignorieren es stillschweigend. Kombinieren Sie es mit einem <link>-Tag, damit Clients, die @import entfernen, die Ressource trotzdem laden.",
+        "pt": "@import detectado dentro de um bloco <style> — Gmail e Outlook o ignoram silenciosamente. Combine-o com uma tag <link> para que clientes que removem @import ainda carreguem o recurso."
     },
-    "outlook_web": {
-      "supported": false
+    "fix": {
+        "en": "Add a <link rel=\"stylesheet\"> tag in the <head> for the same resource — the @import then serves as a fallback for clients that don't support <link> in email.",
+        "fr": "Ajoutez une balise <link rel=\"stylesheet\"> dans le <head> pour la même ressource — le @import sert alors de fallback pour les clients qui ne supportent pas <link> dans les emails.",
+        "es": "Agregue una etiqueta <link rel=\"stylesheet\"> en el <head> para el mismo recurso — el @import entonces sirve como fallback para clientes que no soportan <link> en email.",
+        "de": "Fügen Sie ein <link rel=\"stylesheet\">-Tag im <head> für die gleiche Ressource hinzu — das @import dient dann als Fallback für Clients, die <link> in E-Mails nicht unterstützen.",
+        "pt": "Adicione uma tag <link rel=\"stylesheet\"> no <head> para o mesmo recurso — o @import então serve como fallback para clientes que não suportam <link> em email."
     },
-    "apple_mail": {
-      "supported": true
-    },
-    "samsung_email": {
-      "supported": false
+    "success_message": {
+        "en": "No external stylesheets imported via @import — all styles are self-contained.",
+        "fr": "Aucune feuille de style externe importée via @import — tous les styles sont autonomes.",
+        "es": "No se importaron hojas de estilo externas mediante @import — todos los estilos son autónomos.",
+        "de": "Keine externen Stylesheets via @import importiert — alle Styles sind in sich abgeschlossen.",
+        "pt": "Nenhuma folha de estilos externa importada via @import — todos os estilos são independentes."
     }
-  },
-  "message": {
-    "en": "@import detected inside a <style> block — Gmail and Outlook silently ignore it. Pair it with a <link> tag so clients that strip @import still load the resource.",
-    "fr": "@import détecté dans un bloc <style> — Gmail et Outlook l'ignorent silencieusement. Associez-le à une balise <link> pour que les clients qui suppriment @import chargent quand même la ressource.",
-    "es": "@import detectado dentro de un bloque <style> — Gmail y Outlook lo ignoran silenciosamente. Combínelo con una etiqueta <link> para que los clientes que eliminan @import aún carguen el recurso.",
-    "de": "@import in einem <style>-Block erkannt — Gmail und Outlook ignorieren es stillschweigend. Kombinieren Sie es mit einem <link>-Tag, damit Clients, die @import entfernen, die Ressource trotzdem laden.",
-    "pt": "@import detectado dentro de um bloco <style> — Gmail e Outlook o ignoram silenciosamente. Combine-o com uma tag <link> para que clientes que removem @import ainda carreguem o recurso."
-  },
-  "fix": {
-    "en": "Add a <link rel=\"stylesheet\"> tag in the <head> for the same resource — the @import then serves as a fallback for clients that don't support <link> in email.",
-    "fr": "Ajoutez une balise <link rel=\"stylesheet\"> dans le <head> pour la même ressource — le @import sert alors de fallback pour les clients qui ne supportent pas <link> dans les emails.",
-    "es": "Agregue una etiqueta <link rel=\"stylesheet\"> en el <head> para el mismo recurso — el @import entonces sirve como fallback para clientes que no soportan <link> en email.",
-    "de": "Fügen Sie ein <link rel=\"stylesheet\">-Tag im <head> für die gleiche Ressource hinzu — das @import dient dann als Fallback für Clients, die <link> in E-Mails nicht unterstützen.",
-    "pt": "Adicione uma tag <link rel=\"stylesheet\"> no <head> para o mesmo recurso — o @import então serve como fallback para clientes que não suportam <link> em email."
-  },
-  "success_message": {
-    "en": "No external stylesheets imported via @import — all styles are self-contained.",
-    "fr": "Aucune feuille de style externe importée via @import — tous les styles sont autonomes.",
-    "es": "No se importaron hojas de estilo externas mediante @import — todos los estilos son autónomos.",
-    "de": "Keine externen Stylesheets via @import importiert — alle Styles sind in sich abgeschlossen.",
-    "pt": "Nenhuma folha de estilos externa importada via @import — todos os estilos são independentes."
-  }
 }

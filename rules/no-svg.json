@@ -1,58 +1,60 @@
 {
-  "id": "no-svg",
-  "version": "1.0",
-  "updated_at": "2026-05-09",
-  "source": "https://www.caniemail.com/features/image-svg/",
-  "tier": "free",
-  "severity": "error",
-  "weight": 12,
-  "tags": [
-    "html",
-    "images"
-  ],
-  "detection": {
-    "type": "html_tag",
-    "patterns": [
-      "svg"
-    ]
-  },
-  "affected_clients": {
-    "outlook_desktop": {
-      "supported": false,
-      "versions": "all"
+    "id": "no-svg",
+    "version": "1.1",
+    "updated_at": "2026-07-27",
+    "source": "https:\/\/www.caniemail.com\/features\/image-svg\/",
+    "tier": "free",
+    "severity": "error",
+    "weight": 12,
+    "tags": [
+        "html",
+        "images"
+    ],
+    "detection": {
+        "type": "html_tag",
+        "patterns": [
+            "svg"
+        ]
     },
-    "outlook_web": {
-      "supported": false
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
     },
-    "gmail_web": {
-      "supported": false
+    "message": {
+        "en": "SVG images are not supported in Outlook or Gmail — they will not render.",
+        "fr": "Les images SVG ne sont pas supportées dans Outlook ni Gmail — elles ne s'afficheront pas.",
+        "es": "Las imágenes SVG no están soportadas en Outlook ni Gmail — no se renderizarán.",
+        "de": "SVG-Bilder werden in Outlook oder Gmail nicht unterstützt — sie werden nicht gerendert.",
+        "pt": "Imagens SVG não são suportadas no Outlook ou Gmail — elas não serão renderizadas."
     },
-    "apple_mail": {
-      "supported": true
+    "fix": {
+        "en": "Convert SVG to PNG or WebP and reference them with a standard <img> tag.",
+        "fr": "Convertir les SVG en PNG ou WebP et les référencer avec une balise <img> standard.",
+        "es": "Convertir SVG a PNG o WebP y referenciarlos con una etiqueta <img> estándar.",
+        "de": "SVG in PNG oder WebP konvertieren und mit einem Standard-<img>-Tag referenzieren.",
+        "pt": "Converter SVG para PNG ou WebP e referenciá-los com uma tag <img> padrão."
     },
-    "samsung_email": {
-      "supported": false
+    "success_message": {
+        "en": "No <svg> elements found — images are served in formats supported by all email clients.",
+        "fr": "Aucun élément <svg> trouvé — les images sont servies dans des formats supportés par tous les clients email.",
+        "es": "No se encontraron elementos <svg> — las imágenes se sirven en formatos soportados por todos los clientes de email.",
+        "de": "Keine <svg>-Elemente gefunden — Bilder werden in Formaten bereitgestellt, die alle E-Mail-Clients unterstützen.",
+        "pt": "Nenhum elemento <svg> encontrado — imagens são fornecidas em formatos suportados por todos os clientes de e-mail."
     }
-  },
-  "message": {
-    "en": "SVG images are not supported in Outlook or Gmail — they will not render.",
-    "fr": "Les images SVG ne sont pas supportées dans Outlook ni Gmail — elles ne s'afficheront pas.",
-    "es": "Las imágenes SVG no están soportadas en Outlook ni Gmail — no se renderizarán.",
-    "de": "SVG-Bilder werden in Outlook oder Gmail nicht unterstützt — sie werden nicht gerendert.",
-    "pt": "Imagens SVG não são suportadas no Outlook ou Gmail — elas não serão renderizadas."
-  },
-  "fix": {
-    "en": "Convert SVG to PNG or WebP and reference them with a standard <img> tag.",
-    "fr": "Convertir les SVG en PNG ou WebP et les référencer avec une balise <img> standard.",
-    "es": "Convertir SVG a PNG o WebP y referenciarlos con una etiqueta <img> estándar.",
-    "de": "SVG in PNG oder WebP konvertieren und mit einem Standard-<img>-Tag referenzieren.",
-    "pt": "Converter SVG para PNG ou WebP e referenciá-los com uma tag <img> padrão."
-  },
-  "success_message": {
-    "en": "No <svg> elements found — images are served in formats supported by all email clients.",
-    "fr": "Aucun élément <svg> trouvé — les images sont servies dans des formats supportés par tous les clients email.",
-    "es": "No se encontraron elementos <svg> — las imágenes se sirven en formatos soportados por todos los clientes de email.",
-    "de": "Keine <svg>-Elemente gefunden — Bilder werden in Formaten bereitgestellt, die alle E-Mail-Clients unterstützen.",
-    "pt": "Nenhum elemento <svg> encontrado — imagens são fornecidas em formatos suportados por todos os clientes de e-mail."
-  }
 }
