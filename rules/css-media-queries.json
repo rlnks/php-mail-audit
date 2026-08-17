@@ -1,44 +1,61 @@
 {
-  "id": "css-media-queries",
-  "version": "1.1",
-  "updated_at": "2026-05-12",
-  "source": "https://www.caniemail.com/features/css-at-media/",
-  "tier": "free",
-  "severity": "info",
-  "weight": 2,
-  "tags": ["css", "responsive"],
-  "detection": {
-    "type": "style_block",
-    "regex": false,
-    "patterns": ["@media"]
-  },
-  "affected_clients": {
-    "gmail_web": { "supported": false, "versions": "all" },
-    "gmail_mobile": { "supported": false },
-    "outlook_desktop": { "supported": false, "versions": "all" },
-    "outlook_web": { "supported": true },
-    "apple_mail": { "supported": true },
-    "samsung_email": { "supported": true }
-  },
-  "message": {
-    "en": "Media queries detected — good for responsive email when paired with inline fallback styles.",
-    "fr": "Des media queries ont été détectées — une bonne pratique pour les emails responsives lorsqu'elles sont associées à des styles inline de fallback.",
-    "es": "Se detectaron media queries — buena práctica para emails responsivos cuando se combinan con estilos inline de fallback.",
-    "de": "Media Queries erkannt — gut für responsives E-Mail wenn mit Inline-Fallback-Styles kombiniert.",
-    "pt": "Media queries detectadas — boa prática para email responsivo quando combinado com estilos inline de fallback."
-  },
-  "fix": {
-    "en": "Ensure all elements have inline styles as a base — media queries should only enhance, not define, the layout.",
-    "fr": "S'assurer que tous les éléments ont des styles inline comme base — les media queries doivent seulement améliorer, non définir, le layout.",
-    "es": "Asegurarse de que todos los elementos tengan estilos inline como base — las media queries deben solo mejorar, no definir, el layout.",
-    "de": "Sicherstellen, dass alle Elemente Inline-Styles als Basis haben — Media Queries sollten das Layout nur verbessern, nicht definieren.",
-    "pt": "Garantir que todos os elementos tenham estilos inline como base — media queries devem apenas melhorar, não definir, o layout."
-  },
-  "success_message": {
-    "en": "No media queries detected — consider adding them for better mobile rendering.",
-    "fr": "Aucune media query détectée — envisagez d'en ajouter pour un meilleur rendu mobile.",
-    "es": "No se detectaron media queries — considere agregarlas para mejor renderizado en móvil.",
-    "de": "Keine Media Queries erkannt — erwägen Sie, sie für besseres Mobile-Rendering hinzuzufügen.",
-    "pt": "Nenhuma media query detectada — considere adicionar para melhor renderização mobile."
-  }
+    "id": "css-media-queries",
+    "version": "1.2",
+    "updated_at": "2026-08-17",
+    "source": "https:\/\/www.caniemail.com\/features\/css-at-media\/",
+    "tier": "free",
+    "severity": "info",
+    "weight": 2,
+    "tags": [
+        "css",
+        "responsive"
+    ],
+    "detection": {
+        "type": "style_block",
+        "regex": false,
+        "patterns": [
+            "@media"
+        ]
+    },
+    "affected_clients": {
+        "apple_mail": {
+            "supported": true
+        },
+        "gmail_web": {
+            "supported": true
+        },
+        "samsung_email": {
+            "supported": true
+        },
+        "thunderbird": {
+            "supported": true
+        },
+        "aol_mail": {
+            "supported": true
+        },
+        "protonmail": {
+            "supported": true
+        }
+    },
+    "message": {
+        "en": "Media queries detected — good for responsive email when paired with inline fallback styles.",
+        "fr": "Des media queries ont été détectées — une bonne pratique pour les emails responsives lorsqu'elles sont associées à des styles inline de fallback.",
+        "es": "Se detectaron media queries — buena práctica para emails responsivos cuando se combinan con estilos inline de fallback.",
+        "de": "Media Queries erkannt — gut für responsives E-Mail wenn mit Inline-Fallback-Styles kombiniert.",
+        "pt": "Media queries detectadas — boa prática para email responsivo quando combinado com estilos inline de fallback."
+    },
+    "fix": {
+        "en": "Ensure all elements have inline styles as a base — media queries should only enhance, not define, the layout.",
+        "fr": "S'assurer que tous les éléments ont des styles inline comme base — les media queries doivent seulement améliorer, non définir, le layout.",
+        "es": "Asegurarse de que todos los elementos tengan estilos inline como base — las media queries deben solo mejorar, no definir, el layout.",
+        "de": "Sicherstellen, dass alle Elemente Inline-Styles als Basis haben — Media Queries sollten das Layout nur verbessern, nicht definieren.",
+        "pt": "Garantir que todos os elementos tenham estilos inline como base — media queries devem apenas melhorar, não definir, o layout."
+    },
+    "success_message": {
+        "en": "No media queries detected — consider adding them for better mobile rendering.",
+        "fr": "Aucune media query détectée — envisagez d'en ajouter pour un meilleur rendu mobile.",
+        "es": "No se detectaron media queries — considere agregarlas para mejor renderizado en móvil.",
+        "de": "Keine Media Queries erkannt — erwägen Sie, sie für besseres Mobile-Rendering hinzuzufügen.",
+        "pt": "Nenhuma media query detectada — considere adicionar para melhor renderização mobile."
+    }
 }
